@@ -8,9 +8,7 @@ const { Route, Switch, Link } = ReactRouterDOM
 export class MailApp extends React.Component {
   state = {
     mails: [],
-    filterBy: {
-        section:'all'
-    },
+    filterBy: null,
   }
   componentDidMount() {
     this.loadMails()
@@ -30,7 +28,7 @@ export class MailApp extends React.Component {
   render() {
     console.log(this.state.mails)
     const {mails} =this.state
-    const {section} =this.state.filterBy
+    
     return (
       <section className="mail-app main-layout">
         <SearchFilter />

@@ -1,41 +1,38 @@
-
-
 const { Route, Switch, NavLink } = ReactRouterDOM
 
-
-export class MailSections extends React.Component{
-
-
-
-
-render(){
-
-    
-    return <div className="mail-typs-nav">
-        {/* <div className="mail-inbox-nav">
-        <div onClick={()=>{
-            
-            this.props.changeSection('inbox')}
-        } className="inbox">Inbox</div>
-        <div className="mail-sect-inbox"></div>
-
-        </div> */}
-        <NavLink  to="/mail/">
-        <div onClick={()=>{
-            
-            this.props.changeSection('inbox')}
-        } className="inbox">Inbox</div>
-        <div className="mail-sect-inbox"></div>
-
-
+export class MailSections extends React.Component {
+  render() {
+    return (
+      <div className="mail-typs-nav">
+        <NavLink className="inbox-nav" to="/mail/inbox">
+          <div className="mail-sect-inbox"></div>
+          <div className="inbox">Inbox</div>
         </NavLink>
 
-        <div onClick={()=>{
-            this.props.changeSection('starred')}
-        } className="mail-sect-starred">Starred</div>
+        <NavLink to="starred">
+          <div className="mail-sect-starred"></div>
+          <div className="starred">Starred</div>
+        </NavLink>
 
+        <NavLink to="/mail/sent">
+          <div className="mail-sect-sent"></div>
+          <div className="sent">Sent</div>
+        </NavLink>
 
-        <div onClick={()=>{
+        <NavLink to="/mail/draft">
+          <div className="mail-sect-drafts"></div>
+          <div className="draft">Drafts</div>
+        </NavLink>
+        <NavLink to="/mail/deleted">
+          <div className="mail-sect-deleted"></div>
+          <div className="deleted">Trash</div>
+        </NavLink>
+        <NavLink to="/mail/all">
+          <div className="mail-sect-all"></div>
+          <div className="deleted">All</div>
+        </NavLink>
+
+        {/* <div onClick={()=>{
             this.props.changeSection('sent')}
         } className="mail-sect-sent">Sent</div>
 
@@ -49,7 +46,8 @@ render(){
 
         <div onClick={()=>{
             this.props.changeSection('all')}
-            } className="mail-sect-all">All</div>
-    </div>
-}
+            } className="mail-sect-all">All</div> */}
+      </div>
+    )
+  }
 }

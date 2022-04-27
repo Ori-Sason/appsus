@@ -1,26 +1,94 @@
 
     .mail-typs-nav{
         grid-area: nav;
+        width: 256px;
     }
+    
     .mail-typs-nav>*{
         display: flex;
         flex-direction: row;
+        justify-content: flex-start;
+        padding-inline-start: 10px;
+        padding: 5px 20px;
+        gap: 0.85rem;
+        border-radius: 15px;
+        text-decoration: none;
+        user-select: none;
+        color: inherit;
+        
+
     }
     .mail-sect-inbox{
-        content: '';
         background-image:     url(https://www.gstatic.com/images/icons/material/system/1x/inbox_black_20dp.png);
         background-repeat: no-repeat;
-        width: 30px;
-        height: 30px;
+        opacity: 0.54;
+
+        width: 20px;
+
     }
-    .mail-sect-inbox:hover {
-        color: red;
-        background-image: url(https://www.gstatic.com/images/icons/material/system/1x/inbox_gm_googlered600_20dp.png);
+    .mail-typs-nav .active .mail-sect-inbox{
+        background-image:  url('https://www.gstatic.com/images/icons/material/system/1x/inbox_gm_googlered600_20dp.png');
         background-repeat: no-repeat;
-        
-    }
-    .mail-inbox-nav>*:hover{
-      
         color: red;
+
+
+    }
+    .inbox{
+        font-weight: bold;
+    }
+    .mail-typs-nav>*.active {
+        background-color: var( --primary-clr-400);
+        font-weight: bold;
+    }
+    .mail-typs-nav>*:hover{
+        background-color: var(  --primary-clr-200);
+    }
+    .inbox-nav.active {
+        background-color: rgba(237, 11, 11, 0.144);
+        color: red;
+    }
+
+    .mail-typs-nav .mail-sect-starred{
+        background-image: url(https://www.gstatic.com/images/icons/material/system/1x/grade_black_20dp.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 20px;
+        width: 20px;
+        opacity: 0.54;
+
+    }
+    .mail-typs-nav .mail-sect-sent{
+        background-image: url(https://www.gstatic.com/images/icons/material/system/1x/send_black_20dp.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 20px;
+        width: 20px;
+        opacity: 0.54;
+
+    }
+    .mail-typs-nav .mail-sect-drafts{
+        background-image: url(https://www.gstatic.com/images/icons/material/system/1x/insert_drive_file_black_20dp.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 20px;
+        width: 20px;
+        opacity: 0.54;
+    }
+    .mail-typs-nav .mail-sect-deleted{
+        background-image: url('https://www.gstatic.com/images/icons/material/system/1x/delete_black_20dp.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 20px;
+        width: 20px;
+        opacity: 0.54;
+
+    }
+    .mail-typs-nav .mail-sect-all{
+        background-image: url('https://www.gstatic.com/images/icons/material/system/1x/mail_black_20dp.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 20px;
+        width: 20px;
+        opacity: 0.54;
 
     }

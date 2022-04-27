@@ -2,3 +2,7 @@
   font-family: Roboto;
   src: url(../../fonts/Roboto/Roboto-Regular.ttf);
 }
+@font-face {
+  font-family: Awesome;
+  src: url(../../fonts/awesome/fa-brands-400.ttf);
+}
