@@ -1,5 +1,6 @@
 import { mailService } from '../services/mail.service.js'
-const { withRouter } = ReactRouterDOM
+import { utilService } from '../../../services/util.service.js'
+const { withRouter,Link } = ReactRouterDOM
 class _MailPreview extends React.Component {
   state = {
     isHover: false,
@@ -45,6 +46,7 @@ class _MailPreview extends React.Component {
     const { mail, isHover } = this.state
     console.log()
     if (!mail) return <React.Fragment></React.Fragment>
+    const sentAt = utilService.formatAMPM(mail.sentAt)
     return (
       <div
         onMouseEnter={this.mouseIn}
@@ -59,6 +61,7 @@ class _MailPreview extends React.Component {
         </a>
         <h1 className="mail-subject">{mail.subject}</h1>
         <p className="mail-txt-content">{mail.body}</p>
+        {!isHover&&<div className='preview-time'>{sentAt}</div>}
         {isHover && (
             <div className="mail-prev-btns">
               <button className="fa fa-archive"></button>
@@ -69,9 +72,14 @@ class _MailPreview extends React.Component {
               className="fa fa-trash"
             ></button>
             <button
-              onClick={this.toggleRead}
+              onClick={this.toggleRead} 
               className={`fa fa-envelope-${mail.isRead ? 'open' : 'close'}`}
             ></button>
+            <Link to={`mail/view/${mail.id}`}>
+
+            <button className='fa fa-solid fa-magnifying-glass' >
+            </button>
+            </Link>
           </div>
         )}
       </div>
