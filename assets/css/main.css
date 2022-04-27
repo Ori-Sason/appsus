@@ -28,10 +28,14 @@
 @import './apps/book/cmps/stars-rate.css';
 
 /* APP - KEEP */
+@import './apps/keep/basics/helper.css';
 @import './apps/keep/pages/app-keep.css';
 @import './apps/keep/cmps/add-note.css';
+@import './apps/keep/cmps/edit-note.css';
 @import './apps/keep/cmps/notes-filter.css';
 @import './apps/keep/cmps/notes-filter-item.css';
+@import './apps/keep/cmps/notes-list.css';
+@import './apps/keep/cmps/note-preview.css';
 
 
 /* APP - MAIL */

@@ -4,7 +4,7 @@ import { TxtNote } from './note-types/notes-text-note.jsx'
 export class AddNote extends React.Component {
 
     state = {
-        isOpen: true,
+        isOpen: false,
     }
 
     onToggleOpen = () => {
@@ -18,18 +18,18 @@ export class AddNote extends React.Component {
     render() {
         const { isOpen } = this.state
 
-        return <section className={`add-note ${isOpen && 'open'}`}>
+        return <section className='add-note'>
             {!isOpen &&
                 <React.Fragment>
                     <p onClick={this.onToggleOpen}>Take a note...</p>
-                    <button className="img-checkbox-checked clean-btn"></button>
-                    <button className="img-img-btn clean-btn"></button>
-                    <button className="img-youtube clean-btn"></button>
+                    <button className="note-btn img-checkbox-checked clean-btn"></button>
+                    <button className="note-btn img-img-btn clean-btn"></button>
+                    <button className="note-btn img-youtube clean-btn"></button>
                 </React.Fragment>
             }
 
             {isOpen && <React.Fragment>
-                <TxtNote onClose={this.onToggleOpen} onCreateNote={this.onCreateNote} />
+                <TxtNote note={{ info: { txt: '', title: '' } }} onClose={this.onToggleOpen} onCreateNote={this.onCreateNote} />
             </React.Fragment>}
         </section>
     }

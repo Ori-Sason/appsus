@@ -1,0 +1,14 @@
+.note-preview {
+    break-inside: avoid-column;
+    position: relative;
+    margin-bottom: 1em;
+    padding: 0 1em;
+    border: 1px solid var(--primary-clr-500);
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.note-preview input[disabled] {
+    background-color: unset;
+    color: unset;
+}
