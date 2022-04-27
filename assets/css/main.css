@@ -33,3 +33,6 @@
 
 /* APP - MAIL */
 @import './apps/mail/pages/mail-index.css';
+@import './apps/mail/cmps/mail-typs-nav.css';
+@import './apps/mail/cmps/search-filter.css';
+@import './apps/mail/cmps/mail-list.css';

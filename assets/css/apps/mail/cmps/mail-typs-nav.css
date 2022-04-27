@@ -1,0 +1,26 @@
+
+    .mail-typs-nav{
+        grid-area: nav;
+    }
+    .mail-typs-nav>*{
+        display: flex;
+        flex-direction: row;
+    }
+    .mail-sect-inbox{
+        content: '';
+        background-image:     url(https://www.gstatic.com/images/icons/material/system/1x/inbox_black_20dp.png);
+        background-repeat: no-repeat;
+        width: 30px;
+        height: 30px;
+    }
+    .mail-sect-inbox:hover {
+        color: red;
+        background-image: url(https://www.gstatic.com/images/icons/material/system/1x/inbox_gm_googlered600_20dp.png);
+        background-repeat: no-repeat;
+        
+    }
+    .mail-inbox-nav>*:hover{
+      
+        color: red;
+
+    }
