@@ -1,4 +1,6 @@
-import { keepService } from '../services/keep.service.js'
+import { notesService } from '../services/notes.service.js'
+import { NotesFilter } from '../cmps/notes-filter.jsx'
+import { AddNote } from '../cmps/add-note.jsx'
 
 export class KeepApp extends React.Component {
     state = {
@@ -6,8 +8,9 @@ export class KeepApp extends React.Component {
     }
 
     render() {
-        return <section className="notes-app main-layout">
-            <h1>NOTES PAGE</h1>
+        return <section className="app-keep main-layout">
+            <NotesFilter />
+            <AddNote />
         </section>
     }
 }

@@ -115,7 +115,7 @@ function addGoogleBook(bookId) {
     description: description || 'Missing',
     pageCount: pageCount || 'Missing',
     categories: categories || ['Missing'],
-    thumbnail: imageLinks && imageLinks.thumbnail || './assets/img/default-book.jpg',
+    thumbnail: imageLinks && imageLinks.thumbnail || '../../../assets/img/book/default-book.jpg',
     language: language,
     listPrice: {
       amount: 999, //**FIX PRICE

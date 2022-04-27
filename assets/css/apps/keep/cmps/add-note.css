@@ -1,0 +1,35 @@
+.add-note {
+    grid-area: add-note;
+    display: flex;
+    align-items: center;
+    padding: 1em;
+    width: 37.5em;
+    height: 3.125em;
+}
+
+.add-note p {
+    flex-grow: 1;
+}
+
+.add-note button {
+    padding: 2em;
+    aspect-ratio: 1/1;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.add-note button:hover {
+    background-color: grey;
+}
+
+.add-note button.img-checkbox-checked {
+    background-image: url(../../../../img/checkbox-checked.svg);
+}
+
+.add-note button.img-img-btn {
+    background-image: url(../../../../img/img-btn.svg);
+}
+
+.add-note button.img-youtube {
+    background-image: url(../../../../img/youtube.svg);
+}
