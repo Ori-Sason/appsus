@@ -44,4 +44,5 @@
 @import './apps/mail/cmps/mail-typs-nav.css';
 @import './apps/mail/cmps/search-filter.css';
 @import './apps/mail/cmps/mail-list.css';
+@import './apps/mail/cmps/compose-mail.css';
 @import './apps/mail/cmps/mail-preview.css';

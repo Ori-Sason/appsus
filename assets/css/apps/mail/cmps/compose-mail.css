@@ -1,0 +1,60 @@
+.compose-mail{
+    grid-area: compose;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
+    text-transform: none;
+    width: 8rem;
+    margin-inline-start: 1rem;
+    border-radius: 100rem;
+    margin-bottom: 1rem;
+    font-size: .875rem;
+    letter-spacing: .25px;
+    font-weight: 600;
+    transition: box-shadow .08s linear,min-width .15s cubic-bezier(0.4, 0, 0.2, 1);
+
+}
+
+.mail-compose-sign{
+    background-image: url(https://www.gstatic.com/images/icons/material/colored_icons/1x/create_32dp.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 32px;
+    display: block;
+    height: 48px;
+    width: 52px;
+    /* min-width: 56px; */
+}
+.mail-compose-txt{
+display: block;
+opacity: 0.6;
+
+
+/* height: 48px; */
+
+}
+.compose-mail:hover{
+box-shadow: 0 1px 3px 0 rgb(60 64 67 / 30%), 0 4px 8px 3px rgb(60 64 67 / 15%);
+background-color: #fafafb;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+    /* ="mail-compose-sign"></div>
+    <div className="mail-compose-txt */

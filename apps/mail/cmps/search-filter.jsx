@@ -27,12 +27,9 @@ export class SearchFilter extends React.Component{
         return <div className="search-filter">
             <input type="text" name='txt' onChange={this.onChangeFilterStats} value ={txt} className="mail-input-search" />
             <select onChange={this.onChangeFilterStats} name="type" id="" className="mail-select-filterby">
-
             <option value="">All</option>
             <option value="read">Read</option>
             <option value="unread">Unread</option>
-            <option value="stard">Starred</option>
-            <option value="stard">Unstarred</option>
             </select>
         </div>
     }
