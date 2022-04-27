@@ -2,33 +2,41 @@ import { notesService } from '../../services/notes.service.js'
 
 export class TxtNote extends React.Component {
     state = {
-        title: '',
-        txt: '',
+        note: null
     }
 
     componentDidMount() {
-        this.setState({ ...this.props.note.info })
+        this.setState({ note: this.props.note })
     }
 
     onInputChange = (ev) => {
         const { name, value } = ev.target
-        this.setState((prevState) => ({ ...prevState, [name]: value }))
+
+        this.setState((prevState) => {
+            const newNote = { ...prevState.note }
+            const newInfo = { ...prevState.note.info, [name]: value }
+            newNote.info = newInfo
+            return ({ note: newNote })
+        })
     }
 
     onFormSubmit = (ev) => {
         ev.preventDefault()
         if (this.props.isCreate) {
-            notesService.createNote(({ type: 'note-txt', info: { ...this.state } }))
+            notesService.createNote('note-txt', { ...this.state.note.info })
                 .then(this.props.onClose)
         } else {
-            notesService.updateNote(({ ...this.props.note, info: { ...this.state } }))
+            notesService.updateNote(({ ...this.props.note, info: { ...this.state.note.info } }))
                 .then(this.props.onClose)
         }
     }
 
     render() {
-        const { title, txt } = this.state
+        const { note } = this.state
+        if (!note) return <React.Fragment></React.Fragment>
+
         const { isPreview, isCreate } = this.props
+        const { title, txt } = note.info
 
         return <section className="text-note note-types">
             <form onSubmit={this.onFormSubmit}>

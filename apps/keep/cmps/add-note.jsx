@@ -27,7 +27,7 @@ export class AddNote extends React.Component {
             }
 
             {isOpen && <React.Fragment>
-                <DynamicNote note={{ type: type }} onClose={() => this.onToggleOpen(null)} isCreate={true} />
+                <DynamicNote note={{ type: type, info: { title: '', txt: '' } }} onClose={() => this.onToggleOpen(null)} isCreate={true} />
             </React.Fragment>}
         </section>
     }

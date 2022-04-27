@@ -50,7 +50,7 @@ function createNote(type, info) {
         notes.push(note)
         _saveToStorage(notes)
         return note
-    }).then(console.log)
+    })
 }
 
 function updateNote(updatedNote) {
