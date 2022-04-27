@@ -23,15 +23,18 @@ export class MailApp extends React.Component {
     this.setState((prevState)=>({filterBy:{...prevState.filterBy,section}}))
   }
   setFilter =(filterBy)=>{
-    this.setState({filterBy},this.loadMails(filterBy))
+    this.setState({filterBy},()=>{
+      this.loadMails(filterBy)})
+    
   }
   render() {
     console.log(this.state.mails)
     const {mails} =this.state
+    console.log(mails)
     
     return (
       <section className="mail-app main-layout">
-        <SearchFilter />
+        <SearchFilter setFilter={this.setFilter} />
         <MailSections changeSection={this.changeSection} />
         <Switch>
         {/* <Route path={`/mail/:${section}?`} component ={MailList} mails={mails} setFilter={this.setFilter} /> */}
