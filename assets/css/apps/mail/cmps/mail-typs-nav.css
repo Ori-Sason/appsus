@@ -1,17 +1,18 @@
 
     .mail-typs-nav{
         grid-area: nav;
-        width: 256px;
+        max-width: 256px;
+        /* flex-basis: 256px; */
     }
     
     .mail-typs-nav>*{
         display: flex;
         flex-direction: row;
-        justify-content: flex-start;
+        /* justify-content: flex-start; */
         padding-inline-start: 10px;
         padding: 5px 20px;
         gap: 0.85rem;
-        border-radius: 15px;
+        border-radius: 0 1rem 1rem 0;
         text-decoration: none;
         user-select: none;
         color: inherit;

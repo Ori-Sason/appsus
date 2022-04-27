@@ -1,8 +1,9 @@
 .mail-app {
 display: grid;
 grid-template-areas: 
-". search search "
-"nav mail mail"
-"nav mail mail"
+". search search . "
+"nav mail mail ."
+"nav mail mail ."
 ;
+
 }

@@ -6,8 +6,43 @@
     align-items: center;
     gap: 40px;
     justify-content: flex-start;
+    position: relative;
+    flex-grow: 1;
+}
+.mail-txt-content{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+        overflow: hidden;
+        width: 30rem;
+        /* flex-basis: 16rem; */
+
 }
 
+.mail-subject{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+        overflow: hidden;
+
+}
+.mail-prev-btns{
+    position: absolute;
+    right:10px;
+    border: none;
+}
+.mail-prev-btns button{
+   border: none;
+   background-color: none;
+   font-size: 0.87rem;
+   border-radius: 50%;
+   width: 30px;
+   height: 30px;
+   background-color: white;
+}
+.mail-prev-btns button:hover{
+   cursor: pointer;
+   background-color: rgba(128, 128, 128, 0.247);
+   position: relative;
+ }
 
 
 .mail-preview:hover{
@@ -28,23 +63,16 @@
 .fa{
     font-family: Awesome;
 }
-.mail-toggleread-btn::before{
+.fa-envelope-close::before{
     content: "\f0e0";
 }
-.mail-delete-btn{
-    border: none;
-    background-image: url('https://www.gstatic.com/images/icons/material/system/1x/read_black_20dp.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 20px;
-    width: 20px;
-    height: 20px;
-    opacity: 0.54;
-}
-
-.letter-read::before {
+.fa-envelope-open::before{
     content: "\f2b6";
-  }
-  .letter-unread::before {
-    content: "\f0e0";
-  }
+}
+ .fa-trash:before{
+   content: '\f1f8';
+}
+.fa-archive:before{
+    content: '\f187';
+}
+/* \f0e0 */

@@ -5,7 +5,8 @@
 export class SearchFilter extends React.Component{
     state ={
         filterBy:{
-            txt:''
+            txt:'',
+            type:''
         }
     }
     onFilter = (ev) => {
@@ -17,7 +18,7 @@ export class SearchFilter extends React.Component{
         const value = target.type === 'number' ? +target.value : target.value
         this.setState(
           (prevState) => ({ filterBy: { ...prevState.filterBy, [field]: value } }),
-        //   () => this.props.onSetFilter(this.state.filterBy)
+          () => this.props.setFilter(this.state.filterBy)
         )
       }
       
@@ -26,8 +27,9 @@ export class SearchFilter extends React.Component{
         return <div className="search-filter">
             <input type="text" name='txt' onChange={this.onChangeFilterStats} value ={txt} className="mail-input-search" />
             <select onChange={this.onChangeFilterStats} name="type" id="" className="mail-select-filterby">
-            <option value="all">All</option>
-            <option value="toread">Read</option>
+
+            <option value="">All</option>
+            <option value="read">Read</option>
             <option value="unread">Unread</option>
             <option value="stard">Starred</option>
             <option value="stard">Unstarred</option>

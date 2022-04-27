@@ -9,7 +9,7 @@ export class MailSections extends React.Component {
           <div className="inbox">Inbox</div>
         </NavLink>
 
-        <NavLink to="starred">
+        <NavLink to="/mail/starred">
           <div className="mail-sect-starred"></div>
           <div className="starred">Starred</div>
         </NavLink>
