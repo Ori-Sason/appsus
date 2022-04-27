@@ -1,0 +1,8 @@
+.mail-list{
+    grid-area: mail;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: rgb(252, 252, 252);
+    width: 800px;
+}
