@@ -4,45 +4,20 @@ const NOTES_STORAGE_KEY = 'notesDB'
 
 export const notesService = {
     query,
+    createNote,
 }
-
-const notes = [
-    {
-        id: 0,
-        type: "note-txt",
-        isPinned: true,
-        info: { txt: "Fullstack Me Baby!" }
-    },
-    {
-        id: 1,
-        type: "note-img",
-        info: {
-            url: "http://some-img/me",
-            title: "Bobi and Me"
-        },
-        style: { backgroundColor: "#00d" }
-    },
-    {
-        id: 2,
-        type: "note-todos",
-        info: {
-            label: "Get my stuff together",
-            todos: [{ txt: "Driving liscence", doneAt: null }, { txt: "Coding power", doneAt: 187111111 }]
-        }
-    }
-] /** FIX */
 
 const note = {
     id: 0,
     type: ['note-txt', 'note-img', 'note-video', 'note-todos'], //, 'note-audio', 'note-canvas', 'note-map'
     isPinned: false,
-    title: '',
     info: {
+        title: '',
         txt: 'text',
         url: '', //for images and videos
-        todos: [{ txt: '', doneAt: null }]
+        todos: [{ txt: '', doneAt: null }],
+        labels: []
     },
-    labels: []
 } /** FIX */
 
 function query() {
@@ -55,17 +30,46 @@ function query() {
     return Promise.resolve(notes)
 }
 
-function _createNote() {
-    query().then(notes => ({
-        id: notes.length === 0 ? 0 : notes[notes.length - 1].id + 1,
-        type: 'note-txt',
-        isPinned: false,
-        title: '',
-        info: {
-            txt: '',
+function createNote(type, info) {
+    return query().then(notes => {
+        const note = {
+            id: notes === null || notes.length === 0 ? 0 : notes[notes.length - 1].id + 1, //** FIX - NOT NEED NULL */
+            type,
+            isPinned: false,
+            info,
+        }
+        notes.push(note)
+        _saveToStorage(notes)
+        return note
+    }).then(console.log)
+}
+
+function _createNotes() {
+    return [
+        {
+            id: 0,
+            type: "note-txt",
+            isPinned: true,
+            info: { txt: "Fullstack Me Baby!" }
         },
-        labels: []
-    }))
+        {
+            id: 1,
+            type: "note-img",
+            info: {
+                url: "http://some-img/me",
+                title: "Bobi and Me"
+            },
+            style: { backgroundColor: "#00d" }
+        },
+        {
+            id: 2,
+            type: "note-todos",
+            info: {
+                label: "Get my stuff together",
+                todos: [{ txt: "Driving liscence", doneAt: null }, { txt: "Coding power", doneAt: 187111111 }]
+            }
+        }
+    ]
 }
 
 function _loadFromStorage() {
