@@ -1,0 +1,15 @@
+.main-layout {
+    width: 1200px; /* FIX */
+    margin: 0 auto;
+}
+
+.body-container {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: max-content 1fr min-content;
+}
+
+.main-footer {
+    padding: 2em 0;
+}

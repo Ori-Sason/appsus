@@ -1,0 +1,17 @@
+.stars-rate{
+    font-size: 3em;
+    color: rgb(255, 196, 0);
+    text-shadow: 0 0 3px black;
+    cursor: pointer;
+}
+
+.stars-rate ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.stars-rate li{
+    margin: 0;
+    padding: 0;
+}

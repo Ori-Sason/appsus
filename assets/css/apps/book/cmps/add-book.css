@@ -1,0 +1,12 @@
+.add-book li {
+    margin: 0.5em;
+}
+
+.add-book form {
+    display: flex;
+    gap: 1em;
+}
+
+.add-book li .btn {
+    margin-inline-end: 0.5em;
+}

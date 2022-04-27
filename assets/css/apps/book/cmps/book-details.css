@@ -1,0 +1,68 @@
+.book-details {
+  width: 500px;
+  margin: 2em auto;
+  text-align: center;
+}
+
+.book-details h2 {
+  font-family: Lobster;
+  font-size: 3rem;
+  margin-bottom: 0.5em;
+}
+
+.book-details h3 {
+  margin-bottom: 1em;
+}
+
+.book-details li {
+  margin-bottom: 1em;
+  text-align: start;
+}
+
+.book-details>ul li:first-of-type {
+  text-align: center;
+}
+
+.book-details .img-container {
+  margin: auto;
+  position: relative;
+  width: fit-content;
+}
+
+.book-details .on-sale-img {
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translate(60%, -20%);
+  max-height: 100px;
+}
+
+.book-details .book-img {
+  max-height: 300px;
+}
+
+.book-details .year-image {
+  position: relative;
+}
+
+.book-details .year-image img {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-inline-start: 0.5em;
+  max-height: 2em;
+}
+
+.book-details .high-price {
+  color: red;
+}
+
+.book-details .low-price {
+  color: green;
+}
+
+.book-details .btn-container {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+}

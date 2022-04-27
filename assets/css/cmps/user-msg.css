@@ -1,0 +1,21 @@
+.user-msg {
+    padding: 2em 2em 1.2em;
+    position: fixed;
+    top: 25%;
+    right: 20px;
+    color: var(--brown-clr-100);
+    border: 1px solid var(--brown-clr-100);
+    border-radius: 6px;
+    background-color: var(--brown-clr-700);
+    box-shadow: 0 0 5px black;
+}
+
+.user-msg.danger {
+    background-color: #be3333;
+}
+
+.user-msg .clean-btn {
+    position: absolute;
+    top: 10%;
+    left: 10px;
+}

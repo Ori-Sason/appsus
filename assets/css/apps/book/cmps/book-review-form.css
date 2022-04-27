@@ -1,0 +1,52 @@
+.review-form {
+  margin-bottom: 1em;
+  padding: 1em;
+  border: 1px solid var(--brown-clr-500);
+  background-color: var(--brown-clr-200);
+  border-radius: 6px;
+}
+
+.review-form form label {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.review-form form input,
+.review-form form select,
+.review-form form textarea {
+  font-family: inherit;
+  font-size: 1em;
+  width: 200px;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 1em;
+  padding: 0.2em;
+  background-color: whitesmoke;
+  border: 1px solid var(--brown-clr-500);
+  border-radius: 4px;
+}
+
+.review-form form input,
+.review-form form select {
+  text-align: center;
+}
+
+.review-form form select:focus-visible,
+.review-form form textarea:focus-visible {
+  outline: 1px solid var(--brown-clr-700);
+}
+
+.review-form form .stars-rate {
+  margin-bottom: 1rem;
+}
+
+.review-form form textarea {
+  height: 200px;
+  width: 100%;
+  max-width: 100%;
+  padding: 0.5em;
+}
+
+.review-form .btn {
+  background-color: var(--brown-clr-800);
+}

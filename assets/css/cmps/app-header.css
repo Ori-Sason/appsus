@@ -1,0 +1,41 @@
+.app-header {
+  background-color: var(--brown-clr-200);
+  box-shadow: 0 3px var(--brown-clr-800);
+}
+
+.app-header header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-header header * {
+  text-decoration: none;
+  color: inherit;
+}
+
+.app-header header .logo {
+  font-family: lobster;
+  font-size: 2.5rem;
+}
+
+.app-header header nav > * {
+  display: inline-block;
+  font-size: 1.5rem;
+  padding: 1em;
+  border-inline-end: 2px solid var(--brown-clr-800);
+}
+
+.app-header header nav > *:first-of-type {
+  border-inline-start: 2px solid var(--brown-clr-800);
+}
+
+.app-header header nav > *.active {
+  background-color: var(--brown-clr-500);
+  color: var(--brown-clr-100);
+}
+
+.app-header header nav > *:hover:not(.active) {
+  font-weight: bold;
+  box-shadow: 0 3px rgb(183, 89, 7);
+}

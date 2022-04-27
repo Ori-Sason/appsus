@@ -1,0 +1,12 @@
+.books-app {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.2em;
+}
+
+.books-app > header {
+  margin: 1.5em 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
