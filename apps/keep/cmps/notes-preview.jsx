@@ -1,12 +1,15 @@
-import { TxtNote } from './note-types/notes-text-note.jsx'
+import { DynamicNote } from './dynamic-note.jsx'
 
-export function NotePreview({ note }) {
-    const { type, info } = note
-    function onOpenModal(noteId){
-        console.log(noteId)
+const { withRouter } = ReactRouterDOM
+
+function _NotePreview({ note, history }) {
+    function onEditNote(noteId) {
+        history.push(`/keep/list/${noteId}`)
     }
 
-    return <section className="note-preview" >
-        <TxtNote note={note} isPreview={true} onOpenModal={onOpenModal} />
+    return <section className="note-preview" onClick={() => onEditNote(note.id)}>
+        <DynamicNote note={note} isPreview={true} />
     </section>
 }
+
+export const NotePreview = withRouter(_NotePreview)

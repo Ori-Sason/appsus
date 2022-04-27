@@ -10,11 +10,5 @@ export function NotesFilter() {
             <NotesFilterItem img="" name="Archive" />
             <NotesFilterItem img="" name="Bin" />
         </nav>
-
-        <section>
-            <Switch>
-                {/* <Route path="/keep/" component={'a'} /> */}
-            </Switch>
-        </section>
     </section>
 }

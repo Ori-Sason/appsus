@@ -1,0 +1,44 @@
+.note-types {
+    width: 100%;
+}
+
+.note-types form {
+    display: flex;
+    flex-direction: column;
+}
+
+.note-types .input-text-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.note-types .input-text-container .backlog {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.note-types input[type="text"] {
+    margin-top: 0.5em;
+    padding: 0.5em;
+    border: none;
+}
+
+.note-types input[name="title"] {
+    font-size: 1.1em;
+}
+
+.note-types .btn-container {
+    display: flex;
+    gap: 0.5em;
+    margin: 1em 0;
+}
+
+.note-types .btn-container button:not(.btn-text) {
+    padding: 1.5em;
+}
+
+.note-types .hide {
+    display: none;
+}

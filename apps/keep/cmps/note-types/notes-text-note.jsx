@@ -18,18 +18,14 @@ export class TxtNote extends React.Component {
         this.props.onCreateNote(({ type: 'note-txt', info: { ...this.state } }))
     }
 
-    onOpenModal = () => {
-        if (this.props.isPreview) this.props.onOpenModal(this.props.note.id)
-    }
-
     render() {
         const { title, txt } = this.state
         const { isPreview } = this.props
-        console.log(isPreview)
 
-        return <section className="text-note edit-note">
+        return <section className="text-note note-types">
             <form onSubmit={this.onFormSubmit}>
-                <div className="inputs-container" onClick={this.onOpenModal}>
+                <div className="input-text-container">
+                    <div className={isPreview ? 'backlog' : ''}></div>
                     <input className={isPreview && !title ? 'hide' : ''} type="text" name="title" placeholder="Title" value={title} onChange={this.onInputChange} />
                     <input className={isPreview && !txt ? 'hide' : ''} type="text" name="txt" placeholder="Take a note..." value={txt} onChange={this.onInputChange} />
                 </div>

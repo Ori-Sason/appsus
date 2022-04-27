@@ -7,8 +7,3 @@
     border-radius: 6px;
     cursor: pointer;
 }
-
-.note-preview input[disabled] {
-    background-color: unset;
-    color: unset;
-}
