@@ -4,7 +4,7 @@ export function AppHeader() {
   return (
     <section className="app-header">
       <header className="main-layout">
-        <Link className="logo" to="/book">APPSUS</Link>
+        <Link className="logo" to="/">APPSUS</Link>
         <nav>
           <NavLink to="/" exact>Home</NavLink>
           <NavLink to="/book">Books</NavLink>

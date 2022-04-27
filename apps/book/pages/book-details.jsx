@@ -40,7 +40,7 @@ export class BookDetails extends React.Component {
     const currYear = new Date().getFullYear()
     const diff = currYear - year
     if (diff > 10) return `${year}, Veteran Book`
-    if (diff < 1) return <span className='year-image'>{year} <img src='../assets/img/new.png'></img></span>
+    if (diff < 1) return <span className='year-image'>{year} <img src='../../../assets/img/book/new.png'></img></span>
     return year
   }
 
@@ -85,7 +85,7 @@ export class BookDetails extends React.Component {
             <strong>Written by:</strong> {book.authors.map((author) => author).join(', ')}</li>
           <li>
             <div className="img-container">
-              {book.listPrice.isOnSale && (<img className="on-sale-img" src="../assets/img/on-sale.png" alt="" />)}
+              {book.listPrice.isOnSale && (<img className="on-sale-img" src="../../../assets/img/book/on-sale.png" alt="" />)}
               <img className="book-img" src={book.thumbnail} alt={book.title} />
             </div>
           </li>
