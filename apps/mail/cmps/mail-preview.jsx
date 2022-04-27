@@ -1,6 +1,6 @@
 import { mailService } from '../services/mail.service.js'
 import { utilService } from '../../../services/util.service.js'
-const { withRouter,Link } = ReactRouterDOM
+const { withRouter, Link } = ReactRouterDOM
 class _MailPreview extends React.Component {
   state = {
     isHover: false,
@@ -21,16 +21,18 @@ class _MailPreview extends React.Component {
     const { mail } = this.state
     const { isStar } = this.state.mail
     this.setState(
-      (prevState) => ({ mail: { ...prevState.mail, isStar: !isStar } }),()=>{
-          this.onUpdateMale()
+      (prevState) => ({ mail: { ...prevState.mail, isStar: !isStar } }),
+      () => {
+        this.onUpdateMale()
       }
     )
   }
   toggleRead = () => {
     const { isRead } = this.state.mail
     this.setState(
-      (prevState) => ({ mail: { ...prevState.mail, isRead: !isRead } }),()=>{
-          this.onUpdateMale()
+      (prevState) => ({ mail: { ...prevState.mail, isRead: !isRead } }),
+      () => {
+        this.onUpdateMale()
       }
     )
   }
@@ -38,9 +40,8 @@ class _MailPreview extends React.Component {
     mailService.deleteMailById(mailId).then(() => this.setState({ mail: null }))
   }
   onUpdateMale = () => {
-      const {mail } = this.state
+    const { mail } = this.state
     mailService.updateMail(mail)
-
   }
   render() {
     const { mail, isHover } = this.state
@@ -51,7 +52,7 @@ class _MailPreview extends React.Component {
       <div
         onMouseEnter={this.mouseIn}
         onMouseLeave={this.mouseOut}
-        className="mail-preview"
+        className={`mail-preview ${mail.isRead ? 'read' : 'unread'}`}
       >
         <a
           onClick={this.toggleStar}
@@ -61,10 +62,10 @@ class _MailPreview extends React.Component {
         </a>
         <h1 className="mail-subject">{mail.subject}</h1>
         <p className="mail-txt-content">{mail.body}</p>
-        {!isHover&&<div className='preview-time'>{sentAt}</div>}
+        {!isHover && <div className="preview-time">{sentAt}</div>}
         {isHover && (
-            <div className="mail-prev-btns">
-              <button className="fa fa-archive"></button>
+          <div className="mail-prev-btns">
+            <button className="fa fa-archive"></button>
             <button
               onClick={() => {
                 this.deleteMail(mail.id)
@@ -72,13 +73,11 @@ class _MailPreview extends React.Component {
               className="fa fa-trash"
             ></button>
             <button
-              onClick={this.toggleRead} 
+              onClick={this.toggleRead}
               className={`fa fa-envelope-${mail.isRead ? 'open' : 'close'}`}
             ></button>
             <Link to={`mail/view/${mail.id}`}>
-
-            <button className='fa fa-solid fa-magnifying-glass' >
-            </button>
+              <button className="fa fa-solid fa-magnifying-glass"></button>
             </Link>
           </div>
         )}

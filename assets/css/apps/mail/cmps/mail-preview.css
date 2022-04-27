@@ -10,6 +10,9 @@
     flex-grow: 1;
     max-height: 50px;
 }
+.mail-preview.read{
+background-color: var( --primary-clr-300)
+}
 .mail-txt-content{
     white-space: nowrap;
     text-overflow: ellipsis;
