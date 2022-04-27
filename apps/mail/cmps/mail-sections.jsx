@@ -1,11 +1,16 @@
 const { Route, Switch, NavLink } = ReactRouterDOM
 
 export class MailSections extends React.Component {
+  
+
+ 
+
   render() {
+    console.log(this.state)
     return (
       <div className="mail-typs-nav">
-        <NavLink
-          className="inbox-nav"
+        <NavLink 
+          className={`inbox-nav `}
           to="/mail/inbox"
           onClick={() => {
             this.props.changeCtg('inbox')
@@ -63,21 +68,6 @@ export class MailSections extends React.Component {
           <div className="deleted">All</div>
         </NavLink>
 
-        {/* <div onClick={()=>{
-            this.props.changeSection('sent')}
-        } className="mail-sect-sent">Sent</div>
-
-        <div onClick={()=>{
-            this.props.changeSection('draft')}
-        } className="mail-sect-drafts">Drafts</div>
-
-        <div onClick={()=>{
-            this.props.changeSection('deleted')}
-        } className="mail-sect-deleted">Deleted</div>
-
-        <div onClick={()=>{
-            this.props.changeSection('all')}
-            } className="mail-sect-all">All</div> */}
       </div>
     )
   }
