@@ -8,6 +8,7 @@
     justify-content: flex-start;
     position: relative;
     flex-grow: 1;
+    max-height: 50px;
 }
 .mail-txt-content{
     white-space: nowrap;
@@ -29,6 +30,10 @@
     right:10px;
     border: none;
 }
+.preview-time{
+    position: absolute; 
+     right:10px;
+}
 .mail-prev-btns button{
    border: none;
    background-color: none;
@@ -38,6 +43,22 @@
    height: 30px;
    background-color: white;
 }
+/* .fa-solid.fa-magnifying-glass{
+    border: none;
+    background-color: none;
+    font-size: 0.87rem;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    text-decoration: none;
+    color: inherit;
+}
+.fa-solid.fa-magnifying-glass:hover{
+    cursor: pointer;
+    background-color: rgba(128, 128, 128, 0.247);
+    position: relative;
+} */
 .mail-prev-btns button:hover{
    cursor: pointer;
    background-color: rgba(128, 128, 128, 0.247);
@@ -75,4 +96,8 @@
 .fa-archive:before{
     content: '\f187';
 }
-/* \f0e0 */
+.fa-magnifying-glass::before{
+    content:'\f002';
+
+}
+/* \f0e0 

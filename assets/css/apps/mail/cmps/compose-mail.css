@@ -8,7 +8,7 @@
     color: inherit;
     box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
     text-transform: none;
-    width: 8rem;
+    width: 9rem;
     margin-inline-start: 1rem;
     border-radius: 100rem;
     margin-bottom: 1rem;
@@ -16,6 +16,7 @@
     letter-spacing: .25px;
     font-weight: 600;
     transition: box-shadow .08s linear,min-width .15s cubic-bezier(0.4, 0, 0.2, 1);
+    gap: 5px;
 
 }
 

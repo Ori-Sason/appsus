@@ -1,0 +1,51 @@
+.mail-view{
+grid-area: mail;
+font-weight: 400;
+flex-grow: 4;
+padding:  0 3rem;
+display: flex;
+flex-direction: column;
+gap: 20px;
+border: 2px solid var(--primary-clr-200);
+height: 60vh;
+overflow-y:auto;
+}
+.mail-view .star.yellow{
+    color: rgba(244, 201, 75, 1);
+}
+.mail-view .star{
+    font-size: 25px;
+    height: 25px;
+    margin-inline-start: 10px;
+}
+
+.mail-txt{
+        overflow: hidden;
+        max-width: 50rem;
+
+}
+
+.mail-info{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.mail-time{
+    font-weight: 300;
+    opacity: 0.6;
+}
+
+
+
+
+
+
+/*   <div className="mail-view">
+      <div className="mail-subject">{mail.subject}</div>
+      <div className="mail-info">
+        <a className={`star ${mail.isStar ? 'yellow' : ''}`}>{mail.isStar?fullStar:emptyStar}</a>
+        <h1 className="mail-from">From: {mail.from === `user@appsus.com`?'Me':mail.from}</h1>
+        <h3 className="mail-to">To: {mail.to === `user@appsus.com`?'Me':mail.to}</h3>
+        <p className="mail-txt">{mail.body}</p>
+      </div>
+    </div> */

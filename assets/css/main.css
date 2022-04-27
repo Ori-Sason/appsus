@@ -46,3 +46,5 @@
 @import './apps/mail/cmps/mail-list.css';
 @import './apps/mail/cmps/compose-mail.css';
 @import './apps/mail/cmps/mail-preview.css';
+@import './apps/mail/cmps/mail-view.css';
+@import './apps/mail/cmps/mail-edit.css';

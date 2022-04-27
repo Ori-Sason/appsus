@@ -5,5 +5,13 @@
     --primary-clr-400: rgb(232 234 237);
     --primary-clr-500: rgb(141, 147, 154);
     --primary-clr-700: rgb(95 99 104); /* FONT - GREY */
+    --primary-clr-850: rgb(64 64 64); /* FONT - GREY */
+    
     --primary-clr-900: rgb(32, 33, 36); /* FONT - BLACK*/
+
+
+
+
+    --seconderty-clr-blue: rgb(26 115 232);
+    --seconderty-clr-grey: #f5f7f7;
 }

@@ -3,15 +3,20 @@ import { utilService } from '../../../services/util.service.js'
 
 const MAIL_STORAGE_KEY = 'mailsDB'
 const loggedinUser = { email: 'user@appsus.com', fullname: 'Mahatma Appsus' }
+let gFilteredMails
+
 export const mailService = {
   query,
   getMailById,
   deleteMailById,
   updateMail,
+  getFilterdMails,
 }
 
+
+
+
 function query(filterBy) {
-  console.log(filterBy)
   let mails = _loadFromStorage()
   if (!mails || mails.length === 0) {
     mails = _createMails()
@@ -25,6 +30,7 @@ function query(filterBy) {
             mail.body.toLowerCase().includes(filterBy.txt.toLowerCase()) ||
             mail.subject.toLowerCase().includes(filterBy.txt.toLowerCase())
         )
+        gFilteredMails = mails
         return Promise.resolve(mails)
       case 'inbox':
         break
@@ -53,12 +59,13 @@ function query(filterBy) {
         mail.subject.toLowerCase().includes(filterBy.txt.toLowerCase())
     )
   }
+  gFilteredMails = mails
   return Promise.resolve(mails)
 }
-
+function getFilterdMails() {
+  return gFilteredMails
+}
 function updateMail(mailtoUpdate) {
-  console.log('hey')
-  console.log(mailtoUpdate)
   let mails = _loadFromStorage()
   mails = mails.map((mail) =>
     mail.id === mailtoUpdate.id ? mailtoUpdate : mail
@@ -95,7 +102,7 @@ function _createMails() {
     {
       id: utilService.makeId(),
       subject: 'Miss you!',
-      body: 'Would love to catch up sometimes sssssssdddsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss',
+      body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident deserunt ab quos placeat ut doloribus doloremque incidunt maxime atque animi, magni expedita quibusdam quas commodi tenetur, rerum autem accusamus quidem.',
       isStar: false,
       isRead: false,
       isDraft: false,
