@@ -1,8 +1,9 @@
 import { TxtNote } from './note-types/notes-text-note.jsx'
 
-export function DynamicNote({ note, isPreview }) {
+export function DynamicNote(props) {
     function getNoteComponent() {
-        if (note.type === 'note-txt') return <TxtNote note={note} isPreview={isPreview} />
+        const { type } = props.note
+        if (type === 'note-txt') return <TxtNote {...props} />
     }
 
     return <section className="dynamic-note">

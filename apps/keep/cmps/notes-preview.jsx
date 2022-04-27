@@ -2,13 +2,13 @@ import { DynamicNote } from './dynamic-note.jsx'
 
 const { withRouter } = ReactRouterDOM
 
-function _NotePreview({ note, history }) {
+function _NotePreview(props) {
     function onEditNote(noteId) {
-        history.push(`/keep/list/${noteId}`)
+        props.history.push(`/keep/list/${noteId}`)
     }
 
-    return <section className="note-preview" onClick={() => onEditNote(note.id)}>
-        <DynamicNote note={note} isPreview={true} />
+    return <section className="note-preview" onClick={() => onEditNote(props.note.id)}>
+        <DynamicNote {...props} isPreview={true}/>
     </section>
 }
 

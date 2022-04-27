@@ -1,3 +1,5 @@
+import { notesService } from '../../services/notes.service.js'
+
 export class TxtNote extends React.Component {
     state = {
         title: '',
@@ -15,12 +17,18 @@ export class TxtNote extends React.Component {
 
     onFormSubmit = (ev) => {
         ev.preventDefault()
-        this.props.onCreateNote(({ type: 'note-txt', info: { ...this.state } }))
+        if (this.props.isCreate) {
+            notesService.createNote(({ type: 'note-txt', info: { ...this.state } }))
+                .then(this.props.onClose)
+        } else {
+            notesService.updateNote(({ ...this.props.note, info: { ...this.state } }))
+                .then(this.props.onClose)
+        }
     }
 
     render() {
         const { title, txt } = this.state
-        const { isPreview } = this.props
+        const { isPreview, isCreate } = this.props
 
         return <section className="text-note note-types">
             <form onSubmit={this.onFormSubmit}>
@@ -34,7 +42,7 @@ export class TxtNote extends React.Component {
                     <button type="button" className="note-btn img-color clean-btn"></button>
                     <button type="button" className="note-btn img-img-btn clean-btn"></button>
                     <button type="button" className={`note-btn btn-text clean-btn ${isPreview ? 'hide' : ''}`} onClick={this.props.onClose}>Close</button>
-                    <button type="submit" className={`note-btn btn-text clean-btn ${isPreview ? 'hide' : ''}`}>Create</button>
+                    <button type="submit" className={`note-btn btn-text clean-btn ${isPreview ? 'hide' : ''}`}>{isCreate ? 'Create' : 'Save'}</button>
                 </div>
             </form>
         </section>

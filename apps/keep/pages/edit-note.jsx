@@ -18,14 +18,22 @@ export class EditNote extends React.Component {
 
     loadNote = () => {
         const { noteId } = this.props.match.params
-        // notesService.getNoteById(noteId)
+        notesService.getNoteById(noteId)
+            .then((note) => this.setState({ note }))
+    }
+
+    onClose = () => {
+        this.setState({ note: null }, () => this.props.history.push('/keep/'))
     }
 
     render() {
+        const { note } = this.state
+        if (!note) return <React.Fragment />
+
         return <section className="edit-note">
             <div className="backlog"></div>
             {this.props.match.params.noteId}
-            {/* <DynamicNote note={note} isPreview={false} /> */}
+            <DynamicNote note={note} isPreview={false} onClose={this.onClose} />
         </section>
     }
 }

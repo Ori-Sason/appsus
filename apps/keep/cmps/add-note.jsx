@@ -1,27 +1,25 @@
 import { notesService } from '../services/notes.service.js'
-import { TxtNote } from './note-types/notes-text-note.jsx'
+// import { TxtNote } from './note-types/notes-text-note.jsx'
+import { DynamicNote } from './dynamic-note.jsx'
 
 export class AddNote extends React.Component {
 
     state = {
         isOpen: false,
+        type: null,
     }
 
-    onToggleOpen = () => {
-        this.setState((prevState) => ({ ...prevState, isOpen: !prevState.isOpen }))
-    }
-
-    onCreateNote = ({ type, info }) => {
-        notesService.createNote(type, info).then(this.onToggleOpen)
+    onToggleOpen = (type) => {
+        this.setState((prevState) => ({ ...prevState, isOpen: !prevState.isOpen, type }))
     }
 
     render() {
-        const { isOpen } = this.state
+        const { isOpen, type } = this.state
 
         return <section className='add-note'>
             {!isOpen &&
                 <React.Fragment>
-                    <p onClick={this.onToggleOpen}>Take a note...</p>
+                    <p onClick={() => this.onToggleOpen('note-txt')}>Take a note...</p>
                     <button className="note-btn img-checkbox-checked clean-btn"></button>
                     <button className="note-btn img-img-btn clean-btn"></button>
                     <button className="note-btn img-youtube clean-btn"></button>
@@ -29,7 +27,7 @@ export class AddNote extends React.Component {
             }
 
             {isOpen && <React.Fragment>
-                <TxtNote note={{ info: { txt: '', title: '' } }} onClose={this.onToggleOpen} onCreateNote={this.onCreateNote} />
+                <DynamicNote note={{ type: type }} onClose={() => this.onToggleOpen(null)} isCreate={true} />
             </React.Fragment>}
         </section>
     }

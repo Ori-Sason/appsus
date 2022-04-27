@@ -4,7 +4,9 @@ const NOTES_STORAGE_KEY = 'notesDB'
 
 export const notesService = {
     query,
+    getNoteById,
     createNote,
+    updateNote,
 }
 
 const note = {
@@ -30,6 +32,13 @@ function query() {
     return Promise.resolve(notes)
 }
 
+function getNoteById(noteId) {
+    return query().then(notes => {
+        const note = notes.find(note => note.id === +noteId)
+        return note
+    })
+}
+
 function createNote(type, info) {
     return query().then(notes => {
         const note = {
@@ -43,6 +52,16 @@ function createNote(type, info) {
         return note
     }).then(console.log)
 }
+
+function updateNote(updatedNote) {
+    return query().then(notes => {
+        const noteIdx = notes.findIndex(note => note.id === updatedNote.id)
+        notes[noteIdx] = updatedNote
+        _saveToStorage(notes)
+    })
+}
+
+
 
 function _createNotes() {
     return [
