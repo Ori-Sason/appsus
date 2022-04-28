@@ -1,3 +1,77 @@
 .edit-mail{
     grid-area: mail;
+    display: flex;
+    flex-direction: column;
+    max-width:900px;
+    max-height: 70vh;
+    
 }
+.edit-mail input,.edit-mail textarea {
+    padding: 10px;
+}
+
+.add-new-mail-btn{
+    /* justify-self: flex-start; */
+    align-self: flex-start;
+    background-color: var(--secondery-clr-blue);
+    min-width: 72px;
+}
+.add-btns{
+    display: flex;
+    gap: 30px;
+    
+}
+.add-btns>*{
+    text-decoration: none;
+    color: inherit;
+}
+.mail-add-img{
+    background-image: url(https://www.gstatic.com/images/icons/material/system/1x/insert_photo_black_20dp.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 20px;
+    width: 20px;
+    opacity: 0.5;
+}
+.mail-new-msg-header{
+    opacity: 0.9;
+    background-color: var(--secondery-clr-dark);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 40px;
+    border-radius:10px 10px 0 0;
+    padding: 14px;
+
+}
+.mail-new{
+
+    letter-spacing: .2px;
+        font-weight: 500;
+        color: white;
+        font-size: .875rem;
+
+
+}
+/* 
+  return <form onSubmit={this.addNewMail} className="edit-mail">
+
+        <input    onChange={this.onChangeValue} placeHolder='To:?' name='to' type="email" value={to} className="mail-edit-to" />
+        <input    onChange={this.onChangeValue} placeHolder='Subject' name='subject' type="text" value={subject} className="mail-edit-subject" />
+        <textarea onChange={this.onChangeValue} placeHolder='Write here...' name="txt" id="" cols="100" rows="30"></textarea>
+        {/* <textarea onChange={this.onChangeValue} placeHolder='Write here...' name='txt' type="text" value={txt} className="mail-edit-txt" /> */
+        /* <button className="add-new-mail-btn">Send</button>
+        </form> */
+
+
+/*  <div className="add-btns">
+        <button className="add-new-mail-btn">Send</button>
+        <a href="" className="mail-add-img"></a>
+        <a href="" className="mail-add-note">note</a>
+        <a href="" className="mail-add-emoji">😎</a> */
+        /* 
+        <div className="mail-new-msg-header">
+                <h1 className="mail-new">New Message</h1>
+                <Link className="mail-open-newpage"></Link>
+                <Link className="mail-close">x</Link>
+            </div> */

@@ -1,9 +1,11 @@
 .mail-app {
 display: grid;
+grid-template-columns: 240px 1fr 10px;
+gap: 10px;
 grid-template-areas: 
-"compose search search . "
-"nav mail mail ."
-"nav mail mail ."
+"compose search . "
+"nav mail  ."
+"nav mail  ."
 ;
 
 }
