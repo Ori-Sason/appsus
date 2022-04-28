@@ -1,7 +1,8 @@
+import { notesService } from '../services/notes.service.js'
 import { TxtNote } from './note-types/notes-text-note.jsx'
 import { ImgNote } from './note-types/notes-img-note.jsx'
 import { VidNote } from './note-types/notes-vid-note.jsx'
-import { notesService } from '../services/notes.service.js'
+import { TodoNote } from './note-types/notes-todos-note.jsx'
 
 export class DynamicNote extends React.Component {
 
@@ -25,6 +26,7 @@ export class DynamicNote extends React.Component {
         if (type === 'note-txt') return <TxtNote {...this.props} onDelete={this.onDelete} />
         if (type === 'note-img') return <ImgNote {...this.props} onDelete={this.onDelete} />
         if (type === 'note-vid') return <VidNote {...this.props} onDelete={this.onDelete} />
+        if (type === 'note-todos') return <TodoNote {...this.props} onDelete={this.onDelete} />
     }
 
 

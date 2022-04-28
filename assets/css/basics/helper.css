@@ -41,3 +41,8 @@
 .input-text:focus-visible {
   outline: 1px solid var(--brown-clr-700);
 }
+
+/* NO FOCUS ON INPUTS */
+.no-focus-visible:focus-visible {
+  outline: none;
+}

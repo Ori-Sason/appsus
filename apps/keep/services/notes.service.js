@@ -100,7 +100,7 @@ function _createNotes() {
             type: "note-todos",
             info: {
                 label: "Get my stuff together",
-                todos: [{ txt: "Driving liscence", doneAt: null }, { txt: "Coding power", doneAt: 187111111 }]
+                todos: [{ id: 0, txt: "Driving liscence", isChecked: true }, { id: 1, txt: "Coding power", isChecked: false }]
             }
         },
         {

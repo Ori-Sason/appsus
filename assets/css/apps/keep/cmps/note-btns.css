@@ -24,6 +24,10 @@
     background-image: url(../../../../img/keep/checkbox-checked.svg);
 }
 
+.note-btn.img-checkbox-unchecked {
+    background-image: url(../../../../img/keep/checkbox-unchecked.svg);
+}
+
 .note-btn.img-color {
     background-image: url(../../../../img/keep/color-palette.svg);
 }
