@@ -29,16 +29,22 @@
     font-size: 1.1em;
 }
 
-.note-types .btn-container {
+.note-types .note-btns {
     display: flex;
     gap: 0.5em;
     margin: 1em 0;
 }
 
-.note-types .btn-container button:not(.btn-text) {
+.note-types .note-btns button:not(.btn-text) {
     padding: 1.5em;
 }
 
 .note-types .hide {
     display: none;
+}
+
+.note-types img{
+    max-height: 200px;
+    object-fit: cover;
+    object-position: center;
 }

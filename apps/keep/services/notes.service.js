@@ -7,6 +7,8 @@ export const notesService = {
     getNoteById,
     createNote,
     updateNote,
+    deleteNote,
+    copyAndUpdateNote
 }
 
 const note = {
@@ -61,6 +63,21 @@ function updateNote(updatedNote) {
     })
 }
 
+function deleteNote(noteId) {
+    return query().then(notes => {
+        const newNotes = notes.filter(note => note.id !== noteId)
+        _saveToStorage(newNotes)
+        return newNotes
+    })
+}
+
+function copyAndUpdateNote(note, key, value) {
+    const newNote = { ...note }
+    const newInfo = { ...note.info, [key]: value }
+    newNote.info = newInfo
+    return newNote
+}
+
 function _createNotes() {
     return [
         {
@@ -73,8 +90,8 @@ function _createNotes() {
             id: 1,
             type: "note-img",
             info: {
-                url: "http://some-img/me",
-                title: "Bobi and Me"
+                url: "https://images.unsplash.com/photo-1517842645767-c639042777db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bm90ZXN8ZW58MHx8MHx8&w=1000&q=80",
+                title: "notes"
             },
             style: { backgroundColor: "#00d" }
         },

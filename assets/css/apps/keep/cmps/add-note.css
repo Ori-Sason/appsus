@@ -16,3 +16,7 @@
     flex-grow: 1;
     cursor: text;
 }
+
+.add-note .dynamic-note{
+    width: 100%;
+}

@@ -2,8 +2,8 @@
     break-inside: avoid-column;
     position: relative;
     margin-bottom: 1em;
-    padding: 0 1em;
     border: 1px solid var(--primary-clr-500);
     border-radius: 6px;
     cursor: pointer;
+    overflow: hidden;
 }

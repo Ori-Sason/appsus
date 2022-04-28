@@ -32,6 +32,7 @@
 @import './apps/keep/pages/app-keep.css';
 @import './apps/keep/pages/edit-note.css';
 @import './apps/keep/cmps/add-note.css';
+@import './apps/keep/cmps/note-btns.css';
 @import './apps/keep/cmps/note-types.css';
 @import './apps/keep/cmps/notes-filter.css';
 @import './apps/keep/cmps/notes-filter-item.css';

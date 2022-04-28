@@ -1,37 +1,19 @@
-.note-btn {
-    padding: 2em;
-    aspect-ratio: 1/1;
-    background-repeat: no-repeat;
-    background-position: center;
-    border-radius: 50%;
+/* INVISIBLE BUTTONS (FILE)*/
+.invisible-btn {
+    position: relative;
+    border-radius: 50%; /* FIX - DUPLICATE OF CODE*/
 }
 
-.note-btn.btn-text {
-    padding: 0.5em 2em;
-    aspect-ratio: unset;
-    border-radius: 6px;
+.invisible-btn:hover {
+    background-color: var(--primary-clr-300); /* FIX - DUPLICATE OF CODE*/
 }
 
-.note-btn:hover {
-    background-color: var(--primary-clr-300);
-}
-
-.note-btn.img-checkbox-checked {
-    background-image: url(../../../../img/keep/checkbox-checked.svg);
-}
-
-.note-btn.img-color {
-    background-image: url(../../../../img/keep/color-palette.svg);
-}
-
-.note-btn.img-img-btn {
-    background-image: url(../../../../img/keep/img-btn.svg);
-}
-
-.note-btn.img-reminder {
-    background-image: url(../../../../img/keep/reminder.svg);
-}
-
-.note-btn.img-youtube {
-    background-image: url(../../../../img/keep/youtube.svg);
+.invisible-btn input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
 }

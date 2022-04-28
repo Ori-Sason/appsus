@@ -1,0 +1,41 @@
+.note-btn {
+    padding: 2em;
+    aspect-ratio: 1/1;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+}
+
+.note-btn.btn-text {
+    padding: 0.5em 2em;
+    aspect-ratio: unset;
+    border-radius: 6px;
+}
+
+.note-btn:hover {
+    background-color: var(--primary-clr-300);
+}
+
+.note-btn.img-bin {
+    background-image: url(../../../../img/keep/bin.png);
+}
+
+.note-btn.img-checkbox-checked {
+    background-image: url(../../../../img/keep/checkbox-checked.svg);
+}
+
+.note-btn.img-color {
+    background-image: url(../../../../img/keep/color-palette.svg);
+}
+
+.note-btn.img-img-btn {
+    background-image: url(../../../../img/keep/img-btn.svg);
+}
+
+.note-btn.img-reminder {
+    background-image: url(../../../../img/keep/reminder.svg);
+}
+
+.note-btn.img-youtube {
+    background-image: url(../../../../img/keep/youtube.svg);
+}

@@ -1,4 +1,5 @@
 import { notesService } from '../../services/notes.service.js'
+import { NoteBtns } from '../note-btns.jsx'
 
 export class TxtNote extends React.Component {
     state = {
@@ -11,23 +12,17 @@ export class TxtNote extends React.Component {
 
     onInputChange = (ev) => {
         const { name, value } = ev.target
-
-        this.setState((prevState) => {
-            const newNote = { ...prevState.note }
-            const newInfo = { ...prevState.note.info, [name]: value }
-            newNote.info = newInfo
-            return ({ note: newNote })
-        })
+        this.setState((prevState) => ({ note: notesService.copyAndUpdateNote(prevState.note, name, value) }))
     }
 
     onFormSubmit = (ev) => {
         ev.preventDefault()
         if (this.props.isCreate) {
             notesService.createNote('note-txt', { ...this.state.note.info })
-                .then(this.props.onClose)
+                .then(this.props.onClose).then(this.props.onUpdate)
         } else {
             notesService.updateNote(({ ...this.props.note, info: { ...this.state.note.info } }))
-                .then(this.props.onClose)
+                .then(this.props.onClose).then(this.props.onUpdate)
         }
     }
 
@@ -35,7 +30,7 @@ export class TxtNote extends React.Component {
         const { note } = this.state
         if (!note) return <React.Fragment></React.Fragment>
 
-        const { isPreview, isCreate } = this.props
+        const { isPreview, isCreate, onClose, onDelete } = this.props
         const { title, txt } = note.info
 
         return <section className="text-note note-types">
@@ -45,13 +40,7 @@ export class TxtNote extends React.Component {
                     <input className={isPreview && !title ? 'hide' : ''} type="text" name="title" placeholder="Title" value={title} onChange={this.onInputChange} />
                     <input className={isPreview && !txt ? 'hide' : ''} type="text" name="txt" placeholder="Take a note..." value={txt} onChange={this.onInputChange} />
                 </div>
-                <div className="btn-container">
-                    <button type="button" className="note-btn img-reminder clean-btn"></button>
-                    <button type="button" className="note-btn img-color clean-btn"></button>
-                    <button type="button" className="note-btn img-img-btn clean-btn"></button>
-                    <button type="button" className={`note-btn btn-text clean-btn ${isPreview ? 'hide' : ''}`} onClick={this.props.onClose}>Close</button>
-                    <button type="submit" className={`note-btn btn-text clean-btn ${isPreview ? 'hide' : ''}`}>{isCreate ? 'Create' : 'Save'}</button>
-                </div>
+                <NoteBtns isPreview={isPreview} isCreate={isCreate} onClose={onClose} onDelete={onDelete} noteId={note.id} />
             </form>
         </section>
     }
