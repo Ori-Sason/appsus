@@ -35,11 +35,12 @@ export class TxtNote extends React.Component {
 
         return <section className="text-note note-types">
             <form onSubmit={this.onFormSubmit}>
-                <div className="input-text-container">
-                    <div className={isPreview ? 'backlog' : ''}></div>
-                    <input className={`no-focus-visible ${isPreview && !title ? 'hide' : ''}`} type="text" name="title" placeholder="Title" value={title} onChange={this.onInputChange} />
-                    <input className={`no-focus-visible ${isPreview && !txt ? 'hide' : ''}`} type="text" name="txt" placeholder="Take a note..." value={txt} onChange={this.onInputChange} />
-                    {/* <textarea className={isPreview && !txt ? 'hide' : ''} name="txt" placeholder="Take a note..." value={txt} onChange={this.onInputChange} /> */}
+                <div className={isPreview ? 'backlog' : ''}>
+                    <div className="input-text-container">
+                        <input className={`no-focus-visible ${isPreview && !title ? 'hide' : ''}`} type="text" name="title" placeholder="Title" value={title} onChange={this.onInputChange} />
+                        <input className={`no-focus-visible ${isPreview && !txt ? 'hide' : ''}`} type="text" name="txt" placeholder="Take a note..." value={txt} onChange={this.onInputChange} />
+                        {/* <textarea className={isPreview && !txt ? 'hide' : ''} name="txt" placeholder="Take a note..." value={txt} onChange={this.onInputChange} /> */}
+                    </div>
                 </div>
                 <NoteBtns isPreview={isPreview} isCreate={isCreate} onClose={onClose} onDelete={onDelete} onDuplicate={onDuplicate} noteId={note.id} />
             </form>

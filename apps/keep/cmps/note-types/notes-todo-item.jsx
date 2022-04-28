@@ -22,15 +22,17 @@ export class TodoItem extends React.Component {
     }
 
     render() {
-        const { isNewTodo } = this.props
+        const { isNewTodo, isPreview } = this.props
         const { txt, isChecked } = this.state
         if (!txt && !isNewTodo) return <React.Fragment></React.Fragment>
 
         const textClass = isChecked ? 'todo-strikeline' : ''
 
         return <section className="note-todo-item">
-            <input type="checkbox" checked={isChecked} onChange={this.onToggleChecked} ></input>
-            <input type="text" placeholder="List item" className={`no-focus-visible ${textClass}`} value={txt} onChange={this.onInputChange} autoFocus={true}/>
+            <input type="checkbox" checked={isChecked} onChange={this.onToggleChecked} onClick={(ev) => isPreview ? ev.stopPropagation() : null}></input>
+            <div className={isPreview ? 'backlog' : ''}>
+                <input type="text" placeholder="List item" className={`no-focus-visible ${textClass}`} value={txt} onChange={this.onInputChange} autoFocus={true} />
+            </div>
         </section>
     }
 }

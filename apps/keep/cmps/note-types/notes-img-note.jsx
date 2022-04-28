@@ -35,8 +35,10 @@ export class ImgNote extends React.Component {
 
         return <section className="img-note note-types">
             <form onSubmit={this.onFormSubmit}>
-                <img src={url} />
-                <input className={`no-focus-visible ${isPreview && !title ? 'hide' : ''}`} type="text" name="title" placeholder="Title" value={title} onChange={this.onInputChange} />
+                <div className={isPreview ? 'backlog' : ''}>
+                    <img src={url} />
+                    <input className={`no-focus-visible ${isPreview && !title ? 'hide' : ''}`} type="text" name="title" placeholder="Title" value={title} onChange={this.onInputChange} />
+                </div>
                 <NoteBtns isPreview={isPreview} isCreate={isCreate} onClose={onClose} onDelete={onDelete} onDuplicate={onDuplicate} noteId={note.id} />
             </form>
         </section>

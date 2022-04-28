@@ -57,8 +57,8 @@ export class TodoNote extends React.Component {
                 <div className="input-text-container">
                     <input className={`no-focus-visible ${isPreview && !title ? 'hide' : ''}`} type="text" name="title" placeholder="Title" value={title} onChange={this.onInputChange} />
                 </div>
-                {note.info.todos.map(todo => <TodoItem key={todo.id} todo={todo} isNewTodo={false} onUpdate={this.onTodoChange} />)}
-                <TodoItem key={newTodoId} todo={{ id: newTodoId, txt: '', isChecked: false }} isNewTodo={true} onUpdate={this.onTodoChange} />
+                {note.info.todos.map(todo => <TodoItem key={todo.id} todo={todo} isNewTodo={false} onUpdate={this.onTodoChange} isPreview={isPreview}/>)}
+                <TodoItem key={newTodoId} todo={{ id: newTodoId, txt: '', isChecked: false }} isNewTodo={true} onUpdate={this.onTodoChange} isPreview={isPreview}/>
                 <NoteBtns isPreview={isPreview} isCreate={isCreate} onClose={onClose} onDelete={onDelete} onDuplicate={onDuplicate} noteId={note.id} />
             </form>
         </section>
