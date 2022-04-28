@@ -48,7 +48,7 @@ export class TodoNote extends React.Component {
         const { note } = this.state
         if (!note) return <React.Fragment></React.Fragment>
 
-        const { isPreview, isCreate, onClose, onDelete } = this.props
+        const { isPreview, isCreate, onClose, onDelete, onDuplicate } = this.props
         const { title, todos } = note.info
         const newTodoId = todos.length === 0 ? 0 : todos[todos.length - 1].id + 1
 
@@ -59,7 +59,7 @@ export class TodoNote extends React.Component {
                 </div>
                 {note.info.todos.map(todo => <TodoItem key={todo.id} todo={todo} isNewTodo={false} onUpdate={this.onTodoChange} />)}
                 <TodoItem key={newTodoId} todo={{ id: newTodoId, txt: '', isChecked: false }} isNewTodo={true} onUpdate={this.onTodoChange} />
-                <NoteBtns isPreview={isPreview} isCreate={isCreate} onClose={onClose} onDelete={onDelete} noteId={note.id} />
+                <NoteBtns isPreview={isPreview} isCreate={isCreate} onClose={onClose} onDelete={onDelete} onDuplicate={onDuplicate} noteId={note.id} />
             </form>
         </section>
     }

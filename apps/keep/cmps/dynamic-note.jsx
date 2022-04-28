@@ -21,12 +21,19 @@ export class DynamicNote extends React.Component {
             .then(this.props.onClose)
     }
 
+    onDuplicate = (noteId) => {
+        notesService.duplicateNote(noteId)
+            .then(() => this.setState({ note: null }))
+            .then(this.props.onUpdate)
+            .then(this.props.onClose)
+    }
+
     getNoteComponent() {
         const { type } = this.props.note
-        if (type === 'note-txt') return <TxtNote {...this.props} onDelete={this.onDelete} />
-        if (type === 'note-img') return <ImgNote {...this.props} onDelete={this.onDelete} />
-        if (type === 'note-vid') return <VidNote {...this.props} onDelete={this.onDelete} />
-        if (type === 'note-todos') return <TodoNote {...this.props} onDelete={this.onDelete} />
+        if (type === 'note-txt') return <TxtNote {...this.props} onDelete={this.onDelete} onDuplicate={this.onDuplicate} />
+        if (type === 'note-img') return <ImgNote {...this.props} onDelete={this.onDelete} onDuplicate={this.onDuplicate} />
+        if (type === 'note-vid') return <VidNote {...this.props} onDelete={this.onDelete} onDuplicate={this.onDuplicate} />
+        if (type === 'note-todos') return <TodoNote {...this.props} onDelete={this.onDelete} onDuplicate={this.onDuplicate} />
     }
 
 

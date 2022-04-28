@@ -8,7 +8,8 @@ export const notesService = {
     createNote,
     updateNote,
     deleteNote,
-    copyAndUpdateNote
+    copyAndUpdateNote,
+    duplicateNote
 }
 
 const note = {
@@ -76,6 +77,17 @@ function copyAndUpdateNote(note, key, value) {
     const newInfo = { ...note.info, [key]: value }
     newNote.info = newInfo
     return newNote
+}
+
+function duplicateNote(noteId) {
+    return query().then(notes => {
+        const note = notes.find(note => note.id === noteId)
+        const duplicate = JSON.parse(JSON.stringify(note))
+        duplicate.id = notes === null || notes.length === 0 ? 0 : notes[notes.length - 1].id + 1, //** FIX - NOT NEED NULL */
+        notes.push(duplicate)
+        _saveToStorage(notes)
+        return notes
+    })
 }
 
 function _createNotes() {
