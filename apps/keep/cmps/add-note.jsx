@@ -56,9 +56,9 @@ export class AddNote extends React.Component {
                 <React.Fragment>
                     <p onClick={() => this.onToggleOpen('note-txt')}>Take a note...</p>
                     <button className="note-btn img-checkbox-checked clean-btn"></button>
-                    <div className='mail-invisible-btn'>
+                    <div className='invisible-btn'>
                         <button className="note-btn img-img-btn clean-btn"></button>
-                        <input type="file" onChange={this.onSelectImg} className='invis-input' accept="image/png, image/gif, image/jpeg" />
+                        <input type="file" onChange={this.onSelectImg} accept="image/png, image/gif, image/jpeg" />
                     </div>
                     <button className="note-btn img-youtube clean-btn" onClick={this.onYoutube}></button>
                 </React.Fragment>
