@@ -7,25 +7,16 @@ import { EditNote } from './edit-note.jsx'
 
 const { Switch, Route } = ReactRouterDOM
 
-export class KeepApp extends React.Component {
-    state = {
-        note: null,
-        isEditMode: true
-    }
+export function KeepApp() {
+    return <section className="app-keep main-layout">
+        <NotesFilter />
+        <AddNote />
+        <NoteList />
 
-    render() {
-        const { note, isEditMode } = this.state
-
-        return <section className="app-keep main-layout">
-            <NotesFilter />
-            <AddNote />
-            <NoteList />
-
-            <section>
-                <Switch>
-                    <Route path='/keep/list/:noteId' component={EditNote} />
-                </Switch>
-            </section>
+        <section>
+            <Switch>
+                <Route path='/keep/list/:noteId' component={EditNote} />
+            </Switch>
         </section>
-    }
+    </section>
 }

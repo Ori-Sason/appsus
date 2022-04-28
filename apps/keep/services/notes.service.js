@@ -61,8 +61,6 @@ function updateNote(updatedNote) {
     })
 }
 
-
-
 function _createNotes() {
     return [
         {

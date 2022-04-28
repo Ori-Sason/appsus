@@ -1,5 +1,6 @@
 import { notesService } from '../services/notes.service.js'
 import { DynamicNote } from '../cmps/dynamic-note.jsx'
+import { eventBusService } from '../../../services/event.bus.service.js'
 
 export class EditNote extends React.Component {
     state = {
@@ -23,7 +24,11 @@ export class EditNote extends React.Component {
     }
 
     onClose = () => {
-        this.setState({ note: null }, () => this.props.history.push('/keep/'))
+        this.setState({ note: null }, () => {
+            eventBusService.emit('update-notes-list', null)
+            this.props.history.push('/keep/')
+        })
+
     }
 
     render() {

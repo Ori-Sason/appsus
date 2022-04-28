@@ -1,6 +1,6 @@
 const { NavLink } = ReactRouterDOM
 
-export function NotesFilterItem({ img, name }) {
+export function NotesFilterItem({ name }) {
     function convertStrToURI(str) {
         return encodeURI(str.toLowerCase())
     }
