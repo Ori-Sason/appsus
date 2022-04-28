@@ -84,9 +84,13 @@ console.log('i renderd!');
   if(!mails) return<React.Fragment></React.Fragment>
   
   return <div className="mail-list">
-    <div onClick={this.toggleSortBtn} className="mail-list-header">
-      {isSort&&<div className="sort-by-title">x</div>}
-      {isSort&&<div className="sort-by-date">y</div>}
+    <div onClick={this.toggleSortBtn} className="fa fa-angle-down">
+      
+      <div className="sorting-opts">
+      {isSort&&<div className="sort-by-title">Title</div>}
+      {isSort&&<div className="sort-by-date">Name</div>}
+
+      </div>
     </div>
     {mails.map(mail=> <MailPreview key={mail.id} mail={mail} loadMails={this.loadMails}/>)}
   

@@ -18,7 +18,8 @@ class _MailPreview extends React.Component {
   mouseOut = () => {
     this.setState({ isHover: false })
   }
-  toggleStar = () => {
+  toggleStar = (ev) => {
+    ev.stopPropagation()
     const { mail } = this.state
     const { isStar } = this.state.mail
     this.setState(
@@ -28,7 +29,8 @@ class _MailPreview extends React.Component {
       }
     )
   }
-  toggleRead = () => {
+  toggleRead = (ev) => {
+    ev.stopPropagation()
     const { isRead } = this.state.mail
     this.setState(
       (prevState) => ({ mail: { ...prevState.mail, isRead: !isRead } }),
@@ -38,7 +40,8 @@ class _MailPreview extends React.Component {
       }
     )
   }
-  deleteMail = (mailId) => {
+  deleteMail = (ev,mailId) => {
+    ev.stopPropagation()
     console.log('i delete');
     // mailService.deleteMailById(mailId).then(() => this.setState({ mail: null })).then(()=>this.props.loadMails())
     mailService.deleteMailById(mailId).then(()=>this.props.loadMails()).then(() => this.setState({ mail: null }))
@@ -53,13 +56,17 @@ class _MailPreview extends React.Component {
     if (!mail) return <React.Fragment></React.Fragment>
     const sentAt = utilService.formatAMPM(mail.sentAt)
     return (
+      
       <div
+        onClick={()=>this.props.history.push(`/mail/view/${mail.id}`)}
+
+        
         onMouseEnter={this.mouseIn}
         onMouseLeave={this.mouseOut}
         className={`mail-preview ${mail.isRead ? 'read' : 'unread'}`}
       >
         <a
-          onClick={this.toggleStar}
+          onClick={(ev)=>{this.toggleStar(ev)}}
           className={`star ${mail.isStar ? 'yellow' : ''}`}
         >
           {mail.isStar ? this.fullStar : this.emptyStar}
@@ -71,18 +78,15 @@ class _MailPreview extends React.Component {
           <div className="mail-prev-btns">
             <button className="fa fa-archive"></button>
             <button
-              onClick={() => {
-                this.deleteMail(mail.id)
+              onClick={(ev) => {
+                this.deleteMail(ev,mail.id)
               }}
               className="fa fa-trash"
             ></button>
             <button
-              onClick={this.toggleRead}
+              onClick={(ev)=>this.toggleRead(ev)}
               className={`fa fa-envelope-${mail.isRead ? 'open' : 'close'}`}
             ></button>
-            <Link to={`/mail/view/${mail.id}`}>
-              <button className="fa fa-solid fa-magnifying-glass"></button>
-            </Link>
           </div>
         )}
       </div>
