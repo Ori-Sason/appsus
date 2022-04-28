@@ -17,7 +17,6 @@ export class KeepApp extends React.Component {
     }
 
     loadNotes = () => {
-        console.log('LOADED')
         return notesService.query().then(notes => this.setState({ notes }))
     }
 
@@ -27,7 +26,6 @@ export class KeepApp extends React.Component {
 
     render() {
         const { notes } = this.state
-        if (notes) console.log(notes[1].info.title);
 
         return <section className="app-keep main-layout">
             <NotesFilter />
