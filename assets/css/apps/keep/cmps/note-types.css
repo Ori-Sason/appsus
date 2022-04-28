@@ -7,13 +7,13 @@
     flex-direction: column;
 }
 
-.note-types .input-text-container {
+.note-types .backlog-container {
     position: relative;
     display: flex;
     flex-direction: column;
 }
 
-.note-types .input-text-container .backlog {
+.note-types .backlog-container .backlog {
     position: absolute;
     height: 100%;
     width: 100%;
@@ -49,6 +49,10 @@
 
 .note-types .hide {
     display: none;
+}
+
+.note-types .backlog{
+    width: 100%;
 }
 
 .note-types img,

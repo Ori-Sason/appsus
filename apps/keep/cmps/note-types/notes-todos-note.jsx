@@ -52,13 +52,14 @@ export class TodoNote extends React.Component {
         const { title, todos } = note.info
         const newTodoId = todos.length === 0 ? 0 : todos[todos.length - 1].id + 1
 
-        return <section className="text-note note-types">
+        return <section className="todo-note note-types">
             <form onSubmit={this.onFormSubmit}>
-                <div className="input-text-container">
+                <div className="backlog-container">
+                    <div className={isPreview ? 'backlog' : ''}></div>
                     <input className={`no-focus-visible ${isPreview && !title ? 'hide' : ''}`} type="text" name="title" placeholder="Title" value={title} onChange={this.onInputChange} />
                 </div>
-                {note.info.todos.map(todo => <TodoItem key={todo.id} todo={todo} isNewTodo={false} onUpdate={this.onTodoChange} isPreview={isPreview}/>)}
-                <TodoItem key={newTodoId} todo={{ id: newTodoId, txt: '', isChecked: false }} isNewTodo={true} onUpdate={this.onTodoChange} isPreview={isPreview}/>
+                {note.info.todos.map(todo => <TodoItem key={todo.id} todo={todo} isNewTodo={false} onUpdate={this.onTodoChange} isPreview={isPreview} />)}
+                <TodoItem key={newTodoId} todo={{ id: newTodoId, txt: '', isChecked: false }} isNewTodo={true} onUpdate={this.onTodoChange} isPreview={isPreview} />
                 <NoteBtns isPreview={isPreview} isCreate={isCreate} onClose={onClose} onDelete={onDelete} onDuplicate={onDuplicate} noteId={note.id} />
             </form>
         </section>
