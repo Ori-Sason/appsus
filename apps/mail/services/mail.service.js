@@ -3,14 +3,14 @@ import { utilService } from '../../../services/util.service.js'
 
 const MAIL_STORAGE_KEY = 'mailsDB'
 const loggedinUser = { email: 'user@appsus.com', fullname: 'Mahatma Appsus' }
-let gFilteredMails
 
 export const mailService = {
   query,
   getMailById,
   deleteMailById,
   updateMail,
-  getFilterdMails,
+  addMail,
+  getUnreadEmails
 }
 
 
@@ -22,7 +22,10 @@ function query(filterBy) {
     mails = _createMails()
     _saveToStorage(mails)
   }
+
   if (filterBy) {
+    console.log(filterBy.ctg)
+    console.log(mails)
     switch (filterBy.ctg) {
       case 'all':
         mails = mails.filter(
@@ -30,19 +33,19 @@ function query(filterBy) {
             mail.body.toLowerCase().includes(filterBy.txt.toLowerCase()) ||
             mail.subject.toLowerCase().includes(filterBy.txt.toLowerCase())
         )
-        gFilteredMails = mails
         return Promise.resolve(mails)
       case 'inbox':
+        mails = mails.filter((mail) => mail.to === loggedinUser.email&&mail.isDraft===false&&mail.isDeleted===false)
         break
       case 'starred':
-        mails = mails.filter((mail) => mail.isStar === true)
+        mails = mails.filter((mail) => mail.isStar === true&&mail.isDraft===false&&mail.isDeleted===false)
         break
       case 'draft':
-        mails = mails.filter((mail) => mail.isDrafted === true)
-        break
+        mails = mails.filter((mail) => mail.isDrafted === true&&mail.isDeleted===false)
+        return Promise.resolve(mails)
       case 'deleted':
         mails = mails.filter((mail) => mail.isDeleted === true)
-        break
+        return Promise.resolve(mails)
       case 'sent':
         mails = mails.filter((mail) => mail.from === loggedinUser.email)
         break
@@ -59,14 +62,39 @@ function query(filterBy) {
         mail.subject.toLowerCase().includes(filterBy.txt.toLowerCase())
     )
   }
-  gFilteredMails = mails
   return Promise.resolve(mails)
 }
-function getFilterdMails() {
-  return gFilteredMails
+function getUnreadEmails(){
+  let mails = _loadFromStorage()
+  if(!mails) return
+  let x = mails.filter(mail=>mail.isRead===false&&mail.to==='user@appsus.com')
+  console.log(x)
+  return x.length 
+   
+}
+function addMail(mailData){
+  console.log('new Male',mailData)
+  let mails= _loadFromStorage()
+  const newMail ={
+    id: utilService.makeId(),
+    subject: mailData.subject,
+    body: mailData.txt,
+    isStar: false,
+    isRead: false,
+    isDraft: false,
+    isDeleted: false,
+    sentAt: Date.now(),
+    to: mailData.to,
+    img: mailData.url,
+    from: loggedinUser.email,
+  }
+  mails= [newMail,...mails]
+  _saveToStorage(mails)
+
 }
 function updateMail(mailtoUpdate) {
   let mails = _loadFromStorage()
+
   mails = mails.map((mail) =>
     mail.id === mailtoUpdate.id ? mailtoUpdate : mail
   )
@@ -81,9 +109,14 @@ function getMailById(mailId) {
 }
 function deleteMailById(mailId) {
   let mails = _loadFromStorage()
-  mails = mails.filter((mail) => mail.id !== mailId)
+
+  let mailToDelete = getMailById(mailId)
+  mailToDelete.isDeleted=true
+  mails = mails.map((mail) =>
+  mail.id === mailToDelete.id ? mailToDelete : mail
+)
   _saveToStorage(mails)
-  return Promise.resolve(mails)
+  return Promise.resolve()
 }
 function _createMails() {
   return [
@@ -108,8 +141,8 @@ function _createMails() {
       isDraft: false,
       isDeleted: false,
       sentAt: Date.now(),
-      to: 'momo@momo.com',
-      from: 'user@appsus.com',
+      to: 'user@appsus.com',
+      from: 'OriSason@appsus.com',
     },
     {
       id: utilService.makeId(),
@@ -132,8 +165,8 @@ function _createMails() {
       isDraft: false,
       isDeleted: false,
       sentAt: Date.now(),
-      to: 'momo@momo.com',
-      from: 'user@appsus.com',
+      to: 'user@appsus.com',
+      from: 'mAharoni@appsus.com',
     },
     {
       id: utilService.makeId(),
@@ -168,8 +201,8 @@ function _createMails() {
       isDraft: false,
       isDeleted: false,
       sentAt: Date.now(),
-      to: 'momo@momo.com',
-      from: 'user@appsus.com',
+      to: 'user@appsus.com',
+      from: 'KimKardeshian@appsus.com',
     },
     {
       id: utilService.makeId(),

@@ -3,6 +3,7 @@ import {utilService} from '../../../services/util.service.js'
 
 export function MaiLView(props) {
   const { mailId } = props.match.params
+  console.log('in view')
   console.log(mailId)
   const emptyStar = String.fromCharCode(9734)
   const fullStar = String.fromCharCode(9733)

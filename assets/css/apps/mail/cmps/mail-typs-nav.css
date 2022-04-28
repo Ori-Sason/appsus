@@ -3,6 +3,8 @@
         grid-area: nav;
         max-width: 256px;
         /* flex-basis: 256px; */
+        font-size: 0.875em;
+
     }
     
     .mail-typs-nav>*{
@@ -18,6 +20,14 @@
         color: inherit;
         
 
+    }
+    .unread-counter{
+        position: absolute;
+        right:10px;
+        font-size: 0.875em;
+    }
+    .inbox-nav {
+        position: relative;
     }
     .mail-sect-inbox{
         background-image:     url(https://www.gstatic.com/images/icons/material/system/1x/inbox_black_20dp.png);

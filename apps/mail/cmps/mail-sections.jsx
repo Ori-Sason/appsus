@@ -1,20 +1,38 @@
 const { Route, Switch, NavLink } = ReactRouterDOM
 import {eventBusService} from '../../../services/event.bus.service.js'
+import { mailService } from '../services/mail.service.js'
 
 
 export class MailSections extends React.Component {
-  
+  state={
+
+  }
+  removeEvent;
+  componentDidMount() {
+    this.loadUnreadMails()
+    
+    this.removeEvent=eventBusService.on('unread',(()=>{
+     this.loadUnreadMails()
+    }))
+  }
+  loadUnreadMails=()=>{
+    let unreadCount = mailService.getUnreadEmails()
+    this.setState({unread:unreadCount},()=>{
+    })
+  }
   changeCtg=(ctg)=>{
     eventBusService.emit('changeCtg',ctg)
   }
- 
-
+ componentWillUnmount() {
+  this.removeEvent()
+ }
   render() {
-    
+
+    const {unread} = this.state
     return (
       <div className="mail-typs-nav">
         <NavLink 
-          className={`inbox-nav `}
+          className={`inbox-nav`}
           to="/mail/inbox"
           onClick={() => {
             this.changeCtg('inbox')
@@ -22,6 +40,7 @@ export class MailSections extends React.Component {
         >
           <div className="mail-sect-inbox"></div>
           <div className="inbox">Inbox</div>
+          <span className='unread-counter' >{unread>0?unread:''}</span>
         </NavLink>
 
         <NavLink

@@ -1,5 +1,6 @@
 import { mailService } from '../services/mail.service.js'
 import { utilService } from '../../../services/util.service.js'
+import { eventBusService } from '../../../services/event.bus.service.js'
 const { withRouter, Link } = ReactRouterDOM
 class _MailPreview extends React.Component {
   state = {
@@ -33,11 +34,14 @@ class _MailPreview extends React.Component {
       (prevState) => ({ mail: { ...prevState.mail, isRead: !isRead } }),
       () => {
         this.onUpdateMale()
+        eventBusService.emit('unread','unreadclickd')
       }
     )
   }
   deleteMail = (mailId) => {
-    mailService.deleteMailById(mailId).then(() => this.setState({ mail: null }))
+    console.log('i delete');
+    // mailService.deleteMailById(mailId).then(() => this.setState({ mail: null })).then(()=>this.props.loadMails())
+    mailService.deleteMailById(mailId).then(()=>this.props.loadMails()).then(() => this.setState({ mail: null }))
   }
   onUpdateMale = () => {
     const { mail } = this.state
@@ -76,7 +80,7 @@ class _MailPreview extends React.Component {
               onClick={this.toggleRead}
               className={`fa fa-envelope-${mail.isRead ? 'open' : 'close'}`}
             ></button>
-            <Link to={`view/${mail.id}`}>
+            <Link to={`/mail/view/${mail.id}`}>
               <button className="fa fa-solid fa-magnifying-glass"></button>
             </Link>
           </div>

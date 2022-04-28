@@ -12,10 +12,6 @@ export class MailApp extends React.Component {
  state={
 
  }
-  addMail(mail) {
-
-  }
-  
   
   render() {
     const { mails } = this.state
@@ -28,7 +24,7 @@ export class MailApp extends React.Component {
         <Switch>
           <Route path={`/mail/edit/:mailId?`}  component={MaleEdit} />
           <Route path={`/mail/view/:mailId?`}  component={MaiLView} />
-          <Route path={`/mail`} component={MailList} />
+          <Route path={`/mail/`} component={MailList} />
         </Switch>
       </Router>
       </section>
