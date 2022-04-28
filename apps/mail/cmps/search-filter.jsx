@@ -1,4 +1,5 @@
 
+import {eventBusService} from '../../../services/event.bus.service.js'
 
 
 
@@ -11,17 +12,17 @@ export class SearchFilter extends React.Component{
     }
     onFilter = (ev) => {
         ev.preventDefault()
-        this.props.onSetFilter(this.state.filterBy)
+        eventBusService.emit('changeFilter',this.state.filterBy)
       }
       onChangeFilterStats = ({ target }) => {
         const field = target.name
         const value = target.type === 'number' ? +target.value : target.value
         this.setState(
           (prevState) => ({ filterBy: { ...prevState.filterBy, [field]: value } }),
-          () => this.props.setFilter(this.state.filterBy)
+          () => eventBusService.emit('changeFilter',this.state.filterBy)
         )
       }
-      
+      'changeFilter'
     render(){
         const {txt} = this.state.filterBy
         return <div className="search-filter">

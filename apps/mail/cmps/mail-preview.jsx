@@ -76,7 +76,7 @@ class _MailPreview extends React.Component {
               onClick={this.toggleRead}
               className={`fa fa-envelope-${mail.isRead ? 'open' : 'close'}`}
             ></button>
-            <Link to={`mail/view/${mail.id}`}>
+            <Link to={`view/${mail.id}`}>
               <button className="fa fa-solid fa-magnifying-glass"></button>
             </Link>
           </div>

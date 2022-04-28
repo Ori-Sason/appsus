@@ -44,7 +44,7 @@ background-color: var( --primary-clr-300)
    border-radius: 50%;
    width: 30px;
    height: 30px;
-   background-color: white;
+   background-color: transparent;
 }
 /* .fa-solid.fa-magnifying-glass{
     border: none;

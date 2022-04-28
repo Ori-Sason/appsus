@@ -9,22 +9,22 @@
    max-height: 60vh;
 }
 
-::-webkit-scrollbar {
+.mail-list::-webkit-scrollbar {
     width: 6px;
 }
 
-::-webkit-scrollbar-track {
+.mail-list::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
     -webkit-border-radius: 10px;
     border-radius: 10px;
 }
 
-::-webkit-scrollbar-thumb {
+.mail-list::-webkit-scrollbar-thumb {
     -webkit-border-radius: 10px;
     border-radius: 10px;
     background: var(--primary-clr-200); 
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
 }
-::-webkit-scrollbar-thumb:window-inactive {
+.mail-list::-webkit-scrollbar-thumb:window-inactive {
     background:  var(--primary-clr-200); 
 }
