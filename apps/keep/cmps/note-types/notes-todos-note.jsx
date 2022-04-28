@@ -1,9 +1,10 @@
 import { notesService } from '../../services/notes.service.js'
 import { NoteBtns } from '../note-btns.jsx'
+import { TodoItem } from './notes-todo-item.jsx'
 
 export class TodoNote extends React.Component {
     state = {
-        note: null
+        note: null,
     }
 
     componentDidMount() {
@@ -15,10 +16,27 @@ export class TodoNote extends React.Component {
         this.setState((prevState) => ({ note: notesService.copyAndUpdateNote(prevState.note, name, value) }))
     }
 
+    onTodoChange = (newTodo, isNewTodo) => {
+        const { todos } = this.state.note.info
+        const newNote = JSON.parse(JSON.stringify(this.state.note))
+
+        if (isNewTodo) {
+            newNote.info.todos.push(newTodo)
+        } else {
+            const todoIdx = todos.findIndex(todo => todo.id === newTodo.id)
+            if (newTodo.txt.trim()) newNote.info.todos[todoIdx] = newTodo
+            else newNote.info.todos.splice(todoIdx, 1)
+        }
+
+        this.setState({ note: newNote }, () => {
+            if (newTodo) null
+        })
+    }
+
     onFormSubmit = (ev) => {
         ev.preventDefault()
         if (this.props.isCreate) {
-            notesService.createNote('note-txt', { ...this.state.note.info })
+            notesService.createNote('note-todos', { ...this.state.note.info })
                 .then(this.props.onClose).then(this.props.onUpdate)
         } else {
             notesService.updateNote(({ ...this.props.note, info: { ...this.state.note.info } }))
@@ -31,16 +49,16 @@ export class TodoNote extends React.Component {
         if (!note) return <React.Fragment></React.Fragment>
 
         const { isPreview, isCreate, onClose, onDelete } = this.props
-        const { title, txt } = note.info
+        const { title, todos } = note.info
+        const newTodoId = todos.length === 0 ? 0 : todos[todos.length - 1].id + 1
 
         return <section className="text-note note-types">
             <form onSubmit={this.onFormSubmit}>
                 <div className="input-text-container">
-                    <div className={isPreview ? 'backlog' : ''}></div>
-                    <input className={isPreview && !title ? 'hide' : ''} type="text" name="title" placeholder="Title" value={title} onChange={this.onInputChange} />
-                    <input className={isPreview && !txt ? 'hide' : ''} type="text" name="txt" placeholder="Take a note..." value={txt} onChange={this.onInputChange} />
-                    {/* <textarea className={isPreview && !txt ? 'hide' : ''} name="txt" placeholder="Take a note..." value={txt} onChange={this.onInputChange} /> */}
+                    <input className={`no-focus-visible ${isPreview && !title ? 'hide' : ''}`} type="text" name="title" placeholder="Title" value={title} onChange={this.onInputChange} />
                 </div>
+                {note.info.todos.map(todo => <TodoItem key={todo.id} todo={todo} isNewTodo={false} onUpdate={this.onTodoChange} />)}
+                <TodoItem key={newTodoId} todo={{ id: newTodoId, txt: '', isChecked: false }} isNewTodo={true} onUpdate={this.onTodoChange} />
                 <NoteBtns isPreview={isPreview} isCreate={isCreate} onClose={onClose} onDelete={onDelete} noteId={note.id} />
             </form>
         </section>

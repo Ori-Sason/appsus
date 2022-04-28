@@ -1,11 +1,13 @@
 /* INVISIBLE BUTTONS (FILE)*/
 .invisible-btn {
     position: relative;
-    border-radius: 50%; /* FIX - DUPLICATE OF CODE*/
+    border-radius: 50%;
+    /* FIX - DUPLICATE OF CODE*/
 }
 
 .invisible-btn:hover {
-    background-color: var(--primary-clr-300); /* FIX - DUPLICATE OF CODE*/
+    background-color: var(--primary-clr-300);
+    /* FIX - DUPLICATE OF CODE*/
 }
 
 .invisible-btn input {
@@ -16,4 +18,9 @@
     height: 100%;
     width: 100%;
     cursor: pointer;
+}
+
+/* NO FOCUS ON INPUTS */
+.no-focus-visible:focus-visible {
+    outline: none;
 }
