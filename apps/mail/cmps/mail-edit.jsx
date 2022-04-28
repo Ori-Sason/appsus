@@ -6,6 +6,9 @@ export class MaleEdit extends React.Component{
         txt:'',
         to:'',
         subject:'',
+        isOpen: true,
+         url: ''
+
     }
     onChangeValue=({target})=>{
         const field = target.name
@@ -16,24 +19,47 @@ export class MaleEdit extends React.Component{
         ev.preventDefault()
 
     }
-    onAddImage=()=>{
+    onSelectImg = (ev) => {
 
+        const loadImageFromInput = (ev, onImageReady) => {
+            var reader = new FileReader()
+
+            reader.onload = (event) => {
+                var img = new Image()
+                img.src = event.target.result
+                img.onload = onImageReady.bind(null, img)
+            }
+            reader.readAsDataURL(ev.target.files[0])
+        }
+
+        const renderImg = (img) => {
+            this.setState((prevState) => ({ ...prevState, type: 'note-img', isOpen: true, url: img.src }))
+        }
+
+        loadImageFromInput(ev, renderImg)
     }
+
     render(){
-        const {txt,to,subject} =this.state
+        const {txt,to,subject,isOpen,url} =this.state
         return <form onSubmit={this.addNewMail} className="edit-mail">
             <div className="mail-new-msg-header">
                 <h1 className="mail-new">New Message</h1>
-                <Link className="mail-open-newpage"></Link>
-                <Link className="mail-close">x</Link>
+                <div className="headr-links">
+                <Link className="fa fa-expand"></Link>
+                <Link className="fa fa-times"></Link>
+
+                </div>
             </div>
-        <input    onChange={this.onChangeValue} placeholder='To:' name='to' type="email" value={to} className="mail-edit-to" />
-        <input    onChange={this.onChangeValue} placeholder='Subject' name='subject' type="text" value={subject} className="mail-edit-subject" />
-        <img src="" />
-        <textarea onChange={this.onChangeValue} placeholder='Write here...' name="txt" id="" cols="50" rows="30"></textarea>
+        <input    onChange={this.onChangeValue} placeholder='To:'autoComplete='none' title='Recipient' name='to' type="email" value={to} className="mail-edit-to" />
+        <input    onChange={this.onChangeValue} placeholder='Subject:' autoComplete='none'title='Subject' name='subject' type="text" value={subject} className="mail-edit-subject" />
+        <textarea onChange={this.onChangeValue} placeholder='Write here...'autoComplete='none' name="txt" id="" cols="50" rows="30"></textarea>
+        {isOpen&&<img className='mail-user-added-img' src={url}/>}
         <div className="add-btns">
         <button className="add-new-mail-btn">Send</button>
-        <a href="" onClick={this.onAddImage} className="mail-add-img"></a>
+        <div className='invisible-btn-mail'>
+                        <div className="mail-add-img"></div>
+                        <input type="file" onChange={this.onSelectImg}className='im-inputfkfk'  accept="image/png, image/gif, image/jpeg" />
+                    </div>
         <a href="" className="mail-add-note">note</a>
         <a href="" className="mail-add-emoji">😎</a>
         </div>
