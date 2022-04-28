@@ -32,6 +32,11 @@
     background-image: url(../../../../img/keep/color-palette.svg);
 }
 
+.note-btn.img-duplicate {
+    background-size: 23px;
+    background-image: url(../../../../img/keep/duplicate.png);
+}
+
 .note-btn.img-img-btn {
     background-image: url(../../../../img/keep/img-btn.svg);
 }

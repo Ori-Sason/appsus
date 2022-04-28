@@ -30,7 +30,7 @@ export class TxtNote extends React.Component {
         const { note } = this.state
         if (!note) return <React.Fragment></React.Fragment>
 
-        const { isPreview, isCreate, onClose, onDelete } = this.props
+        const { isPreview, isCreate, onClose, onDelete, onDuplicate } = this.props
         const { title, txt } = note.info
 
         return <section className="text-note note-types">
@@ -41,7 +41,7 @@ export class TxtNote extends React.Component {
                     <input className={`no-focus-visible ${isPreview && !txt ? 'hide' : ''}`} type="text" name="txt" placeholder="Take a note..." value={txt} onChange={this.onInputChange} />
                     {/* <textarea className={isPreview && !txt ? 'hide' : ''} name="txt" placeholder="Take a note..." value={txt} onChange={this.onInputChange} /> */}
                 </div>
-                <NoteBtns isPreview={isPreview} isCreate={isCreate} onClose={onClose} onDelete={onDelete} noteId={note.id} />
+                <NoteBtns isPreview={isPreview} isCreate={isCreate} onClose={onClose} onDelete={onDelete} onDuplicate={onDuplicate} noteId={note.id} />
             </form>
         </section>
     }
