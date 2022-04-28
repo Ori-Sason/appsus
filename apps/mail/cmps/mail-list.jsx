@@ -8,6 +8,7 @@ import {eventBusService} from '../../../services/event.bus.service.js'
 export class MailList extends React.Component {
 
 state = {
+  isSort:false,
   mails: [],
   filterBy: {
     txt: '',
@@ -67,6 +68,11 @@ setFilter = (filterBy) => {
   const searchStr = urlSrcPrm.toString()
   // this.props.history.push(`/mail/:?${searchStr}`)   renders everything adn cancels the nam menu  style
 }
+toggleSortBtn = ()=>{
+const {isSort} = this.state
+this.setState({isSort:!isSort})
+
+}
 componentWillUnmount() {
   this.removeEvent1()
   this.removeEvent2()
@@ -74,10 +80,14 @@ componentWillUnmount() {
 
 render(){
 console.log('i renderd!');
-  const {mails} = this.state
+  const {mails,isSort} = this.state
   if(!mails) return<React.Fragment></React.Fragment>
   
   return <div className="mail-list">
+    <div onClick={this.toggleSortBtn} className="mail-list-header">
+      {isSort&&<div className="sort-by-title">x</div>}
+      {isSort&&<div className="sort-by-date">y</div>}
+    </div>
     {mails.map(mail=> <MailPreview key={mail.id} mail={mail} loadMails={this.loadMails}/>)}
   
   
