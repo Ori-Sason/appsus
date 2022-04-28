@@ -1,3 +1,12 @@
+.note-preview .note-btns{
+    opacity: 0;
+    transition: opacity .4s;
+}
+
+.note-preview .note-btns:hover{
+    opacity: 1;
+}
+
 .note-btn {
     padding: 2em;
     aspect-ratio: 1/1;

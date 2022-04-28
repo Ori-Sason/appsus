@@ -2,11 +2,12 @@ const { NavLink } = ReactRouterDOM
 
 export function NotesFilterItem({ name }) {
     function convertStrToURI(str) {
+        if (str === 'Notes') return ''
         return encodeURI(str.toLowerCase())
     }
 
     return <section className="notes-filter-item">
-        <NavLink to={`/keep/${convertStrToURI(name)}`}>
+        <NavLink to={`/keep/${convertStrToURI(name)}`} exact={name === 'Notes'}>
             <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24">
                 <path d={svgPath[name.toLowerCase()]} />
             </svg>
