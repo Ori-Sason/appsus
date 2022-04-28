@@ -22,7 +22,7 @@ export class TxtNote extends React.Component {
                 .then(this.props.onClose).then(this.props.onUpdate)
         } else {
             notesService.updateNote(({ ...this.props.note, info: { ...this.state.note.info } }))
-                .then(this.props.onClose).then(this.props.onUpdate)
+                .then(this.props.onClose)
         }
     }
 

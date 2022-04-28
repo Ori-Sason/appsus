@@ -16,15 +16,13 @@ export class KeepApp extends React.Component {
         this.loadNotes()
     }
 
-    componentDidUpdate() {
-        if (this.props.location.pathname === '/keep/updated') {
-            this.loadNotes().then(this.props.history.push('/keep/'))
-        }
-    }
-
     loadNotes = () => {
         console.log('LOADED')
-        return notesService.query().then(notes => this.setState({ notes: JSON.parse(JSON.stringify(notes)) }))
+        return notesService.query().then(notes => this.setState({ notes }))
+    }
+
+    resetNote = () => {
+        this.setState({ notes: null })
     }
 
     render() {
@@ -38,7 +36,7 @@ export class KeepApp extends React.Component {
 
             <section>
                 <Switch>
-                    <Route path='/keep/list/:noteId?' component={EditNote} />
+                    <Route path='/keep/list/:noteId?' component={({ match, history }) => <EditNote match={match} history={history} onUpdate={this.loadNotes} onReset={this.resetNote} />} />
                 </Switch>
             </section>
         </section>

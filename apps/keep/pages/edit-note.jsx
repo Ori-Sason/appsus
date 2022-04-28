@@ -24,7 +24,9 @@ export class EditNote extends React.Component {
 
     onClose = () => {
         this.setState({ note: null }, () => {
-            this.props.history.push('/keep/updated')
+            this.props.history.push('/keep')
+            this.props.onReset()
+            this.props.onUpdate()
         })
 
     }

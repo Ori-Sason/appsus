@@ -84,7 +84,7 @@ function _createNotes() {
             id: 0,
             type: "note-txt",
             isPinned: true,
-            info: { txt: "Fullstack Me Baby!" }
+            info: { title: '', txt: "Fullstack Me Baby!" }
         },
         {
             id: 1,
