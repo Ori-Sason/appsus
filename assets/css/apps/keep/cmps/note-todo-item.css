@@ -20,7 +20,7 @@
 .note-todo-item input[type="text"] {
     margin: 0;
     padding: 0.5em;
-    width: 100%;
+    width: 99%;
 }
 
 .note-todo-item .todo-strikeline {

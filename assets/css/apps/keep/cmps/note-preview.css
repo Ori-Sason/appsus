@@ -2,8 +2,7 @@
     break-inside: avoid-column;
     position: relative;
     margin-bottom: 1em;
-    border: 1px solid var(--primary-clr-500);
-    /* box-shadow: 0 1px 3px 0 rgb(60 64 67 / 30%), 0 4px 8px 3px rgb(60 64 67 / 15%); */
+    box-shadow: inset 0 0 2px var(--primary-clr-500);
     border-radius: 6px;
     cursor: pointer;
     overflow: hidden;
