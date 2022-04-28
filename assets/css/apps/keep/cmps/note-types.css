@@ -19,11 +19,19 @@
     width: 100%;
 }
 
-.note-types input[type="text"] {
+.note-types input[type="text"],
+.note-types textarea {
+    font-family: inherit;
+    font-size: 1em;
     margin-top: 0.5em;
     padding: 16px;
     border: none;
 }
+
+/* .note-types textarea {
+    max-width: 100%;
+    resize: none;
+} */
 
 .note-types input[name="title"] {
     font-size: 1.1em;
@@ -43,8 +51,16 @@
     display: none;
 }
 
-.note-types img{
+.note-types img,
+.note-types iframe {
     max-height: 200px;
     object-fit: cover;
     object-position: center;
+}
+
+.note-types iframe {
+    height: 200px;
+    overflow: hidden;
+    border: none;
+    border-radius: unset;
 }

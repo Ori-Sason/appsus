@@ -7,7 +7,7 @@ export class AddNote extends React.Component {
     state = {
         isOpen: false,
         type: null,
-        src: null,
+        url: null,
     }
 
     /** FIX - IN onToggle AND onSelectImg MABY I DONT NEED TO USE prevState */
@@ -36,6 +36,18 @@ export class AddNote extends React.Component {
         loadImageFromInput(ev, renderImg)
     }
 
+    onYoutube = () => {
+        const url = prompt('Please enter youtube video URL')
+        if (!url || !url.includes('youtube.com/watch?v=')) return
+        const params = url.split('?')[1]
+        const searchParams = new URLSearchParams(params)
+        const vidId = searchParams.get('v')
+        if (!vidId) return
+
+        if (url) this.setState((prevState) => ({ ...prevState, type: 'note-vid', isOpen: true, url: `https://www.youtube.com/embed/${vidId}` }))
+
+    }
+
     render() {
         const { isOpen, type, url } = this.state
 
@@ -48,12 +60,12 @@ export class AddNote extends React.Component {
                         <button className="note-btn img-img-btn clean-btn"></button>
                         <input type="file" onChange={this.onSelectImg} accept="image/png, image/gif, image/jpeg" />
                     </div>
-                    <button className="note-btn img-youtube clean-btn"></button>
+                    <button className="note-btn img-youtube clean-btn" onClick={this.onYoutube}></button>
                 </React.Fragment>
             }
 
             {isOpen && <React.Fragment>
-                <DynamicNote note={{ type: type, info: { title: '', txt: '', url } }} onClose={() => this.onToggleOpen(null)} isCreate={true} onUpdate={this.props.onUpdate}/>
+                <DynamicNote note={{ type: type, info: { title: '', txt: '', url } }} onClose={() => this.onToggleOpen(null)} isCreate={true} onUpdate={this.props.onUpdate} />
             </React.Fragment>}
         </section>
     }

@@ -102,7 +102,15 @@ function _createNotes() {
                 label: "Get my stuff together",
                 todos: [{ txt: "Driving liscence", doneAt: null }, { txt: "Coding power", doneAt: 187111111 }]
             }
-        }
+        },
+        {
+            id: 3,
+            type: "note-vid",
+            info: {
+                label: "Get my stuff together",
+                url: "https://www.youtube.com/embed/tgbNymZ7vqY",
+            }
+        },
     ]
 }
 

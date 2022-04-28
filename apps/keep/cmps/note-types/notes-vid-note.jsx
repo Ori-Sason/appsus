@@ -1,7 +1,7 @@
 import { notesService } from '../../services/notes.service.js'
 import { NoteBtns } from '../note-btns.jsx'
 
-export class TxtNote extends React.Component {
+export class VidNote extends React.Component {
     state = {
         note: null
     }
@@ -18,7 +18,7 @@ export class TxtNote extends React.Component {
     onFormSubmit = (ev) => {
         ev.preventDefault()
         if (this.props.isCreate) {
-            notesService.createNote('note-txt', { ...this.state.note.info })
+            notesService.createNote('note-vid', { ...this.state.note.info })
                 .then(this.props.onClose).then(this.props.onUpdate)
         } else {
             notesService.updateNote(({ ...this.props.note, info: { ...this.state.note.info } }))
@@ -31,16 +31,12 @@ export class TxtNote extends React.Component {
         if (!note) return <React.Fragment></React.Fragment>
 
         const { isPreview, isCreate, onClose, onDelete } = this.props
-        const { title, txt } = note.info
+        const { title, url } = note.info
 
-        return <section className="text-note note-types">
+        return <section className="img-note note-types">
             <form onSubmit={this.onFormSubmit}>
-                <div className="input-text-container">
-                    <div className={isPreview ? 'backlog' : ''}></div>
-                    <input className={isPreview && !title ? 'hide' : ''} type="text" name="title" placeholder="Title" value={title} onChange={this.onInputChange} />
-                    <input className={isPreview && !txt ? 'hide' : ''} type="text" name="txt" placeholder="Take a note..." value={txt} onChange={this.onInputChange} />
-                    {/* <textarea className={isPreview && !txt ? 'hide' : ''} name="txt" placeholder="Take a note..." value={txt} onChange={this.onInputChange} /> */}
-                </div>
+                <iframe src={url}></iframe>
+                <input className={isPreview && !title ? 'hide' : ''} type="text" name="title" placeholder="Title" value={title} onChange={this.onInputChange} />
                 <NoteBtns isPreview={isPreview} isCreate={isCreate} onClose={onClose} onDelete={onDelete} noteId={note.id} />
             </form>
         </section>

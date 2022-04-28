@@ -36,7 +36,7 @@ export class EditNote extends React.Component {
         if (!note) return <React.Fragment />
 
         return <section className="edit-note">
-            <div className="backlog"></div>
+            <div className="backlog" onClick={() => this.onClose()}></div>
             {this.props.match.params.noteId}
             <DynamicNote note={note} isPreview={false} onClose={this.onClose} />
         </section>
