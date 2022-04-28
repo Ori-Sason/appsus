@@ -8,12 +8,17 @@ export class AddNote extends React.Component {
         isOpen: false,
         type: null,
         url: null,
+        todos: []
     }
 
     /** FIX - IN onToggle AND onSelectImg MABY I DONT NEED TO USE prevState */
 
     onToggleOpen = (type) => {
         this.setState((prevState) => ({ ...prevState, isOpen: !prevState.isOpen, type, src: null }))
+    }
+
+    onSelectTodo = () => {
+        this.setState((prevState) => ({ ...prevState, type: 'note-todos', isOpen: true }))
     }
 
     onSelectImg = (ev) => {
@@ -55,7 +60,7 @@ export class AddNote extends React.Component {
             {!isOpen &&
                 <React.Fragment>
                     <p onClick={() => this.onToggleOpen('note-txt')}>Take a note...</p>
-                    <button className="note-btn img-checkbox-checked clean-btn"></button>
+                    <button className="note-btn img-checkbox-checked clean-btn" onClick={this.onSelectTodo}></button>
                     <div className='invisible-btn'>
                         <button className="note-btn img-img-btn clean-btn"></button>
                         <input type="file" onChange={this.onSelectImg} accept="image/png, image/gif, image/jpeg" />
@@ -65,7 +70,7 @@ export class AddNote extends React.Component {
             }
 
             {isOpen && <React.Fragment>
-                <DynamicNote note={{ type: type, info: { title: '', txt: '', url } }} onClose={() => this.onToggleOpen(null)} isCreate={true} onUpdate={this.props.onUpdate} />
+                <DynamicNote note={{ type: type, info: { title: '', txt: '', url, todos: [] } }} onClose={() => this.onToggleOpen(null)} isCreate={true} onUpdate={this.props.onUpdate} />
             </React.Fragment>}
         </section>
     }

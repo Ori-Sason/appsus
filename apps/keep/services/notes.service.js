@@ -99,7 +99,7 @@ function _createNotes() {
             id: 2,
             type: "note-todos",
             info: {
-                label: "Get my stuff together",
+                title: "Get my stuff together",
                 todos: [{ id: 0, txt: "Driving liscence", isChecked: true }, { id: 1, txt: "Coding power", isChecked: false }]
             }
         },
@@ -107,7 +107,7 @@ function _createNotes() {
             id: 3,
             type: "note-vid",
             info: {
-                label: "Get my stuff together",
+                title: "Get my stuff together",
                 url: "https://www.youtube.com/embed/tgbNymZ7vqY",
             }
         },
