@@ -12,7 +12,7 @@
 }
 
 .note-btn {
-    padding: 2em;
+    padding: 1.5em;
     aspect-ratio: 1/1;
     background-repeat: no-repeat;
     background-position: center;
@@ -56,6 +56,11 @@
 
 .note-btn.img-img-btn {
     background-image: url(../../../../img/keep/img-btn.svg);
+}
+
+.note-btn.img-mail {
+    background-size: 23px;
+    background-image: url(../../../../img/keep/mail.png);
 }
 
 .note-btn.img-pin-black {

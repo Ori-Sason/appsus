@@ -56,10 +56,6 @@
     padding: 1.5em;
 }
 
-.note-types .hide {
-    display: none;
-}
-
 .note-types .backlog {
     width: 100%;
 }
