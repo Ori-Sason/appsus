@@ -48,12 +48,21 @@ export class DynamicNote extends React.Component {
         if (this.props.onClose) this.props.onClose()
     }
 
+    onToMail = (ev, noteId) => {
+        ev.stopPropagation();
+        console.log('sent')
+
+        const urlSrcPrm = new URLSearchParams({ noteId })
+        const searchStr = urlSrcPrm.toString()
+        window.open(`/mail/edit/:?${ searchStr }`, '_blank')
+    }
+
     getNoteComponent() {
         const { type } = this.props.note
-        if (type === 'note-txt') return <TxtNote {...this.props} onDelete={this.onDelete} onDuplicate={this.onDuplicate} onArchive={this.onArchive} onReminder={this.onReminder} />
-        if (type === 'note-img') return <ImgNote {...this.props} onDelete={this.onDelete} onDuplicate={this.onDuplicate} onArchive={this.onArchive} onReminder={this.onReminder} />
-        if (type === 'note-vid') return <VidNote {...this.props} onDelete={this.onDelete} onDuplicate={this.onDuplicate} onArchive={this.onArchive} onReminder={this.onReminder} />
-        if (type === 'note-todos') return <TodoNote {...this.props} onDelete={this.onDelete} onDuplicate={this.onDuplicate} onArchive={this.onArchive} onReminder={this.onReminder} />
+        if (type === 'note-txt') return <TxtNote {...this.props} onDelete={this.onDelete} onDuplicate={this.onDuplicate} onArchive={this.onArchive} onReminder={this.onReminder} onToMail={this.onToMail} />
+        if (type === 'note-img') return <ImgNote {...this.props} onDelete={this.onDelete} onDuplicate={this.onDuplicate} onArchive={this.onArchive} onReminder={this.onReminder} onToMail={this.onToMail} />
+        if (type === 'note-vid') return <VidNote {...this.props} onDelete={this.onDelete} onDuplicate={this.onDuplicate} onArchive={this.onArchive} onReminder={this.onReminder} onToMail={this.onToMail} />
+        if (type === 'note-todos') return <TodoNote {...this.props} onDelete={this.onDelete} onDuplicate={this.onDuplicate} onArchive={this.onArchive} onReminder={this.onReminder} onToMail={this.onToMail} />
     }
 
 
