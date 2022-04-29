@@ -9,7 +9,7 @@ const { Switch, Route } = ReactRouterDOM
 
 export class KeepApp extends React.Component {
     state = {
-        notes: null
+        notes: null,
     }
 
     componentDidMount() {
@@ -24,13 +24,19 @@ export class KeepApp extends React.Component {
         this.setState({ notes: null })
     }
 
+    get notesToDisplay() {
+        const { pathname } = this.props.location
+        const ctg = pathname.split('/')[2]
+        return notesService.getNotesByCtg(ctg) /** FIX - DO IT ASYNC*/
+    }
+
     render() {
-        const { notes } = this.state
+        const { notes } = this.state //** IF I DONT USE notesToDisplay IT SHOULD BE <NoteList notes={notes} ... />  */
 
         return <section className="app-keep main-layout">
             <NotesFilter />
             <AddNote onUpdate={this.loadNotes} />
-            <NoteList notes={notes} onUpdate={this.loadNotes} />
+            <NoteList notes={this.notesToDisplay} onUpdate={this.loadNotes} />
 
             <section>
                 <Switch>

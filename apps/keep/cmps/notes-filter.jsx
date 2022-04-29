@@ -1,4 +1,3 @@
-const { Switch, Route } = ReactRouterDOM
 import { NotesFilterItem } from './notes-filter-item.jsx'
 
 export function NotesFilter() {

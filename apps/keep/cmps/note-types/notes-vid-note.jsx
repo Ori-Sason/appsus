@@ -30,7 +30,7 @@ export class VidNote extends React.Component {
         const { note } = this.state
         if (!note) return <React.Fragment></React.Fragment>
 
-        const { isPreview, isCreate, onClose, onDelete, onDuplicate } = this.props
+        const { isPreview } = this.props
         const { title, url } = note.info
 
         return <section className="vid-note note-types">
@@ -40,7 +40,7 @@ export class VidNote extends React.Component {
                     <div className={isPreview ? 'backlog' : ''}></div>
                     <input className={`no-focus-visible ${isPreview && !title ? 'hide' : ''}`} type="text" name="title" placeholder="Title" value={title} onChange={this.onInputChange} />
                 </div>
-                <NoteBtns isPreview={isPreview} isCreate={isCreate} onClose={onClose} onDelete={onDelete} onDuplicate={onDuplicate} noteId={note.id} />
+                <NoteBtns {...this.props} noteId={note.id} />
             </form>
         </section>
     }

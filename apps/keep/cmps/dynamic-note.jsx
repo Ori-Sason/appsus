@@ -14,26 +14,40 @@ export class DynamicNote extends React.Component {
         this.setState({ note: this.props.note })
     }
 
-    onDelete = (noteId) => {
-        notesService.deleteNote(noteId)
-            .then(() => this.setState({ note: null }))
-            .then(this.props.onUpdate)
-            .then(this.props.onClose)
+    onReminder = (ev, noteId) => {
+        ev.stopPropagation();
+        /** LATER CHANGE TO DATETIME PICKER */
+        notesService.reminder(noteId).then(this.updateAndClose)
     }
 
-    onDuplicate = (noteId) => {
-        notesService.duplicateNote(noteId)
-            .then(() => this.setState({ note: null }))
-            .then(this.props.onUpdate)
-            .then(this.props.onClose)
+    onArchive = (ev, noteId) => {
+        ev.stopPropagation();
+        notesService.archiveNote(noteId).then(this.updateAndClose)
+    }
+
+    onDelete = (ev, noteId) => {
+        ev.stopPropagation();
+        notesService.deleteNote(noteId).then(this.updateAndClose)
+    }
+
+    onDuplicate = (ev, noteId) => {
+        ev.stopPropagation();
+        notesService.duplicateNote(noteId).then(this.updateAndClose)
+
+    }
+
+    updateAndClose = (promise) => {
+        this.setState({ note: null })
+        if (this.props.onUpdate) this.props.onUpdate()
+        if (this.props.onClose) this.props.onClose()
     }
 
     getNoteComponent() {
         const { type } = this.props.note
-        if (type === 'note-txt') return <TxtNote {...this.props} onDelete={this.onDelete} onDuplicate={this.onDuplicate} />
-        if (type === 'note-img') return <ImgNote {...this.props} onDelete={this.onDelete} onDuplicate={this.onDuplicate} />
-        if (type === 'note-vid') return <VidNote {...this.props} onDelete={this.onDelete} onDuplicate={this.onDuplicate} />
-        if (type === 'note-todos') return <TodoNote {...this.props} onDelete={this.onDelete} onDuplicate={this.onDuplicate} />
+        if (type === 'note-txt') return <TxtNote {...this.props} onDelete={this.onDelete} onDuplicate={this.onDuplicate} onArchive={this.onArchive} onReminder={this.onReminder} />
+        if (type === 'note-img') return <ImgNote {...this.props} onDelete={this.onDelete} onDuplicate={this.onDuplicate} onArchive={this.onArchive} onReminder={this.onReminder} />
+        if (type === 'note-vid') return <VidNote {...this.props} onDelete={this.onDelete} onDuplicate={this.onDuplicate} onArchive={this.onArchive} onReminder={this.onReminder} />
+        if (type === 'note-todos') return <TodoNote {...this.props} onDelete={this.onDelete} onDuplicate={this.onDuplicate} onArchive={this.onArchive} onReminder={this.onReminder} />
     }
 
 
