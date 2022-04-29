@@ -5,6 +5,7 @@ import { Compose } from '../cmps/compose-mail.jsx'
 import { MailList } from '../cmps/mail-list.jsx'
 import { MaleEdit } from '../cmps/mail-edit.jsx'
 import { MaiLView } from '../cmps/mail-view.jsx'
+import { MeterBar } from '../cmps/meter-bar.jsx'
 const Router = ReactRouterDOM.HashRouter
 const { Route, Switch, Link } = ReactRouterDOM
 
@@ -22,6 +23,7 @@ export class MailApp extends React.Component {
     return (
       <section className="mail-app main-layout">
         <SearchFilter  />
+        <MeterBar/>
         <Compose compose={this.addMail} />
         <MailSections  />
         <Router>
@@ -30,8 +32,17 @@ export class MailApp extends React.Component {
           <Route path={`/mail/view/:mailId?`}  component={MaiLView} />
           <Route path={`/mail/`} component={MailList} />
         </Switch>
+        
       </Router>
+      
       </section>
     )
   }
 }
+/* Meter */
+/*
+value - mandatory
+max - maximum value
+min - minmum value
+<meter value="" max="100%" min="0%">range</meter>
+*/

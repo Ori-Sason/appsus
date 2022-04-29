@@ -11,7 +11,8 @@ export const mailService = {
   deleteMailById,
   updateMail,
   addMail,
-  getUnreadEmails
+  getUnreadEmails,
+  getMailsCount
 }
 
 
@@ -263,7 +264,7 @@ function _createMails() {
     {
       id: utilService.makeId(),
       subject: 'Miss you!',
-      body: 'Would love to catch up sometimes',
+      body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, consequatur libero aliquid minima sapiente delectus modi amet odio nam sequi deserunt voluptate ipsam harum impedit ullam eveniet quos magni aliquam?',
       isStar: false,
       isRead: false,
       isDraft: false,
@@ -336,7 +337,104 @@ function _createMails() {
         userName:loggedinUser.fullname,
         imgSrc:'../../../assets/img/mail/noimage.jpg'
       },
+     
     },
+    {
+      id: utilService.makeId(),
+      subject: 'Miss you!',
+      body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, consequatur libero aliquid minima sapiente delectus modi amet odio nam sequi deserunt voluptate ipsam harum impedit ullam eveniet quos magni aliquam?',
+      isStar: false,
+      isRead: false,
+      isDraft: false,
+      isDeleted: true,
+      sentAt: Date.now(),
+      to: 'user@appsus.com',
+      from: {
+        mail: 'randomPerson@nomail.notcom',
+        userName: 'Rand Randomiyahu',
+        imgSrc: '../../../assets/img/mail/noimage.jpg'
+
+      }},
+      {
+        id: utilService.makeId(),
+        subject: 'Miss you!',
+        body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, consequatur libero aliquid minima sapiente delectus modi amet odio nam sequi deserunt voluptate ipsam harum impedit ullam eveniet quos magni aliquam?',
+        isStar: false,
+        isRead: false,
+        isDraft: false,
+        isDeleted: true,
+        sentAt: Date.now(),
+        to: 'user@appsus.com',
+        from: {
+          mail: 'randomPerson@nomail.notcom',
+          userName: 'Rand Randomiyahu',
+          imgSrc: '../../../assets/img/mail/noimage.jpg'
+  
+        }},
+        {
+          id: utilService.makeId(),
+          subject: 'Miss you!',
+          body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, consequatur libero aliquid minima sapiente delectus modi amet odio nam sequi deserunt voluptate ipsam harum impedit ullam eveniet quos magni aliquam?',
+          isStar: true,
+          isRead: false,
+          isDraft: false,
+          isDeleted: false,
+          sentAt: Date.now(),
+          to: 'user@appsus.com',
+          from: {
+            mail: 'randomPerson@nomail.notcom',
+            userName: 'Rand Randomiyahu',
+            imgSrc: '../../../assets/img/mail/noimage.jpg'
+    
+          }},
+          {
+            id: utilService.makeId(),
+            subject: 'Miss you!',
+            body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, consequatur libero aliquid minima sapiente delectus modi amet odio nam sequi deserunt voluptate ipsam harum impedit ullam eveniet quos magni aliquam?',
+            isStar: true,
+            isRead: false,
+            isDraft: false,
+            isDeleted: false,
+            sentAt: Date.now(),
+            to: 'user@appsus.com',
+            from: {
+              mail: 'randomPerson@nomail.notcom',
+              userName: 'Rand Randomiyahu',
+              imgSrc: '../../../assets/img/mail/noimage.jpg'
+      
+            }},
+            {
+              id: utilService.makeId(),
+              subject: 'Miss you!',
+              body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, consequatur libero aliquid minima sapiente delectus modi amet odio nam sequi deserunt voluptate ipsam harum impedit ullam eveniet quos magni aliquam?',
+              isStar: true,
+              isRead: false,
+              isDraft: false,
+              isDeleted: false,
+              sentAt: Date.now(),
+              to: 'user@appsus.com',
+              from: {
+                mail: 'randomPerson@nomail.notcom',
+                userName: 'Rand Randomiyahu',
+                imgSrc: '../../../assets/img/mail/noimage.jpg'
+        
+              }},
+              {
+                id: utilService.makeId(),
+                subject: 'Miss you!',
+                body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, consequatur libero aliquid minima sapiente delectus modi amet odio nam sequi deserunt voluptate ipsam harum impedit ullam eveniet quos magni aliquam?',
+                isStar: true,
+                isRead: false,
+                isDraft: false,
+                isDeleted: false,
+                sentAt: Date.now(),
+                to: 'user@appsus.com',
+                from: {
+                  mail: 'randomPerson@nomail.notcom',
+                  userName: 'Rand Randomiyahu',
+                  imgSrc: '../../../assets/img/mail/noimage.jpg'
+          
+                }},
   ]
 }
 function _loadFromStorage() {
@@ -345,4 +443,10 @@ function _loadFromStorage() {
 
 function _saveToStorage(mails) {
   storageService.saveToStorage(MAIL_STORAGE_KEY, mails)
+}
+function getMailsCount(){
+  const mails = _loadFromStorage()
+  let inboxUnread = mails.filter((mail) => mail.to === loggedinUser.email&&!mail.isDraft&&!mail.isDeleted)
+  console.log(inboxUnread)
+  return Promise.resolve(inboxUnread.length)
 }
