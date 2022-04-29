@@ -26,6 +26,10 @@ class _MailPreview extends React.Component {
       (prevState) => ({ mail: { ...prevState.mail, isStar: !isStar } }),
       () => {
         this.onUpdateMale()
+        if (this.props.location.pathname === '/mail/starred') {
+          console.log('hry')
+          this.props.loadMails()
+        }
       }
     )
   }
@@ -46,16 +50,12 @@ class _MailPreview extends React.Component {
     ev.stopPropagation()
     this.setState({ mail: null }, () => {
       mailService.deleteMailById(mailId).then(() => this.props.loadMails()).then(eventBusService.emit('unread', 'unreadclickd'))
-
     })
-    // mailService.deleteMailById(mailId).then(() => this.setState({ mail: null })).then(()=>this.props.loadMails())
-    // mailService.deleteMailById(mailId).then(()=>this.props.loadMails()).then(() => this.setState({ mail: null })).then(eventBusService.emit('unread','unreadclickd'))
   }
   onUpdateMale = () => {
     const { mail } = this.state
     mailService.updateMail(mail)
   }
-
   render() {
     const { mail, isHover } = this.state
     if (!mail) return <React.Fragment></React.Fragment>
@@ -65,10 +65,7 @@ class _MailPreview extends React.Component {
       <div
         onClick={(ev) => {
           this.toggleRead(ev, true)
-
         }}
-
-
         onMouseEnter={this.mouseIn}
         onMouseLeave={this.mouseOut}
         className={`mail-preview ${mail.isRead ? 'read' : 'unread'}`}

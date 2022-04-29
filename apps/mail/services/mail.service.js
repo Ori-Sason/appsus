@@ -123,10 +123,15 @@ function deleteMailById(mailId) {
   let mails = _loadFromStorage()
 
   let mailToDelete = getMailById(mailId)
-  mailToDelete.isDeleted = true
-  mails = mails.map((mail) =>
-    mail.id === mailToDelete.id ? mailToDelete : mail
-  )
+  if(!mailToDelete.isDeleted){
+    mailToDelete.isDeleted = true
+    mails = mails.map((mail) =>
+      mail.id === mailToDelete.id ? mailToDelete : mail
+    )
+  }else{
+    mails = mails.filter((mail) => mail.id !== mailToDelete.id)
+  }
+  console.log(mails)
   _saveToStorage(mails)
   return Promise.resolve()
 }
