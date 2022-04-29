@@ -1,0 +1,34 @@
+.custom-color-picker-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    z-index: 100;
+}
+
+.custom-color-picker {
+    position: absolute;
+    transform: translate(-50%, 30%);
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    width: fit-content;
+    box-shadow: 0 0 2px var(--primary-clr-500);
+    background-color: var(--primary-clr-100);
+    border-radius: 10px;
+    z-index: 101;
+}
+
+.custom-color-picker>* {
+    width: 30px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: inset 0 0 1px var(--primary-clr-400);
+}
+
+.custom-color-picker>*:hover {
+    transform: scale(105%);
+}

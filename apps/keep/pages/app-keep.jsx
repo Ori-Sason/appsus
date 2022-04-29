@@ -4,15 +4,41 @@ import { AddNote } from '../cmps/add-note.jsx'
 import { NoteList } from '../cmps/notes-list.jsx'
 
 import { EditNote } from './edit-note.jsx'
+import { CustomColorPicker } from "../../../cmps/custom-color-picker.jsx"
+import { eventBusService } from '../../../services/event.bus.service.js'
+
 
 const { Switch, Route } = ReactRouterDOM
 
 export class KeepApp extends React.Component {
     state = {
         notes: null,
+        colorPicker: {
+            isColorPickerOpen: false,
+            x: null,
+            y: null,
+            noteId: null
+        }
     }
 
     componentDidMount() {
+        eventBusService.on('notes-toggle-color', ({ ev, noteId }) => {
+            this.setState({
+                colorPicker: {
+                    isColorPickerOpen: !this.state.colorPicker.isColorPickerOpen,
+                    x: ev.clientX,
+                    y: ev.clientY,
+                    noteId
+                }
+            })
+        })
+
+        eventBusService.on('notes-picked-color', (color) => {
+            notesService.changeBgColor(this.state.colorPicker.noteId, color)
+                .then(this.setState({ colorPicker: { isColorPickerOpen: false } }))
+                .then(() => { this.resetNotes(); this.loadNotes() })
+        })
+
         this.loadNotes()
     }
 
@@ -20,7 +46,7 @@ export class KeepApp extends React.Component {
         return notesService.query().then(notes => this.setState({ notes }))
     }
 
-    resetNote = () => {
+    resetNotes = () => {
         this.setState({ notes: null })
     }
 
@@ -58,16 +84,24 @@ export class KeepApp extends React.Component {
     }
 
     render() {
+        const { colorPicker } = this.state
+
         return <section className="app-keep main-layout">
             <NotesFilter />
             <AddNote onUpdate={this.loadNotes} />
             <main className='note-main-body'>
                 {this.getMainBody()}
+                {colorPicker.isColorPickerOpen &&
+                    <React.Fragment>
+                        <div className='custom-color-picker-container' onClick={() => this.setState({ colorPicker: { isColorPickerOpen: false } })}></div>
+                        <CustomColorPicker posX={colorPicker.x} posY={colorPicker.y} />
+                    </React.Fragment>
+                }
             </main>
 
             <section>
                 <Switch>
-                    <Route path='/keep/list/:noteId?' component={({ match, history }) => <EditNote match={match} history={history} onUpdate={this.loadNotes} onReset={this.resetNote} />} />
+                    <Route path='/keep/list/:noteId?' component={({ match, history }) => <EditNote match={match} history={history} onUpdate={this.loadNotes} onReset={this.resetNotes} />} />
                 </Switch>
             </section>
         </section>

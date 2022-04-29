@@ -13,10 +13,12 @@
 
 /* COMPONENTS */
 @import './cmps/app-header.css';
+@import './cmps/custom-color-picker.css';
 @import './cmps/long-txt.css';
 @import './cmps/user-msg.css';
 
 /* APP - BOOK */
+@import './apps/book/basics/helper.css';
 @import './apps/book/pages/book-index.css';
 @import './apps/book/cmps/add-book.css';
 @import './apps/book/cmps/book-details.css';
