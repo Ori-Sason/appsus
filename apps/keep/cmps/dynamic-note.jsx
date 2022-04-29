@@ -54,8 +54,8 @@ export class DynamicNote extends React.Component {
 
         const urlSrcPrm = new URLSearchParams({ noteId })
         const searchStr = urlSrcPrm.toString()
-        // window.open(`mail/edit/:?${ searchStr }`, '_blank')
-        this.props.history.push(`/mail/edit/:?${searchStr}`)
+        this.props.history.push(`/mail/edit/:?${ searchStr }`)
+        // window.open(`/mail/edit/:?${ searchStr }`, '_blank') /* FOX - TRY IN NEW WINDOW */
     }
 
     getNoteComponent() {
