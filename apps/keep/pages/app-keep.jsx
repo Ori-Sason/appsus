@@ -23,7 +23,6 @@ export class KeepApp extends React.Component {
 
     componentDidMount() {
         eventBusService.on('notes-toggle-color', ({ ev, noteId }) => {
-            console.log(noteId)
             this.setState({
                 colorPicker: {
                     isColorPickerOpen: !this.state.colorPicker.isColorPickerOpen,
@@ -44,7 +43,6 @@ export class KeepApp extends React.Component {
     }
 
     loadNotes = () => {
-        console.log('loaded')
         return notesService.query().then(notes => this.setState({ notes }))
     }
 
