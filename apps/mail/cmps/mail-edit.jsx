@@ -8,7 +8,8 @@ export class MaleEdit extends React.Component{
         to:'',
         subject:'',
          url: '',
-         noteType:''
+         noteType:'',
+         isExpand:false,
 
     }
     componentDidMount() {
@@ -32,9 +33,6 @@ export class MaleEdit extends React.Component{
     })
     
   }
-
-
-
     }
     onChangeValue=({target})=>{
         const field = target.name
@@ -50,7 +48,6 @@ export class MaleEdit extends React.Component{
             this.props.history.push('/mail')
         }else{
         }
-
     }
     onSelectImg = (ev) => {
 
@@ -71,14 +68,20 @@ export class MaleEdit extends React.Component{
 
         loadImageFromInput(ev, renderImg)
     }
-
+    toggleMailModal=()=>{
+        const {isExpand} = this.state
+        this.setState({isExpand:!isExpand})
+    }
     render(){
-        const {noteType,txt,to,subject,url} =this.state
-        return <form onSubmit={this.addNewMail} className="edit-mail">
-            <div className="mail-new-msg-header">
+        const {noteType,txt,to,subject,url,isExpand} =this.state
+            return  <React.Fragment>
+       
+            <form onSubmit={this.addNewMail} className={`edit-mail ${isExpand?'expend':''}`}>
+            <div className={`mail-new-msg-header `}>
                 <h1 className="mail-new">New Message</h1>
                 <div className="headr-links">
-                <Link  className="fa fa-expand"></Link>
+                {isExpand&&<Link onClick={this.toggleMailModal} className="fa fa-compress"></Link>}
+                {!isExpand&&<Link onClick={this.toggleMailModal} className="fa fa-expand"></Link>}
                 <Link to='/mail/inbox' className="fa fa-times"></Link>
 
                 </div>
@@ -98,5 +101,9 @@ export class MaleEdit extends React.Component{
         <a href="" className="mail-add-emoji">😎</a>
         </div>
         </form>
+        {isExpand&&<div onClick={()=>{
+             this.props.history.push('/mail/inbox')
+        }}className="background-screen"></div>}
+        </React.Fragment>
     }
 }

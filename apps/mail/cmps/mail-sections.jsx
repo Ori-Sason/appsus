@@ -12,11 +12,13 @@ export class MailSections extends React.Component {
     this.loadUnreadMails()
     
     this.removeEvent=eventBusService.on('unread',(()=>{
+      
      this.loadUnreadMails()
     }))
   }
   loadUnreadMails=()=>{
     let unreadCount = mailService.getUnreadEmails()
+    eventBusService.emit('change-meter',unreadCount)
     this.setState({unread:unreadCount},()=>{
     })
   }

@@ -9,7 +9,7 @@
     position: relative;
     flex-grow: 1;
     max-height: 40px;
-    font-size: .8rem;
+    font-size: .75rem;
 }
 .mail-preview.read{
 background-color: var( --primary-clr-300)
@@ -22,8 +22,9 @@ background-color: var( --primary-clr-300)
         /* flex-basis: 16rem; */
 
 }
-.mail-from{
+.mail-preview .mail-from{
     min-width: 7rem;
+    font-size: 0.8rem;
     white-space: nowrap;
     text-overflow: ellipsis;
         overflow: hidden;
@@ -38,7 +39,6 @@ background-color: var( --primary-clr-300)
 
 }
 .mail-prev-btns{
-    /* position: absolute; */
     display: flex;
     justify-content: flex-end;
     border: none;
@@ -59,26 +59,9 @@ background-color: var( --primary-clr-300)
    height: 30px;
    background-color: transparent;
 }
-/* .fa-solid.fa-magnifying-glass{
-    border: none;
-    background-color: none;
-    font-size: 0.87rem;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    background-color: white;
-    text-decoration: none;
-    color: inherit;
-}
-.fa-solid.fa-magnifying-glass:hover{
-    cursor: pointer;
-    background-color: rgba(128, 128, 128, 0.247);
-    position: relative;
-} */
 .mail-prev-btns button:hover{
    cursor: pointer;
    background-color: rgba(128, 128, 128, 0.247);
-   /* position: relative; */
    margin: 0;
    padding: 0;
  }
@@ -116,4 +99,3 @@ background-color: var( --primary-clr-300)
     content:'\f002';
 
 }
-/* \f0e0 
