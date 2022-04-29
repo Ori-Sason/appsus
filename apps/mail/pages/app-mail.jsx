@@ -5,7 +5,6 @@ import { Compose } from '../cmps/compose-mail.jsx'
 import { MailList } from '../cmps/mail-list.jsx'
 import { MaleEdit } from '../cmps/mail-edit.jsx'
 import { MaiLView } from '../cmps/mail-view.jsx'
-import { MeterBar } from '../cmps/meter-bar.jsx'
 const Router = ReactRouterDOM.HashRouter
 const { Route, Switch, Link } = ReactRouterDOM
 
@@ -23,7 +22,6 @@ export class MailApp extends React.Component {
     return (
       <section className="mail-app main-layout">
         <SearchFilter  />
-        <MeterBar/>
         <Compose compose={this.addMail} />
         <MailSections  />
         <Router>

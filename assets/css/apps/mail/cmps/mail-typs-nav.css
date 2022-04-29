@@ -1,9 +1,10 @@
 
     .mail-typs-nav{
         grid-area: nav;
-        max-width: 210px;
+        max-width: 218px;
         /* flex-basis: 256px; */
         font-size: 0.875em;
+        max-height: 235px;
 
     }
     
@@ -11,8 +12,8 @@
         display: flex;
         flex-direction: row;
         /* justify-content: flex-start; */
-        padding-inline-start: 10px;
-        padding: 5px 22px;
+        padding-inline-start: 18px;
+        padding: 5px 30px;
         gap: 1rem;
         border-radius: 0 1rem 1rem 0;
         text-decoration: none;
@@ -61,7 +62,7 @@
         background-color: var( --primary-clr-400);
         font-weight: bold;
     }
-    .mail-typs-nav>*:hover{
+    .mail-typs-nav>*:hover:not(.meter-bar){
         background-color: var(  --primary-clr-200);
     }
     .inbox-nav.active {

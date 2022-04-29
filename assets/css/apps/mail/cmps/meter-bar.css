@@ -1,11 +1,8 @@
 .meter-bar {
-    grid-area: meter;
-    /* position: absolute; */
 display: flex;
 align-items: center;
 position: relative;
 justify-content: center;
-
 }
 .meter-precent{
     font-size: .8rem;
@@ -20,6 +17,7 @@ meter {
     border: 1px solid rgba(81, 81, 81, 0.852);
     border-radius: 5px;
 }
+
 
 meter::-webkit-meter-bar {
     background: none;

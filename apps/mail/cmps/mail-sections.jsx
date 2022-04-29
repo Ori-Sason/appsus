@@ -1,5 +1,7 @@
 const { Route, Switch, NavLink } = ReactRouterDOM
 import {eventBusService} from '../../../services/event.bus.service.js'
+import { MeterBar } from '../cmps/meter-bar.jsx'
+
 import { mailService } from '../services/mail.service.js'
 
 
@@ -92,6 +94,7 @@ export class MailSections extends React.Component {
           <div className="mail-sect-all"></div>
           <div className="deleted">All</div>
         </NavLink>
+        <MeterBar/>
 
       </div>
     )

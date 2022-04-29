@@ -5,8 +5,7 @@ gap: 10px;
 grid-template-areas: 
 "compose search . "
 "nav mail  ."
-"nav mail  ."
-"meter mail  ."
+
 ;
 
 }
