@@ -6,3 +6,20 @@
     grid-template-areas: "filter add-note"
         "filter preview";
 }
+
+.app-keep .note-main-body {
+    grid-area: preview;
+    padding: 1em;
+    margin: 1em;
+}
+
+.app-keep .note-main-body>h3 {
+    font-size: 0.7em;
+    text-transform: uppercase;
+    color: var(--primary-clr-700);
+    margin-bottom: 1em;
+}
+
+.app-keep .note-main-body>h3:not(:first-of-type) {
+    margin-top: 5em;
+}

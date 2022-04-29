@@ -1,6 +1,6 @@
 .note-preview .note-btns {
     opacity: 0;
-    transition: opacity .4s;
+    transition: opacity .2s;
 }
 
 .note-preview .note-btns:hover {

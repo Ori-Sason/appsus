@@ -4,7 +4,6 @@ const NOTES_STORAGE_KEY = 'notesDB'
 
 export const notesService = {
     query,
-    getNotesByCtg,
     getNoteById,
     createNote,
     updateNote,
@@ -37,22 +36,6 @@ function query() {
     }
 
     return Promise.resolve(notes)
-}
-
-function getNotesByCtg(ctg) {
-    let notes = _loadFromStorage()
-
-    /**FIX - COULDN'T MAKE IS ASYNC IN THE GETTER */
-    if (!notes || notes.length === 0) {
-        notes = _createNotes()
-        _saveToStorage(notes)
-        return notes
-    }
-
-    if (ctg === 'bin') return notes.filter(note => note.isDeleted)
-    if (ctg === 'reminders') return notes.filter(note => note.reminder && !note.isDeleted)
-    if (ctg === 'archive') return notes.filter(note => note.isArchived && !note.isDeleted)
-    return notes.filter(note => !note.isDeleted && !note.isArchived)
 }
 
 function getNoteById(noteId) {
