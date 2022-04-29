@@ -13,7 +13,9 @@ export class MailApp extends React.Component {
 
  }
   componentDidMount() {
-    // this.props.history.push(`/mail/inbox`)
+    console.log(this.props.location.pathname)
+   if(this.props.location.pathname==='/mail') this.props.history.push(`/mail/inbox`)
+    
   }
   render() {
     const { mails } = this.state
