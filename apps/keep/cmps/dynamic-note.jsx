@@ -54,7 +54,7 @@ export class DynamicNote extends React.Component {
 
         const urlSrcPrm = new URLSearchParams({ noteId })
         const searchStr = urlSrcPrm.toString()
-        this.props.history.push(`/mail/edit/:?${ searchStr }`)
+        this.props.history.push(`/mail/edit/:?${searchStr}`)
         // window.open(`/mail/edit/:?${ searchStr }`, '_blank') /* FOX - TRY IN NEW WINDOW */
     }
 
@@ -70,9 +70,9 @@ export class DynamicNote extends React.Component {
     render() {
         if (!this.state.note) return <React.Fragment></React.Fragment>
 
-        const { id: noteId, isPinned } = this.state.note
+        const { id: noteId, isPinned, style } = this.state.note
 
-        return <section className="dynamic-note">
+        return <section className="dynamic-note" style={{ backgroundColor: style.backgroundColor}}>
             {!this.props.isCreate &&
                 <button type="button" className={`note-btn img-pin-${isPinned ? 'black' : 'empty'} clean-btn`}
                     onClick={(ev) => this.onPinned(ev, noteId)}>

@@ -13,6 +13,7 @@
 
 /* COMPONENTS */
 @import './cmps/app-header.css';
+@import './cmps/custom-color-picker.css';
 @import './cmps/long-txt.css';
 @import './cmps/user-msg.css';
 

@@ -13,6 +13,7 @@ export const notesService = {
     pinNote,
     reminder,
     archiveNote,
+    changeBgColor,
 }
 
 const note = {
@@ -129,6 +130,15 @@ function duplicateNote(noteId) {
     })
 }
 
+function changeBgColor(noteId, color) {
+    return query().then(notes => {
+        const note = notes.find(note => note.id === noteId)
+        note.style.backgroundColor = color
+        _saveToStorage(notes)
+        return notes
+    })
+}
+
 function _createNotes() {
     return [
         {
@@ -138,7 +148,8 @@ function _createNotes() {
             isPinned: true,
             isArchived: false,
             isDeleted: false,
-            info: { title: '', txt: "Fullstack Me Baby!" }
+            info: { title: '', txt: "Fullstack Me Baby!" },
+            style: { backgroundColor: 'unset' }
         },
         {
             id: 1,
@@ -151,7 +162,7 @@ function _createNotes() {
                 url: "https://images.unsplash.com/photo-1517842645767-c639042777db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bm90ZXN8ZW58MHx8MHx8&w=1000&q=80",
                 title: "notes"
             },
-            style: { backgroundColor: "#00d" }
+            style: { backgroundColor: "unset" }
         },
         {
             id: 2,
@@ -163,7 +174,8 @@ function _createNotes() {
             info: {
                 title: "Get my stuff together",
                 todos: [{ id: 0, txt: "Driving liscence", isChecked: true }, { id: 1, txt: "Coding power", isChecked: false }]
-            }
+            },
+            style: { backgroundColor: "unset" }
         },
         {
             id: 3,
@@ -175,7 +187,8 @@ function _createNotes() {
             info: {
                 title: "Get my stuff together",
                 url: "https://www.youtube.com/embed/tgbNymZ7vqY",
-            }
+            },
+            style: { backgroundColor: "unset" }
         },
     ]
 }
