@@ -36,7 +36,7 @@ export class KeepApp extends React.Component {
         return <section className="app-keep main-layout">
             <NotesFilter />
             <AddNote onUpdate={this.loadNotes} />
-            <NoteList notes={this.notesToDisplay} onUpdate={this.loadNotes} />
+            <NoteList notes={notes} onUpdate={this.loadNotes} />
 
             <section>
                 <Switch>

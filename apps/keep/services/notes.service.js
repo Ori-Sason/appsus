@@ -11,6 +11,7 @@ export const notesService = {
     deleteNote,
     copyAndUpdateNote,
     duplicateNote,
+    pinNote,
     reminder,
     archiveNote,
 }
@@ -96,6 +97,15 @@ function deleteNote(noteId) {
         const newNotes = notes.filter(note => note.id !== noteId)
         _saveToStorage(newNotes)
         return newNotes
+    })
+}
+
+function pinNote(noteId) {
+    return query().then(notes => {
+        const note = notes.find(note => note.id === noteId)
+        note.isPinned = !note.isPinned
+        _saveToStorage(notes)
+        return note
     })
 }
 

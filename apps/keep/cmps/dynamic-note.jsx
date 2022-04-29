@@ -14,6 +14,13 @@ export class DynamicNote extends React.Component {
         this.setState({ note: this.props.note })
     }
 
+    onPinned = (ev, noteId) => {
+        ev.stopPropagation();
+        notesService.pinNote(noteId)
+            .then(note => { this.setState({ note }) })
+            .then(this.updateAndClose)
+    }
+
     onReminder = (ev, noteId) => {
         ev.stopPropagation();
         /** LATER CHANGE TO DATETIME PICKER */
@@ -36,8 +43,7 @@ export class DynamicNote extends React.Component {
 
     }
 
-    updateAndClose = (promise) => {
-        this.setState({ note: null })
+    updateAndClose = () => {
         if (this.props.onUpdate) this.props.onUpdate()
         if (this.props.onClose) this.props.onClose()
     }
@@ -52,7 +58,17 @@ export class DynamicNote extends React.Component {
 
 
     render() {
+        if (!this.state.note) return <React.Fragment></React.Fragment>
+
+        const { id: noteId, isPinned } = this.state.note
+
         return <section className="dynamic-note">
+            {!this.props.isCreate &&
+                <button type="button" className={`note-btn img-pin-${isPinned ? 'black' : 'empty'} clean-btn`}
+                    onClick={(ev) => this.onPinned(ev, noteId)}>
+                </button>
+            }
+
             {this.getNoteComponent()}
         </section>
     }
