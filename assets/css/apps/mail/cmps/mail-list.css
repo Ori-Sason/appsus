@@ -27,13 +27,22 @@
 }
 
 .fa-angle-down{
-    padding :5px 18px;
-    margin-right: 20px;
     position: relative;
     display: inline-block;
+    width: 20px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 2px;
+    margin-block-end: 15px;
+    margin-inline-start: 15px;
+
 }
 .fa-angle-down::before{
 content: '\f107 ';
+}
+
+.fa-angle-down:hover,.sorting-opts>*:hover{
+background-color: var( --primary-clr-200);
 }
 .sorting-opts{
     display: flex;
@@ -41,12 +50,25 @@ content: '\f107 ';
     position: absolute;
     background-color: white;
     z-index: 10;
+    left: 0;
+    text-align: center;
+    font-size: .875rem;
+    letter-spacing: .2px;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    box-shadow: 0px 8px 10px 1px rgb(0 0 0 / 14%), 0px 3px 14px 2px rgb(0 0 0 / 12%), 0px 5px 5px -3px rgb(0 0 0 / 20%);
+    cursor: pointer;
+    
 }
 .sorting-opts>*{
-    width: 40px;
-    height: 16px;
+    width: 100px;
+    height: 20px;
+    font-family: Roboto;
 }
-
+/* .sorting-opts .sort-by-title{
+    
+   
+} */
 /* <div onClick={this.toggleSortBtn} className="mail-list-header">
       X
       {isSort&&<div className="sort-by-title">x</div>}

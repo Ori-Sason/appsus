@@ -27,7 +27,6 @@ componentDidMount() {
     this.setFilter(filterBy)
   })
   const urlSrcPrm = new URLSearchParams(this.props.location.search)
-  console.log(this.props.location)
   let paramObj = {}
   for (var value of urlSrcPrm.keys()) {
     paramObj[value] = urlSrcPrm.get(value)
@@ -60,7 +59,6 @@ changeCtg = (curCtg) => {
   )
 }
 setFilter = (filterBy) => {
-  console.log('wow')
   this.setState({ filterBy }, () => {
     this.loadMails(filterBy)
   })
@@ -71,7 +69,18 @@ setFilter = (filterBy) => {
 toggleSortBtn = ()=>{
 const {isSort} = this.state
 this.setState({isSort:!isSort})
-
+}
+onSortBy=(sortBy)=>{
+  let int=1
+  if(this.state.filterBy.sortBy){
+    int= this.state.filterBy.sortBy[0]===sortBy? -1:1
+  }
+  this.setState(
+    (prevState) => ({ filterBy: { ...prevState.filterBy, sortBy: [sortBy,int] } }),
+    () => {
+      this.setFilter(this.state.filterBy)
+    }
+  )
 }
 componentWillUnmount() {
   this.removeEvent1()
@@ -79,17 +88,14 @@ componentWillUnmount() {
 }
 
 render(){
-console.log('i renderd!');
   const {mails,isSort} = this.state
   if(!mails) return<React.Fragment></React.Fragment>
   
   return <div className="mail-list">
     <div onClick={this.toggleSortBtn} className="fa fa-angle-down">
-      
       <div className="sorting-opts">
-      {isSort&&<div className="sort-by-title">Title</div>}
-      {isSort&&<div className="sort-by-date">Name</div>}
-
+      {isSort&&<div onClick={()=>this.onSortBy('title')} className="sort-by-title">Title</div>}
+      {isSort&&<div onClick={()=>this.onSortBy('date')} className="sort-by-date">Date</div>}
       </div>
     </div>
     {mails.map(mail=> <MailPreview key={mail.id} mail={mail} loadMails={this.loadMails}/>)}

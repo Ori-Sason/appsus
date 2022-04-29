@@ -19,11 +19,9 @@ export class MaleEdit extends React.Component{
         ev.preventDefault()
         const{txt,to} =this.state
         if(txt&&to){
-            console.log(this.state)
             mailService.addMail(this.state)
             this.props.history.push('/mail')
         }else{
-            console.log('not mail or TXT')
         }
 
     }

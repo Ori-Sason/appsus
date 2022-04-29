@@ -26,7 +26,7 @@ export class SearchFilter extends React.Component{
     render(){
         const {txt} = this.state.filterBy
         return <div className="search-filter">
-            <input type="text" name='txt' onChange={this.onChangeFilterStats} value ={txt} className="mail-input-search no-focus-visible" />
+            <input type="text" name='txt' placeholder='Search mail' autoComplete="off" onChange={this.onChangeFilterStats} value ={txt} className="mail-input-search no-focus-visible" />
             <select onChange={this.onChangeFilterStats} name="type" id="" className="mail-select-filterby">
             <option value="">All</option>
             <option value="read">Read</option>

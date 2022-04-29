@@ -1,6 +1,7 @@
 import { storageService } from '../../../services/storage.service.js'
 import { utilService } from '../../../services/util.service.js'
 
+
 const MAIL_STORAGE_KEY = 'mailsDB'
 const loggedinUser = { email: 'user@appsus.com', fullname: 'Mahatma Appsus' }
 
@@ -24,8 +25,17 @@ function query(filterBy) {
   }
 
   if (filterBy) {
-    console.log(filterBy.ctg)
-    console.log(mails)
+    if (filterBy.sortBy) {
+      switch (filterBy.sortBy[0]) {
+        case 'title':
+          mails.sort((a, b) => a.subject.toLowerCase().localeCompare(b.subject.toLowerCase()) * filterBy.sortBy[1])
+          break;
+
+        case 'date':
+          mails.sort((a, b) => (a.sentAt - b.sentAt) * filterBy.sortBy[1])
+          break;
+      }
+    }
     switch (filterBy.ctg) {
       case 'all':
         mails = mails.filter(
@@ -35,13 +45,13 @@ function query(filterBy) {
         )
         return Promise.resolve(mails)
       case 'inbox':
-        mails = mails.filter((mail) => mail.to === loggedinUser.email&&mail.isDraft===false&&mail.isDeleted===false)
+        mails = mails.filter((mail) => mail.to === loggedinUser.email && mail.isDraft === false && mail.isDeleted === false)
         break
       case 'starred':
-        mails = mails.filter((mail) => mail.isStar === true&&mail.isDraft===false&&mail.isDeleted===false)
+        mails = mails.filter((mail) => mail.isStar === true && mail.isDraft === false && mail.isDeleted === false)
         break
       case 'draft':
-        mails = mails.filter((mail) => mail.isDrafted === true&&mail.isDeleted===false)
+        mails = mails.filter((mail) => mail.isDrafted === true && mail.isDeleted === false)
         return Promise.resolve(mails)
       case 'deleted':
         mails = mails.filter((mail) => mail.isDeleted === true)
@@ -64,18 +74,16 @@ function query(filterBy) {
   }
   return Promise.resolve(mails)
 }
-function getUnreadEmails(){
+function getUnreadEmails() {
   let mails = _loadFromStorage()
-  if(!mails) return
-  let x = mails.filter(mail=>mail.isRead===false&&mail.to==='user@appsus.com')
-  console.log(x)
-  return x.length 
-   
+  if (!mails) return
+  let x = mails.filter(mail => mail.isRead === false && mail.to === 'user@appsus.com' && !mail.isDeleted && !mail.isDraft)
+  return x.length
+
 }
-function addMail(mailData){
-  console.log('new Male',mailData)
-  let mails= _loadFromStorage()
-  const newMail ={
+function addMail(mailData) {
+  let mails = _loadFromStorage()
+  const newMail = {
     id: utilService.makeId(),
     subject: mailData.subject,
     body: mailData.txt,
@@ -88,7 +96,7 @@ function addMail(mailData){
     img: mailData.url,
     from: loggedinUser.email,
   }
-  mails= [newMail,...mails]
+  mails = [newMail, ...mails]
   _saveToStorage(mails)
 
 }
@@ -111,10 +119,10 @@ function deleteMailById(mailId) {
   let mails = _loadFromStorage()
 
   let mailToDelete = getMailById(mailId)
-  mailToDelete.isDeleted=true
+  mailToDelete.isDeleted = true
   mails = mails.map((mail) =>
-  mail.id === mailToDelete.id ? mailToDelete : mail
-)
+    mail.id === mailToDelete.id ? mailToDelete : mail
+  )
   _saveToStorage(mails)
   return Promise.resolve()
 }
@@ -122,19 +130,22 @@ function _createMails() {
   return [
     {
       id: utilService.makeId(),
-      subject: 'Miss you!',
+      subject: 'Sprint 3 desk meeting ,will end with happy hour!',
       body: 'Would love to catch up somezxctimes',
       isStar: false,
       isRead: false,
       isDraft: false,
       isDeleted: false,
-      sentAt: Date.now(),
+      sentAt: Date.now() - 60 * 60 * 3,
       to: 'momo@momo.com',
-      from: 'user@appsus.com',
+      from: {mail:loggedinUser.email,
+        userName:loggedinUser.fullname,
+        imgSrc:'//ssl.gstatic.com/ui/v1/icons/mail/profile_mask2.png'
+      },
     },
     {
       id: utilService.makeId(),
-      subject: 'Miss you!',
+      subject: 'Its been to long mate .... !',
       body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident deserunt ab quos placeat ut doloribus doloremque incidunt maxime atque animi, magni expedita quibusdam quas commodi tenetur, rerum autem accusamus quidem.',
       isStar: false,
       isRead: false,
@@ -142,7 +153,11 @@ function _createMails() {
       isDeleted: false,
       sentAt: Date.now(),
       to: 'user@appsus.com',
-      from: 'OriSason@appsus.com',
+      from: {
+        mail: 'OriSason@appsus.com',
+        userName: 'Ori Sason',
+        imgSrc: '../../../assets/img/mail/ori.jpg'
+      },
     },
     {
       id: utilService.makeId(),
@@ -154,7 +169,10 @@ function _createMails() {
       isDeleted: false,
       sentAt: Date.now(),
       to: 'momo@momo.com',
-      from: 'user@appsus.com',
+      from: {mail:loggedinUser.email,
+        userName:loggedinUser.fullname,
+        imgSrc:'//ssl.gstatic.com/ui/v1/icons/mail/profile_mask2.png'
+      },
     },
     {
       id: utilService.makeId(),
@@ -164,13 +182,17 @@ function _createMails() {
       isRead: false,
       isDraft: false,
       isDeleted: false,
-      sentAt: Date.now(),
+      sentAt: Date.now() - 1000 * 60 * 20,
       to: 'user@appsus.com',
-      from: 'mAharoni@appsus.com',
+      from: 
+      {mail:'mAharoni@appsus.com',
+        userName:'Michael Aharoni',
+        imgSrc:'//ssl.gstatic.com/ui/v1/icons/mail/profile_mask2.png'
+      },
     },
     {
       id: utilService.makeId(),
-      subject: 'Miss you!',
+      subject: 'Are you ready? ',
       body: 'Would love to catch up sasdaswavxcbgjnometimes',
       isStar: false,
       isRead: false,
@@ -178,7 +200,10 @@ function _createMails() {
       isDeleted: false,
       sentAt: Date.now(),
       to: 'momo@momo.com',
-      from: 'user@appsus.com',
+      from: {mail:loggedinUser.email,
+        userName:loggedinUser.fullname,
+        imgSrc:'//ssl.gstatic.com/ui/v1/icons/mail/profile_mask2.png'
+      },
     },
     {
       id: utilService.makeId(),
@@ -190,7 +215,10 @@ function _createMails() {
       isDeleted: false,
       sentAt: Date.now(),
       to: 'momo@momo.com',
-      from: 'user@appsus.com',
+      from: {mail:loggedinUser.email,
+        userName:loggedinUser.fullname,
+        imgSrc:'//ssl.gstatic.com/ui/v1/icons/mail/profile_mask2.png'
+      },
     },
     {
       id: utilService.makeId(),
@@ -200,33 +228,45 @@ function _createMails() {
       isRead: false,
       isDraft: false,
       isDeleted: false,
+      sentAt: Date.now() - 1000 * 60 * 8,
+      to: 'user@appsus.com',
+      from: 
+      {mail:'KimKardeshian@appsus.com',
+        userName:'KimKardeshian',
+        imgSrc:'../../../assets/img/mail/kimk.jpg'
+      },
+    },
+    {
+      id: utilService.makeId(),
+      subject: 'Miss you!',
+      body: 'Would love to catch up sometimes',
+      isStar: false,
+      isRead: false,
+      isDraft: false,
+      isDeleted: false,
+      sentAt: Date.now(),
+      to: 'momo@momo.com',
+      from: {mail:loggedinUser.email,
+              userName:loggedinUser.fullname,
+              imgSrc:'//ssl.gstatic.com/ui/v1/icons/mail/profile_mask2.png'
+            },
+    },
+    {
+      id: utilService.makeId(),
+      subject: 'Miss you!',
+      body: 'Would love to catch up sometimes',
+      isStar: false,
+      isRead: false,
+      isDraft: false,
+      isDeleted: true,
       sentAt: Date.now(),
       to: 'user@appsus.com',
-      from: 'KimKardeshian@appsus.com',
-    },
-    {
-      id: utilService.makeId(),
-      subject: 'Miss you!',
-      body: 'Would love to catch up sometimes',
-      isStar: false,
-      isRead: false,
-      isDraft: false,
-      isDeleted: false,
-      sentAt: Date.now(),
-      to: 'momo@momo.com',
-      from: 'user@appsus.com',
-    },
-    {
-      id: utilService.makeId(),
-      subject: 'Miss you!',
-      body: 'Would love to catch up sometimes',
-      isStar: false,
-      isRead: false,
-      isDraft: false,
-      isDeleted: true,
-      sentAt: Date.now(),
-      to: 'momo@momo.com',
-      from: 'user@appsus.com',
+      from: {
+        mail: 'randomPerson@nomail.notcom',
+        userName: 'Rand Randomiyahu',
+        imgSrc: '//ssl.gstatic.com/ui/v1/icons/mail/profile_mask2.png'
+
+      },
     },
     {
       id: utilService.makeId(),
@@ -238,7 +278,10 @@ function _createMails() {
       isDeleted: true,
       sentAt: Date.now(),
       to: 'momo@momo.com',
-      from: 'user@appsus.com',
+      from: {mail:loggedinUser.email,
+        userName:loggedinUser.fullname,
+        imgSrc:'//ssl.gstatic.com/ui/v1/icons/mail/profile_mask2.png'
+      },
     },
     {
       id: utilService.makeId(),
@@ -250,7 +293,10 @@ function _createMails() {
       isDeleted: false,
       sentAt: Date.now(),
       to: 'momo@momo.com',
-      from: 'user@appsus.com',
+      from: {mail:loggedinUser.email,
+        userName:loggedinUser.fullname,
+        imgSrc:'//ssl.gstatic.com/ui/v1/icons/mail/profile_mask2.png'
+      },
     },
     {
       id: utilService.makeId(),
@@ -262,7 +308,10 @@ function _createMails() {
       isDeleted: false,
       sentAt: Date.now(),
       to: 'momo@momo.com',
-      from: 'user@appsus.com',
+      from: {mail:loggedinUser.email,
+        userName:loggedinUser.fullname,
+        imgSrc:'//ssl.gstatic.com/ui/v1/icons/mail/profile_mask2.png'
+      },
     },
     {
       id: utilService.makeId(),
@@ -274,7 +323,10 @@ function _createMails() {
       isDeleted: false,
       sentAt: Date.now(),
       to: 'momo@momo.com',
-      from: 'user@appsus.com',
+      from: {mail:loggedinUser.email,
+        userName:loggedinUser.fullname,
+        imgSrc:'//ssl.gstatic.com/ui/v1/icons/mail/profile_mask2.png'
+      },
     },
   ]
 }
