@@ -149,7 +149,7 @@ function _createNotes() {
             isArchived: false,
             isDeleted: false,
             info: { title: '', txt: "Fullstack Me Baby!" },
-            style: { backgroundColor: 'unset' }
+            style: { backgroundColor: 'none' }
         },
         {
             id: 1,
@@ -162,7 +162,7 @@ function _createNotes() {
                 url: "https://images.unsplash.com/photo-1517842645767-c639042777db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bm90ZXN8ZW58MHx8MHx8&w=1000&q=80",
                 title: "notes"
             },
-            style: { backgroundColor: "unset" }
+            style: { backgroundColor: 'none' }
         },
         {
             id: 2,
@@ -175,7 +175,7 @@ function _createNotes() {
                 title: "Get my stuff together",
                 todos: [{ id: 0, txt: "Driving liscence", isChecked: true }, { id: 1, txt: "Coding power", isChecked: false }]
             },
-            style: { backgroundColor: "unset" }
+            style: { backgroundColor: 'none' }
         },
         {
             id: 3,
@@ -188,7 +188,7 @@ function _createNotes() {
                 title: "Get my stuff together",
                 url: "https://www.youtube.com/embed/tgbNymZ7vqY",
             },
-            style: { backgroundColor: "unset" }
+            style: { backgroundColor: 'none' }
         },
     ]
 }
