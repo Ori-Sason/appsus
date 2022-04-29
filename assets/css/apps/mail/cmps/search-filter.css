@@ -1,4 +1,20 @@
 .search-filter{
-
     grid-area: search;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.mail-input-search {
+background-color: var( --primary-clr-200);
+border: none;
+height: 40px;
+width: 500px;
+border-radius: 0.4rem;
+padding-inline-start: 1rem;
+}
+.mail-select-filterby{
+width: 20px;
+border-radius: 0.1rem;
+
+border: 1px solid rgba(128, 128, 128, 0.335);
 }

@@ -3,8 +3,6 @@ import {utilService} from '../../../services/util.service.js'
 
 export function MaiLView(props) {
   const { mailId } = props.match.params
-  console.log('in view')
-  console.log(mailId)
   const emptyStar = String.fromCharCode(9734)
   const fullStar = String.fromCharCode(9733)
   const mail = mailService.getMailById(mailId)
@@ -14,7 +12,7 @@ export function MaiLView(props) {
       <div className="mail-subject">{mail.subject}</div>
       <div className="mail-info">
         <div className="mail-people">
-        <p className="mail-from">from: {mail.from === `user@appsus.com`?'me':mail.from}</p>
+        <p className="mail-from">from: {mail.from.userName=== `user@appsus.com`?'me':mail.from.userName}</p>
         <p className="mail-to">to: {mail.to === `user@appsus.com`?'me':mail.to}</p>
         </div>
         <div className="time-star">

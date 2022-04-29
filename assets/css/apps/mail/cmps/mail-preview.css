@@ -21,8 +21,15 @@ background-color: var( --primary-clr-300)
         /* flex-basis: 16rem; */
 
 }
+.mail-from{
+    width: 8rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+        overflow: hidden;
 
+}
 .mail-subject{
+    width: 10rem;
     white-space: nowrap;
     text-overflow: ellipsis;
         overflow: hidden;
@@ -36,6 +43,7 @@ background-color: var( --primary-clr-300)
 .preview-time{
     position: absolute; 
      right:10px;
+     background-color: var(--primary-clr-100);
 }
 .mail-prev-btns button{
    border: none;

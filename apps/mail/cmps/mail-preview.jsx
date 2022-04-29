@@ -29,22 +29,27 @@ class _MailPreview extends React.Component {
       }
     )
   }
-  toggleRead = (ev) => {
+  toggleRead = (ev,isOnList) => {
     ev.stopPropagation()
+    const { mail } = this.state
     const { isRead } = this.state.mail
     this.setState(
       (prevState) => ({ mail: { ...prevState.mail, isRead: !isRead } }),
       () => {
         this.onUpdateMale()
         eventBusService.emit('unread','unreadclickd')
+       if (isOnList) this.props.history.push(`/mail/view/${mail.id}`)
       }
     )
   }
   deleteMail = (ev,mailId) => {
     ev.stopPropagation()
-    console.log('i delete');
+    this.setState({ mail: null },()=>{
+      mailService.deleteMailById(mailId).then(()=>this.props.loadMails()).then(eventBusService.emit('unread','unreadclickd'))
+
+    })
     // mailService.deleteMailById(mailId).then(() => this.setState({ mail: null })).then(()=>this.props.loadMails())
-    mailService.deleteMailById(mailId).then(()=>this.props.loadMails()).then(() => this.setState({ mail: null }))
+    // mailService.deleteMailById(mailId).then(()=>this.props.loadMails()).then(() => this.setState({ mail: null })).then(eventBusService.emit('unread','unreadclickd'))
   }
   onUpdateMale = () => {
     const { mail } = this.state
@@ -52,13 +57,15 @@ class _MailPreview extends React.Component {
   }
   render() {
     const { mail, isHover } = this.state
-    console.log()
     if (!mail) return <React.Fragment></React.Fragment>
     const sentAt = utilService.formatAMPM(mail.sentAt)
     return (
       
       <div
-        onClick={()=>this.props.history.push(`/mail/view/${mail.id}`)}
+        onClick={(ev)=>{
+          this.toggleRead(ev,true)
+          
+        }}
 
         
         onMouseEnter={this.mouseIn}
@@ -71,7 +78,8 @@ class _MailPreview extends React.Component {
         >
           {mail.isStar ? this.fullStar : this.emptyStar}
         </a>
-        <h1 className="mail-subject">{mail.subject}</h1>
+        <h1 className='mail-from'>{mail.from.userName}</h1>
+        <h5 className="mail-subject">{mail.subject}</h5>
         <p className="mail-txt-content">{mail.body}</p>
         {!isHover && <div className="preview-time">{sentAt}</div>}
         {isHover && (
@@ -84,7 +92,7 @@ class _MailPreview extends React.Component {
               className="fa fa-trash"
             ></button>
             <button
-              onClick={(ev)=>this.toggleRead(ev)}
+              onClick={(ev)=>this.toggleRead(ev,false)}
               className={`fa fa-envelope-${mail.isRead ? 'open' : 'close'}`}
             ></button>
           </div>
