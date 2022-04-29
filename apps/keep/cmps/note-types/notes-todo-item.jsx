@@ -12,13 +12,13 @@ export class TodoItem extends React.Component {
     onInputChange = (ev) => {
         const { isNewTodo } = this.props
         const { value } = ev.target
-        this.setState((prevState) => ({ ...prevState, txt: value }), () => this.props.onUpdate(this.state, isNewTodo))
+        this.setState((prevState) => ({ ...prevState, txt: value }), () => this.props.onTodoChange(this.state, isNewTodo))
     }
 
     onToggleChecked = (ev) => {
         if (this.props.isNewTodo) return
         const { checked } = ev.target
-        this.setState((prevState) => ({ ...prevState, isChecked: checked }), () => this.props.onUpdate(this.state))
+        this.setState((prevState) => ({ ...prevState, isChecked: checked }), () => this.props.onTodoChange(this.state))
     }
 
     render() {
