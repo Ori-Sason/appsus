@@ -64,7 +64,7 @@ setFilter = (filterBy) => {
   })
   const urlSrcPrm = new URLSearchParams(filterBy)
   const searchStr = urlSrcPrm.toString()
-  // this.props.history.push(`/mail/:?${searchStr}`)   renders everything adn cancels the nam menu  style
+  // this.props.history.push(`/mail/edit/:?${searchStr}`)   renders everything adn cancels the nam menu  style
 }
 toggleSortBtn = ()=>{
 const {isSort} = this.state

@@ -7,6 +7,7 @@
    flex-grow: 4;
    overflow-y: auto;
    max-height: 60vh;
+   letter-spacing: .2px;
 }
 
 .mail-list::-webkit-scrollbar {

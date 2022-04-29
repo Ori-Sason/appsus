@@ -11,8 +11,9 @@ export function MaiLView(props) {
     <div className="mail-view">
       <div className="mail-subject">{mail.subject}</div>
       <div className="mail-info">
+          <img  className='person-img' src={mail.from.imgSrc||'//ssl.gstatic.com/ui/v1/icons/mail/profile_mask2.png'} alt="" />
         <div className="mail-people">
-        <p className="mail-from">from: {mail.from.userName=== `user@appsus.com`?'me':mail.from.userName}</p>
+        <p className="mail-from">{mail.from.userName=== `user@appsus.com`?'me':<strong>{mail.from.userName}</strong>}<span className='mail-from-span' >{mail.from.mail}</span></p>
         <p className="mail-to">to: {mail.to === `user@appsus.com`?'me':mail.to}</p>
         </div>
         <div className="time-star">
@@ -20,10 +21,15 @@ export function MaiLView(props) {
         <a className={`star ${mail.isStar ? 'yellow' : ''}`}>{mail.isStar?fullStar:emptyStar}</a>
         </div>
       </div>
-        <p className="mail-txt">{mail.body}</p>
+        <p  className={`mail-txt ${mail.noteType==='note-todos'?'todo':''}`}>{mail.body}</p>
+        {mail.noteType!=='note-vid'&&<img className='mail-user-added-img-view' src={mail.img}/>}
+        {mail.noteType==='note-vid'&&<iframe height='800' className='mail-user-added-img-view' src={mail.img}/>}
     </div>
   )
 }
+
+  
+
 /** id: utilService.makeId(),
       subject: 'Miss you!',
       body: 'Would love to catch up sometimes sssssssdddsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss',
