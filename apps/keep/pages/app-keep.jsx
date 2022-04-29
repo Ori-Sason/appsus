@@ -91,7 +91,12 @@ export class KeepApp extends React.Component {
             <AddNote onUpdate={this.loadNotes} />
             <main className='note-main-body'>
                 {this.getMainBody()}
-                {colorPicker.isColorPickerOpen && <CustomColorPicker posX={colorPicker.x} posY={colorPicker.y} />}
+                {colorPicker.isColorPickerOpen &&
+                    <React.Fragment>
+                        <div className='custom-color-picker-container' onClick={() => this.setState({ colorPicker: { isColorPickerOpen: false } })}></div>
+                        <CustomColorPicker posX={colorPicker.x} posY={colorPicker.y} />
+                    </React.Fragment>
+                }
             </main>
 
             <section>

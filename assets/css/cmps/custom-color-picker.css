@@ -1,3 +1,12 @@
+.custom-color-picker-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    z-index: 100;
+}
+
 .custom-color-picker {
     position: absolute;
     transform: translate(-50%, 30%);
@@ -9,7 +18,7 @@
     box-shadow: 0 0 2px var(--primary-clr-500);
     background-color: var(--primary-clr-100);
     border-radius: 10px;
-    z-index: 100;
+    z-index: 101;
 }
 
 .custom-color-picker>* {
@@ -23,32 +32,3 @@
 .custom-color-picker>*:hover {
     transform: scale(105%);
 }
-
-/* .custom-color-picker .white {
-    color: white;
-    box-shadow: inset 0 0 1px var(--primary-clr-500);
-}
-
-.custom-color-picker .red {
-    background-color: #f28b82;
-}
-
-.custom-color-picker .yellow {
-    background-color: #fff475;
-}
-
-.custom-color-picker .green {
-    background-color: #ccff90;
-}
-
-.custom-color-picker .blue {
-    background-color: #cbf0f8;
-}
-
-.custom-color-picker .purple {
-    background-color: #d7aefb;
-}
-
-.custom-color-picker .pink {
-    background-color: #fdcfe8;
-} */
