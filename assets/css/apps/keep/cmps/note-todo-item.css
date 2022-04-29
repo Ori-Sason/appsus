@@ -6,11 +6,12 @@
 }
 
 .note-todo-item input[type="checkbox"] {
-    width: 2em;
     padding: 0;
     margin-inline-start: 1em;
-    background-color: transparent;
-    border: none;
+    /* background-color: transparent; */
+
+    accent-color: var(--primary-clr-700);
+    cursor: pointer;
 }
 
 .note-todo-item>div {
