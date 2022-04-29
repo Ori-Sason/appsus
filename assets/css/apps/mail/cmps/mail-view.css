@@ -6,7 +6,7 @@ padding:  0 3rem;
 display: flex;
 flex-direction: column;
 gap: 20px;
-border: 2px solid var(--primary-clr-200);
+border: 1px solid var(--primary-clr-200);
 height: 60vh;
 overflow-y:auto;
 }
@@ -18,25 +18,58 @@ overflow-y:auto;
     height: 25px;
     margin-inline-start: 10px;
 }
-
+.mail-view .mail-user-added-img-view{
+    /* width: 400px;
+     */
+     max-width: 400px;
+     max-height: 200px;
+}
+.mail-view .mail-subject{
+    margin-block-start: 3rem;
+    font-size: 1.5rem;
+}
 .mail-txt{
         overflow: hidden;
         max-width: 50rem;
 
 }
-
+.mail-people{
+    flex-grow: 1;
+}
+.person-img{
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+}
 .mail-info{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap:10px
 }
 .mail-time{
     font-weight: 300;
     opacity: 0.6;
+    font-size: .875rem;
 }
-
-
-
+.mail-from{
+    /* font-weight: 700; */
+    font-size: 0.875rem;
+}
+.mail-to{
+    font-size: 0.875rem;
+    opacity: 0.6;
+}
+.mail-from-span{
+    margin-inline-start: 5px;
+    font-size: 0.875rem;
+    opacity: 0.8;
+}
+.mail-txt.todo{
+    white-space: pre-wrap;
+}
 
 
 

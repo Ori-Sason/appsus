@@ -4,11 +4,12 @@
     padding: 10px 1rem;
     display: flex;
     align-items: center;
-    gap: 40px;
+    gap: 20px;
     justify-content: flex-start;
     position: relative;
     flex-grow: 1;
-    max-height: 50px;
+    max-height: 40px;
+    font-size: .8rem;
 }
 .mail-preview.read{
 background-color: var( --primary-clr-300)
@@ -16,34 +17,38 @@ background-color: var( --primary-clr-300)
 .mail-txt-content{
     white-space: nowrap;
     text-overflow: ellipsis;
-        overflow: hidden;
-        width: 30rem;
+        /* overflow: hidden; */
+        /* width: 30rem; */
         /* flex-basis: 16rem; */
 
 }
 .mail-from{
-    width: 8rem;
+    min-width: 7rem;
     white-space: nowrap;
     text-overflow: ellipsis;
         overflow: hidden;
 
 }
-.mail-subject{
-    width: 10rem;
+.mail-preview .mail-subject{
     white-space: nowrap;
     text-overflow: ellipsis;
         overflow: hidden;
+        flex-grow: 1;
+       width: 100%;
 
 }
 .mail-prev-btns{
-    position: absolute;
-    right:10px;
+    /* position: absolute; */
+    display: flex;
+    justify-content: flex-end;
     border: none;
+    width:120px
 }
 .preview-time{
-    position: absolute; 
-     right:10px;
+     white-space: nowrap;
      background-color: var(--primary-clr-100);
+     margin-inline-end: 7px;
+     background-color: transparent;
 }
 .mail-prev-btns button{
    border: none;
@@ -73,7 +78,9 @@ background-color: var( --primary-clr-300)
 .mail-prev-btns button:hover{
    cursor: pointer;
    background-color: rgba(128, 128, 128, 0.247);
-   position: relative;
+   /* position: relative; */
+   margin: 0;
+   padding: 0;
  }
 
 
@@ -83,15 +90,13 @@ background-color: var( --primary-clr-300)
 }
 .mail-preview .star{
     font-size: 1.3rem;
+    margin-inline-end: 1rem;
     
 }
 .mail-preview .star.yellow{
     color: rgba(244, 201, 75, 1);
 }
-.mail-preview .mail-prev-btns{
-    margin-left:40% ;
-    
-}
+
 .fa{
     font-family: Awesome;
 }

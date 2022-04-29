@@ -1,7 +1,7 @@
 
     .mail-typs-nav{
         grid-area: nav;
-        max-width: 256px;
+        max-width: 210px;
         /* flex-basis: 256px; */
         font-size: 0.875em;
 
@@ -25,6 +25,16 @@
         position: absolute;
         right:10px;
         font-size: 0.875em;
+        font-weight:500;
+        opacity: 0.8;
+        text-align: center;
+        width:  1rem;
+        height: 1rem;
+        border-radius: 50%;
+    }
+    .inbox-nav.active .unread-counter{
+        font-weight:700
+       
     }
     .inbox-nav {
         position: relative;

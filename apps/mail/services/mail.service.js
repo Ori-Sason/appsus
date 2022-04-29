@@ -45,19 +45,19 @@ function query(filterBy) {
         )
         return Promise.resolve(mails)
       case 'inbox':
-        mails = mails.filter((mail) => mail.to === loggedinUser.email && mail.isDraft === false && mail.isDeleted === false)
+        mails = mails.filter((mail) => mail.to === loggedinUser.email && !mail.isDraft&& !mail.isDeleted)
         break
       case 'starred':
-        mails = mails.filter((mail) => mail.isStar === true && mail.isDraft === false && mail.isDeleted === false)
+        mails = mails.filter((mail) => mail.isStar && !mail.isDraft&& !mail.isDeleted)
         break
       case 'draft':
-        mails = mails.filter((mail) => mail.isDrafted === true && mail.isDeleted === false)
+        mails = mails.filter((mail) => mail.isDrafted && !mail.isDeleted)
         return Promise.resolve(mails)
       case 'deleted':
-        mails = mails.filter((mail) => mail.isDeleted === true)
+        mails = mails.filter((mail) => mail.isDeleted)
         return Promise.resolve(mails)
       case 'sent':
-        mails = mails.filter((mail) => mail.from === loggedinUser.email)
+        mails = mails.filter((mail) => mail.from.mail === loggedinUser.email&&!mail.isDeleted&&!mail.isDraf)
         break
     }
 
@@ -94,7 +94,11 @@ function addMail(mailData) {
     sentAt: Date.now(),
     to: mailData.to,
     img: mailData.url,
-    from: loggedinUser.email,
+    noteType:mailData.noteType,
+    from: {mail:loggedinUser.email,
+      userName:loggedinUser.fullname,
+      imgSrc:'//ssl.gstatic.com/ui/v1/icons/mail/profile_mask2.png'
+    },
   }
   mails = [newMail, ...mails]
   _saveToStorage(mails)
@@ -119,10 +123,15 @@ function deleteMailById(mailId) {
   let mails = _loadFromStorage()
 
   let mailToDelete = getMailById(mailId)
-  mailToDelete.isDeleted = true
-  mails = mails.map((mail) =>
-    mail.id === mailToDelete.id ? mailToDelete : mail
-  )
+  if(!mailToDelete.isDeleted){
+    mailToDelete.isDeleted = true
+    mails = mails.map((mail) =>
+      mail.id === mailToDelete.id ? mailToDelete : mail
+    )
+  }else{
+    mails = mails.filter((mail) => mail.id !== mailToDelete.id)
+  }
+  console.log(mails)
   _saveToStorage(mails)
   return Promise.resolve()
 }
@@ -140,7 +149,7 @@ function _createMails() {
       to: 'momo@momo.com',
       from: {mail:loggedinUser.email,
         userName:loggedinUser.fullname,
-        imgSrc:'//ssl.gstatic.com/ui/v1/icons/mail/profile_mask2.png'
+        imgSrc:'../../../assets/img/mail/noimage.jpg'
       },
     },
     {
@@ -171,7 +180,7 @@ function _createMails() {
       to: 'momo@momo.com',
       from: {mail:loggedinUser.email,
         userName:loggedinUser.fullname,
-        imgSrc:'//ssl.gstatic.com/ui/v1/icons/mail/profile_mask2.png'
+        imgSrc:'../../../assets/img/mail/noimage.jpg'
       },
     },
     {
@@ -187,7 +196,7 @@ function _createMails() {
       from: 
       {mail:'mAharoni@appsus.com',
         userName:'Michael Aharoni',
-        imgSrc:'//ssl.gstatic.com/ui/v1/icons/mail/profile_mask2.png'
+        imgSrc:'../../../assets/img/mail/noimage.jpg'
       },
     },
     {
@@ -202,7 +211,7 @@ function _createMails() {
       to: 'momo@momo.com',
       from: {mail:loggedinUser.email,
         userName:loggedinUser.fullname,
-        imgSrc:'//ssl.gstatic.com/ui/v1/icons/mail/profile_mask2.png'
+        imgSrc:'../../../assets/img/mail/noimage.jpg'
       },
     },
     {
@@ -217,7 +226,7 @@ function _createMails() {
       to: 'momo@momo.com',
       from: {mail:loggedinUser.email,
         userName:loggedinUser.fullname,
-        imgSrc:'//ssl.gstatic.com/ui/v1/icons/mail/profile_mask2.png'
+        imgSrc:'../../../assets/img/mail/noimage.jpg'
       },
     },
     {
@@ -248,7 +257,7 @@ function _createMails() {
       to: 'momo@momo.com',
       from: {mail:loggedinUser.email,
               userName:loggedinUser.fullname,
-              imgSrc:'//ssl.gstatic.com/ui/v1/icons/mail/profile_mask2.png'
+              imgSrc:'../../../assets/img/mail/noimage.jpg'
             },
     },
     {
@@ -264,7 +273,7 @@ function _createMails() {
       from: {
         mail: 'randomPerson@nomail.notcom',
         userName: 'Rand Randomiyahu',
-        imgSrc: '//ssl.gstatic.com/ui/v1/icons/mail/profile_mask2.png'
+        imgSrc: '../../../assets/img/mail/noimage.jpg'
 
       },
     },
@@ -280,7 +289,7 @@ function _createMails() {
       to: 'momo@momo.com',
       from: {mail:loggedinUser.email,
         userName:loggedinUser.fullname,
-        imgSrc:'//ssl.gstatic.com/ui/v1/icons/mail/profile_mask2.png'
+        imgSrc:'../../../assets/img/mail/noimage.jpg'
       },
     },
     {
@@ -295,7 +304,7 @@ function _createMails() {
       to: 'momo@momo.com',
       from: {mail:loggedinUser.email,
         userName:loggedinUser.fullname,
-        imgSrc:'//ssl.gstatic.com/ui/v1/icons/mail/profile_mask2.png'
+        imgSrc:'../../../assets/img/mail/noimage.jpg'
       },
     },
     {
@@ -310,7 +319,7 @@ function _createMails() {
       to: 'momo@momo.com',
       from: {mail:loggedinUser.email,
         userName:loggedinUser.fullname,
-        imgSrc:'//ssl.gstatic.com/ui/v1/icons/mail/profile_mask2.png'
+        imgSrc:'../../../assets/img/mail/noimage.jpg'
       },
     },
     {
@@ -325,7 +334,7 @@ function _createMails() {
       to: 'momo@momo.com',
       from: {mail:loggedinUser.email,
         userName:loggedinUser.fullname,
-        imgSrc:'//ssl.gstatic.com/ui/v1/icons/mail/profile_mask2.png'
+        imgSrc:'../../../assets/img/mail/noimage.jpg'
       },
     },
   ]
