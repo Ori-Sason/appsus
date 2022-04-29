@@ -4,7 +4,7 @@ export function AppHeader() {
   return (
     <section className="app-header">
       <header className="main-layout">
-        <img src="../assets/img/logo.png" alt="" />
+        <img className='logo' src="../assets/img/logo.png" alt="" />
         <nav>
           <NavLink to="/" exact>Home</NavLink>
           <NavLink to="/book">Books</NavLink>
