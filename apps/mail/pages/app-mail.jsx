@@ -13,7 +13,7 @@ export class MailApp extends React.Component {
 
  }
   componentDidMount() {
-    this.props.history.push(`/mail/inbox`)
+    // this.props.history.push(`/mail/inbox`)
   }
   render() {
     const { mails } = this.state
