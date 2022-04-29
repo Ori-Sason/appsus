@@ -1,8 +1,8 @@
 .review-form {
   margin-bottom: 1em;
   padding: 1em;
-  border: 1px solid var(--brown-clr-500);
-  background-color: var(--brown-clr-200);
+  border: 1px solid var(--primary-clr-300);
+  background-color: var(--primary-clr-200);
   border-radius: 6px;
 }
 
@@ -22,7 +22,7 @@
   margin-bottom: 1em;
   padding: 0.2em;
   background-color: whitesmoke;
-  border: 1px solid var(--brown-clr-500);
+  border: 1px solid var(--primary-clr-300);
   border-radius: 4px;
 }
 
@@ -33,7 +33,7 @@
 
 .review-form form select:focus-visible,
 .review-form form textarea:focus-visible {
-  outline: 1px solid var(--brown-clr-700);
+  outline: 1px solid var(--primary-clr-500);
 }
 
 .review-form form .stars-rate {
@@ -48,5 +48,5 @@
 }
 
 .review-form .btn {
-  background-color: var(--brown-clr-800);
+  background-color: var(--primary-clr-400);
 }

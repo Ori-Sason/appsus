@@ -6,13 +6,13 @@
   align-items: center;
   gap: 1em;
   border-radius: 6px;
-  background-color: var(--brown-clr-200);
-  box-shadow: 0 0 5px 0 var(--brown-clr-500);
+  background-color: var(--primary-clr-100);
+  box-shadow: 0 0 5px 0 var(--primary-clr-500);
   cursor: pointer;
 }
 
 .book-preview:hover{
-  box-shadow: 0 0 10px 0 var(--brown-clr-500);
+  box-shadow: 0 0 10px 0 var(--primary-clr-500);
 }
 
 .book-preview .book-title{
