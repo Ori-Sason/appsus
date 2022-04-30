@@ -1,6 +1,6 @@
 import { mailService } from '../services/mail.service.js'
 import {utilService} from '../../../services/util.service.js'
-
+const {Link} = ReactRouterDOM
 export function MaiLView(props) {
   const { mailId } = props.match.params
   const emptyStar = String.fromCharCode(9734)
@@ -17,6 +17,7 @@ export function MaiLView(props) {
         <p className="mail-to">to: {mail.to === `user@appsus.com`?'me':mail.to}</p>
         </div>
         <div className="time-star">
+        <Link title='send as note' to={`/keep/list/?mailId=${mail.id}`} className="fa fa-sticky-note"></Link>
         <span className="mail-time">{sentAt}</span>
         <a className={`star ${mail.isStar ? 'yellow' : ''}`}>{mail.isStar?fullStar:emptyStar}</a>
         </div>

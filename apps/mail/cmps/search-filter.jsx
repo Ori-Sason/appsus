@@ -10,6 +10,7 @@ export class SearchFilter extends React.Component{
             type:''
         }
     }
+    
     onFilter = (ev) => {
         ev.preventDefault()
         eventBusService.emit('changeFilter',this.state.filterBy)
@@ -22,7 +23,7 @@ export class SearchFilter extends React.Component{
           () => eventBusService.emit('changeFilter',this.state.filterBy)
         )
       }
-      'changeFilter'
+     
     render(){
         const {txt} = this.state.filterBy
         return <div className="search-filter">

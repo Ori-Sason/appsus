@@ -16,14 +16,14 @@ state = {
     ctg:'inbox'
   },
 }
-removeEvent1;
-removeEvent2;
+removeEvent3;
+removeEvent4;
 componentDidMount() {
   this.setFilter(this.state.filterBy)
-  this.removeEvent1=eventBusService.on('changeCtg',(ctg)=>{
+  this.removeEvent3=eventBusService.on('changeCtg',(ctg)=>{
     this.changeCtg(ctg)
   })
-  this.removeEvent2 =eventBusService.on('changeFilter',(filterBy)=>{
+  this.removeEvent4 =eventBusService.on('changeFilter',(filterBy)=>{
     this.setFilter(filterBy)
   })
   const urlSrcPrm = new URLSearchParams(this.props.location.search)
@@ -83,8 +83,8 @@ onSortBy=(sortBy)=>{
   )
 }
 componentWillUnmount() {
-  this.removeEvent1()
-  this.removeEvent2()
+  this.removeEvent3()
+  this.removeEvent4()
 }
 
 render(){

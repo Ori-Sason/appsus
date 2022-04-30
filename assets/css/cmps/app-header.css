@@ -31,8 +31,13 @@
   width: 22.8px;
   height: 22.8px;
   position: relative;
+  border-radius: 3px;
+  cursor: pointer;
 }
 .header-nav-links-btn:hover{
+  background-color: rgba(128, 128, 128, 0.188);
+}
+.header-nav-links-btn.active{
   background-color: rgba(128, 128, 128, 0.188);
 }
 .header-menu-links{
@@ -42,12 +47,12 @@
   top: 2em;
   z-index: 20;
   justify-content: center;
-  width: 15em;
+  width: 17em;
   grid-template:  80px 80px/80px 80px 80px;
   background-color: white;
   box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
   border-radius: .75em;
-  padding-bottom: 1em;
+  padding: 1em;
 }
 .header-menu-links>*{
   

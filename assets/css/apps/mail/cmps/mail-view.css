@@ -14,8 +14,12 @@ overflow-y:auto;
     color: rgba(244, 201, 75, 1);
 }
 .mail-view .star{
-    font-size: 25px;
-    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-block-end: 0.2em;
+    font-size: 1.5em;
+    height: 1.5em;
     margin-inline-start: 10px;
 }
 .mail-view .mail-user-added-img-view{
@@ -67,10 +71,35 @@ overflow-y:auto;
     font-size: 0.875rem;
     opacity: 0.8;
 }
+.time-star{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4em;
+}
 .mail-txt.todo{
     white-space: pre-wrap;
 }
+.fa-sticky-note:before{
+    content:'\f249'
+}
+.fa-sticky-note:hover{
+        opacity: 1;
+        background-color: rgba(16, 13, 13, 0.093);
+}
+.mail-view .fa-sticky-note{
+    text-decoration: none;
+    color: black;  display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    opacity: 0.6;
+    font-size: 1rem;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
 
+}
 
 
 /*   <div className="mail-view">

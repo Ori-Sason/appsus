@@ -20,9 +20,10 @@ export class KeepApp extends React.Component {
             noteId: null
         }
     }
-
+    stopEvent1
+    stopEvent2
     componentDidMount() {
-        eventBusService.on('notes-toggle-color', ({ ev, noteId }) => {
+      this.stopEvent1= eventBusService.on('notes-toggle-color', ({ ev, noteId }) => {
             this.setState({
                 colorPicker: {
                     isColorPickerOpen: !this.state.colorPicker.isColorPickerOpen,
@@ -33,7 +34,7 @@ export class KeepApp extends React.Component {
             })
         })
 
-        eventBusService.on('notes-picked-color', (color) => {
+        this.stopEvent2=  eventBusService.on('notes-picked-color', (color) => {
             notesService.changeBgColor(this.state.colorPicker.noteId, color)
                 .then(this.setState({ colorPicker: { isColorPickerOpen: false } }))
                 .then(() => { this.resetNotes(); this.loadNotes() })
@@ -96,6 +97,10 @@ export class KeepApp extends React.Component {
         if (ctg === 'archive') return notes.filter(note => note.isArchived && !note.isDeleted)
         if (ctg === 'reminders') return notes.filter(note => note.reminder && !note.isDeleted && !note.isArchived)
         return notes.filter(note => !note.isDeleted && !note.isArchived)
+    }
+    componentWillUnmount() {
+        this.stopEvent1()
+        this.stopEvent2()
     }
 
     render() {
