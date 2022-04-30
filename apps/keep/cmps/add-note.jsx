@@ -57,8 +57,6 @@ export class AddNote extends React.Component {
         const vidId = searchParams.get('v')
         if (!vidId) return
 
-        console.log(vidId)
-
         info.url = `https://www.youtube.com/embed/${vidId}`
 
         notesService.createNote('note-vid', info)
@@ -78,6 +76,7 @@ export class AddNote extends React.Component {
                         <input type="file" onChange={this.onSelectImg} accept="image/png, image/gif, image/jpeg" />
                     </div>
                     <button title="Youtube" className="note-btn img-youtube clean-btn" onClick={() => this.onToggleOpen('note-vid')}></button>
+                    <button title="Record" className="note-btn img-mic clean-btn" onClick={() => this.onToggleOpen('note-voice')}></button>
                 </React.Fragment>
             }
 

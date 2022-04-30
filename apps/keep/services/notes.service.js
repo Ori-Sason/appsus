@@ -18,19 +18,6 @@ export const notesService = {
     addNoteFromMail,
 }
 
-const note = {
-    id: 0,
-    type: ['note-txt', 'note-img', 'note-video', 'note-todos'], //, 'note-audio', 'note-canvas', 'note-map'
-    isPinned: false,
-    info: {
-        title: '',
-        txt: 'text',
-        url: '', //for images and videos
-        todos: [{ txt: '', doneAt: null }],
-        labels: []
-    },
-} /** FIX */
-
 function query() {
     let notes = _loadFromStorage()
     if (!notes || notes.length === 0) {

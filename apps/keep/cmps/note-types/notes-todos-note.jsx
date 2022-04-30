@@ -36,6 +36,10 @@ export class TodoNote extends React.Component {
 
     onFormSubmit = (ev) => {
         if (ev) ev.preventDefault()
+<<<<<<< HEAD
+=======
+
+>>>>>>> 975ae3fc7b8fd303bbbbeb81db936184b60ff577
         if (this.props.isCreate) {
             notesService.createNote('note-todos', { ...this.state.note.info })
             .then(this.props.onClose).then(this.props.onUpdate)

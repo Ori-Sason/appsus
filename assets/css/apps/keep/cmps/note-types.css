@@ -87,3 +87,8 @@
 .edit-note .note-types iframe {
     max-height: 50vh;
 }
+
+.voice-note .note-btn.img-mic{
+    aspect-ratio: unset;
+    align-self: center;
+}
