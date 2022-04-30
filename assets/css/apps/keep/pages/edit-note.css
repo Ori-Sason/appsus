@@ -17,3 +17,10 @@
     background-color: var(--primary-clr-100);
     overflow: hidden;
 }
+
+/* MOBILE ONLY */
+@media screen and (max-width: 920px) {
+    .edit-note .dynamic-note {
+        width: 90%;
+    }
+}

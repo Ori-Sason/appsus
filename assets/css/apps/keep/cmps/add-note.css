@@ -1,12 +1,13 @@
 .add-note {
     grid-area: add-note;
-    align-self: center;
     justify-self: center;
     padding-inline-end: 0.5em;
 
     display: flex;
     align-items: center;
-    width: 37.5em;
+    width: 80%;
+    max-width: 37.5em;
+    min-width: 17.5em;
     height: max-content;
     box-shadow: 0 0 8px var(--primary-clr-500);
     border-radius: 10px;
@@ -19,6 +20,6 @@
     cursor: text;
 }
 
-.add-note .dynamic-note{
+.add-note .dynamic-note {
     width: 100%;
 }

@@ -12,21 +12,21 @@ export function Home() {
           <ul className="links clean-list">
             <li>
               <Link to="/book">
-                <img src="../assets/img/pages/home/books.png" alt="books" />
+                <img src="../../../assets/img/pages/home/books.png" alt="books" />
                 <p>Books</p>
               </Link>
             </li>
 
             <li>
               <Link to="/keep">
-                <img src="../assets/img/pages/home/notes.png" alt="notes" />
+                <img src="../../../assets/img/pages/home/notes.png" alt="notes" />
                 <p>Notes</p>
               </Link>
             </li>
 
             <li>
               <Link to="/mail">
-                <img src="../assets/img/pages/home/email.png" alt="email" />
+                <img src="../../../assets/img/pages/home/email.png" alt="email" />
                 <p>Mail</p>
               </Link>
             </li>
