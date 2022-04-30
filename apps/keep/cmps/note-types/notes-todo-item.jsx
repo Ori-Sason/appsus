@@ -32,7 +32,7 @@ export class TodoItem extends React.Component {
             <input type="checkbox" checked={isChecked} onChange={this.onToggleChecked} onClick={(ev) => isPreview ? ev.stopPropagation() : null}></input>
             <div className="backlog-container" >
                 <div className={isPreview ? 'backlog' : ''}></div>
-                <input type="text" placeholder="List item" className={`no-focus-visible ${textClass}`} value={txt} onChange={this.onInputChange} autoFocus={isPreview ? false : true} />
+                <input type="text" placeholder="List item" className={`no-focus-visible ${textClass}`} value={txt} onChange={this.onInputChange} autoFocus={isPreview ? false : true} autoComplete="off"/>
             </div>
         </section>
     }

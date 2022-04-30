@@ -14,7 +14,6 @@ export class TodoNote extends React.Component {
     onInputChange = (ev) => {
         const { name, value } = ev.target
         this.setState((prevState) => ({ note: notesService.copyAndUpdateNote(prevState.note, name, value) }))
-        console.log('first')
     }
 
     onTodoChange = (newTodo, isNewTodo) => {
@@ -32,7 +31,7 @@ export class TodoNote extends React.Component {
         this.setState({ note: newNote }, () => {
             if (newTodo) null
         })
-        this.onFormSubmit()
+        // this.onFormSubmit()
     }
 
     onFormSubmit = (ev) => {
@@ -59,7 +58,7 @@ export class TodoNote extends React.Component {
             <form onSubmit={this.onFormSubmit}>
                 <div className="backlog-container">
                     <div className={isPreview ? 'backlog' : ''}></div>
-                    <input className={`no-focus-visible ${isPreview && !title ? 'hide' : ''}`} type="text" name="title" placeholder="Title" value={title} onChange={this.onInputChange} />
+                    <input className="no-focus-visible" type="text" name="title" placeholder="Title" value={title} onChange={this.onInputChange} autoComplete="off"/>
                 </div>
                 {note.info.todos.map(todo => <TodoItem key={todo.id} todo={todo} isNewTodo={false} onTodoChange={this.onTodoChange} isPreview={isPreview} />)}
                 {!isPreview && <TodoItem key={newTodoId} todo={{ id: newTodoId, txt: '', isChecked: false }} isNewTodo={true} onTodoChange={this.onTodoChange} isPreview={isPreview} />}

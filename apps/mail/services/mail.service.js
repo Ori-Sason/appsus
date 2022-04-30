@@ -155,7 +155,7 @@ function _createMails() {
       from: {
         mail: loggedinUser.email,
         userName: loggedinUser.fullname,
-        imgSrc: '../../../assets/img/mail/noimage.jpg'
+        imgSrc: 'assets/img/mail/noimage.jpg'
       },
     },
     {
@@ -171,7 +171,7 @@ function _createMails() {
       from: {
         mail: 'OriSason@appsus.com',
         userName: 'Ori Sason',
-        imgSrc: '../../../assets/img/mail/ori.jpg'
+        imgSrc: 'assets/img/mail/ori.jpg'
       },
     },
     {
@@ -187,7 +187,7 @@ function _createMails() {
       from: {
         mail: loggedinUser.email,
         userName: loggedinUser.fullname,
-        imgSrc: '../../../assets/img/mail/noimage.jpg'
+        imgSrc: 'assets/img/mail/noimage.jpg'
       },
     },
     {
@@ -204,7 +204,7 @@ function _createMails() {
       {
         mail: 'mAharoni@appsus.com',
         userName: 'Michael Aharoni',
-        imgSrc: '../../../assets/img/mail/noimage.jpg'
+        imgSrc: 'assets/img/mail/noimage.jpg'
       },
     },
     {
@@ -220,7 +220,7 @@ function _createMails() {
       from: {
         mail: loggedinUser.email,
         userName: loggedinUser.fullname,
-        imgSrc: '../../../assets/img/mail/noimage.jpg'
+        imgSrc: 'assets/img/mail/noimage.jpg'
       },
     },
     {
@@ -236,7 +236,7 @@ function _createMails() {
       from: {
         mail: loggedinUser.email,
         userName: loggedinUser.fullname,
-        imgSrc: '../../../assets/img/mail/noimage.jpg'
+        imgSrc: 'assets/img/mail/noimage.jpg'
       },
     },
     {
@@ -253,7 +253,7 @@ function _createMails() {
       {
         mail: 'KimKardeshian@appsus.com',
         userName: 'KimKardeshian',
-        imgSrc: '../../../assets/img/mail/kimk.jpg'
+        imgSrc: 'assets/img/mail/kimk.jpg'
       },
     },
     {
@@ -269,7 +269,7 @@ function _createMails() {
       from: {
         mail: loggedinUser.email,
         userName: loggedinUser.fullname,
-        imgSrc: '../../../assets/img/mail/noimage.jpg'
+        imgSrc: 'assets/img/mail/noimage.jpg'
       },
     },
     {
@@ -285,7 +285,7 @@ function _createMails() {
       from: {
         mail: 'randomPerson@nomail.notcom',
         userName: 'Rand Randomiyahu',
-        imgSrc: '../../../assets/img/mail/noimage.jpg'
+        imgSrc: 'assets/img/mail/noimage.jpg'
 
       },
     },
@@ -302,7 +302,7 @@ function _createMails() {
       from: {
         mail: loggedinUser.email,
         userName: loggedinUser.fullname,
-        imgSrc: '../../../assets/img/mail/noimage.jpg'
+        imgSrc: 'assets/img/mail/noimage.jpg'
       },
     },
     {
@@ -318,7 +318,7 @@ function _createMails() {
       from: {
         mail: loggedinUser.email,
         userName: loggedinUser.fullname,
-        imgSrc: '../../../assets/img/mail/noimage.jpg'
+        imgSrc: 'assets/img/mail/noimage.jpg'
       },
     },
     {
@@ -334,7 +334,7 @@ function _createMails() {
       from: {
         mail: loggedinUser.email,
         userName: loggedinUser.fullname,
-        imgSrc: '../../../assets/img/mail/noimage.jpg'
+        imgSrc: 'assets/img/mail/noimage.jpg'
       },
     },
     {
@@ -350,7 +350,7 @@ function _createMails() {
       from: {
         mail: loggedinUser.email,
         userName: loggedinUser.fullname,
-        imgSrc: '../../../assets/img/mail/noimage.jpg'
+        imgSrc: 'assets/img/mail/noimage.jpg'
       },
 
     },
@@ -367,7 +367,7 @@ function _createMails() {
       from: {
         mail: 'randomPerson@nomail.notcom',
         userName: 'Rand Randomiyahu',
-        imgSrc: '../../../assets/img/mail/noimage.jpg'
+        imgSrc: 'assets/img/mail/noimage.jpg'
 
       }
     },
@@ -384,7 +384,7 @@ function _createMails() {
       from: {
         mail: 'randomPerson@nomail.notcom',
         userName: 'Rand Randomiyahu',
-        imgSrc: '../../../assets/img/mail/noimage.jpg'
+        imgSrc: 'assets/img/mail/noimage.jpg'
 
       }
     },
@@ -401,7 +401,7 @@ function _createMails() {
       from: {
         mail: 'randomPerson@nomail.notcom',
         userName: 'Rand Randomiyahu',
-        imgSrc: '../../../assets/img/mail/noimage.jpg'
+        imgSrc: 'assets/img/mail/noimage.jpg'
 
       }
     },
@@ -418,7 +418,7 @@ function _createMails() {
       from: {
         mail: 'randomPerson@nomail.notcom',
         userName: 'Rand Randomiyahu',
-        imgSrc: '../../../assets/img/mail/noimage.jpg'
+        imgSrc: 'assets/img/mail/noimage.jpg'
 
       }
     },
@@ -435,7 +435,7 @@ function _createMails() {
       from: {
         mail: 'randomPerson@nomail.notcom',
         userName: 'Rand Randomiyahu',
-        imgSrc: '../../../assets/img/mail/noimage.jpg'
+        imgSrc: 'assets/img/mail/noimage.jpg'
 
       }
     },
@@ -452,7 +452,7 @@ function _createMails() {
       from: {
         mail: 'randomPerson@nomail.notcom',
         userName: 'Rand Randomiyahu',
-        imgSrc: '../../../assets/img/mail/noimage.jpg'
+        imgSrc: 'assets/img/mail/noimage.jpg'
 
       }
     },

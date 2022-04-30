@@ -38,7 +38,7 @@ export class VidNote extends React.Component {
                 <iframe src={url} height="800"></iframe>
                 <div className='backlog-container' >
                     <div className={isPreview ? 'backlog' : ''}></div>
-                    <input className={`no-focus-visible ${isPreview && !title ? 'hide' : ''}`} type="text" name="title" placeholder="Title" value={title} onChange={this.onInputChange} />
+                    <input className="no-focus-visible" type="text" name="title" placeholder="Title" value={title} onChange={this.onInputChange} autoComplete="off"/>
                 </div>
                 <NoteBtns {...this.props} noteId={note.id} />
             </form>

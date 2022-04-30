@@ -1,5 +1,14 @@
 .notes-filter {
     grid-area: filter;
+}
+
+.notes-filter .filter-list {
     display: flex;
-    flex-direction: column;
+    gap: 1em;
+}
+
+@media screen and (min-width: 470px) {
+    .notes-filter .filter-list {
+        display: unset;
+    }
 }
