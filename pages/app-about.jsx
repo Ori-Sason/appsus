@@ -10,7 +10,7 @@ export function About() {
 
           <article className="alex">
             <header>
-              <img src="../assets/img/alex-yakovlev.jpg" alt="Alex Yakovlev" />
+              <img src="../assets/img/pages/about/alex-yakovlev.jpg" alt="Alex Yakovlev" />
               <h2>Alex Yakovlev</h2>
             </header>
             <main>
@@ -26,7 +26,7 @@ export function About() {
 
           <article className="ori">
             <header>
-              <img src="../assets/img/ori-sason.jpg" alt="Ori Sason" />
+              <img src="../assets/img/pages/about/ori-sason.jpg" alt="Ori Sason" />
               <h2>Ori Sason</h2>
             </header>
             <main>

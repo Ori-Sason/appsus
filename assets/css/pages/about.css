@@ -3,7 +3,7 @@
     display: flex;
     background-position: center;
     background-size: cover;
-    background-image: url(../../../assets/img/city.jpg);
+    background-image: url(../../../assets/img/pages/about/city.jpg);
     color: var(--primary-clr-100);
 }
 
