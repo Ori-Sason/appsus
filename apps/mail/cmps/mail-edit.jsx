@@ -1,6 +1,7 @@
 import { mailService } from '../services/mail.service.js'
 import { notesService } from '../../keep/services/notes.service.js'
 import { eventBusService } from '../../../services/event.bus.service.js'
+import { utilService } from '../../../services/util.service.js'
 const { Link } = ReactRouterDOM
 export class MaleEdit extends React.Component {
 
@@ -11,9 +12,14 @@ export class MaleEdit extends React.Component {
         url: '',
         noteType: '',
         isExpand: false,
+        draftId: utilService.makeId()
 
     }
+     
+    draftInterval
+    
     componentDidMount() {
+        //  this.draftInterval= setInterval(this.onSaveDraft,5000)
         const urlSrcPrm = new URLSearchParams(this.props.location.search)
         let paramObj = {}
         for (var value of urlSrcPrm.keys()) {
@@ -35,6 +41,14 @@ export class MaleEdit extends React.Component {
 
         }
     }
+    componentWillUnmount() {
+        
+        // clearInterval(this.draftInterval)
+    }
+    // onSaveDraft=()=>{
+    //     mailService.addDraft(this.state)
+    // }
+
     onChangeValue = ({ target }) => {
         const field = target.name
         const value = target.value
@@ -44,8 +58,7 @@ export class MaleEdit extends React.Component {
         ev.preventDefault()
         const { txt, to } = this.state
         if (txt && to) {
-            eventBusService.emit('user-msg',{ txt: 'Message was added successfully', type: 'success' } )
-            console.log(this.state)
+            eventBusService.emit('user-msg', { txt: 'Message was added successfully', type: 'success' })
             mailService.addMail(this.state)
             this.props.history.push('/mail/inbox')
         } else {
@@ -74,6 +87,7 @@ export class MaleEdit extends React.Component {
         const { isExpand } = this.state
         this.setState({ isExpand: !isExpand })
     }
+
     render() {
         const { noteType, txt, to, subject, url, isExpand } = this.state
         return <React.Fragment>

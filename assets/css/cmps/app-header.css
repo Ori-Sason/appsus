@@ -24,7 +24,7 @@
 
 
 .header-nav-links-btn{
-  background-image: url(../../img/hamburger.png);
+  background-image: url(../../img/hamburger-nav/hamburger.png);
   background-repeat: no-repeat;
   background-position: center;
   margin-inline-end: 10px;
@@ -69,23 +69,23 @@
   border-radius: .75em;
 }
 .nav-keep{
-  background-image:  url(../../img/keep.png);
+  background-image:  url(../../img/hamburger-nav/keep.png);
 
 }
 .nav-book{
-  background-image:  url(../../img/book.png);
+  background-image:  url(../../img/hamburger-nav/book.png);
   
 }
 .nav-about{
-  background-image:  url(../../img/team.png);
+  background-image:  url(../../img/hamburger-nav/team.png);
   ;
 }
 .nav-home{
- background-image:  url(../../img/home.png);
+ background-image:  url(../../img/hamburger-nav/home.png);
  
 }
 .nav-mail{
-  background-image:  url(../../img/gmail.png);
+  background-image:  url(../../img/hamburger-nav/gmail.png);
 }
 .header-menu-links>* span{
   position: absolute;

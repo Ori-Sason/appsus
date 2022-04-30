@@ -9,30 +9,26 @@ const Router = ReactRouterDOM.HashRouter
 const { Route, Switch, Link } = ReactRouterDOM
 
 export class MailApp extends React.Component {
- state={
-
- }
+  state = {
+  }
   componentDidMount() {
-    console.log(this.props.location.pathname)
-   if(this.props.location.pathname==='/mail') this.props.history.push(`/mail/inbox`)
-    
+    if (this.props.location.pathname === '/mail') this.props.history.push(`/mail/inbox`)
   }
   render() {
-    const { mails } = this.state
     return (
       <section className="mail-app main-layout">
-        <SearchFilter  />
+        <SearchFilter />
         <Compose compose={this.addMail} />
-        <MailSections  />
+        <MailSections />
         <Router>
-        <Switch>
-          <Route path={`/mail/edit/:mailId?`}  component={MaleEdit} />
-          <Route path={`/mail/view/:mailId?`}  component={MaiLView} />
-          <Route path={`/mail/`} component={MailList} />
-        </Switch>
-        
-      </Router>
-      
+          <Switch>
+            <Route path={`/mail/edit/:mailId?`} component={MaleEdit} />
+            <Route path={`/mail/view/:mailId?`} component={MaiLView} />
+            <Route path={`/mail/`} component={MailList} />
+          </Switch>
+
+        </Router>
+
       </section>
     )
   }

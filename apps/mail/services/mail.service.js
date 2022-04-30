@@ -12,7 +12,9 @@ export const mailService = {
   updateMail,
   addMail,
   getUnreadEmails,
-  getMailsCount
+  getMailsCount,
+  // addDraft,
+  // deleteDraft
 }
 
 
@@ -37,6 +39,8 @@ function query(filterBy) {
           break;
       }
     }
+    console.log(filterBy)
+
     switch (filterBy.ctg) {
       case 'all':
         mails = mails.filter(
@@ -46,19 +50,19 @@ function query(filterBy) {
         )
         return Promise.resolve(mails)
       case 'inbox':
-        mails = mails.filter((mail) => mail.to === loggedinUser.email && !mail.isDraft&& !mail.isDeleted)
+        mails = mails.filter((mail) => mail.to === loggedinUser.email && !mail.isDraft && !mail.isDeleted)
         break
       case 'starred':
-        mails = mails.filter((mail) => mail.isStar && !mail.isDraft&& !mail.isDeleted)
+        mails = mails.filter((mail) => mail.isStar && !mail.isDraft && !mail.isDeleted)
         break
       case 'draft':
-        mails = mails.filter((mail) => mail.isDrafted && !mail.isDeleted)
+        mails = mails.filter((mail) => mail.isDraft && !mail.isDeleted)
         return Promise.resolve(mails)
       case 'deleted':
         mails = mails.filter((mail) => mail.isDeleted)
         return Promise.resolve(mails)
       case 'sent':
-        mails = mails.filter((mail) => mail.from.mail === loggedinUser.email&&!mail.isDeleted&&!mail.isDraf)
+        mails = mails.filter((mail) => mail.from.mail === loggedinUser.email && !mail.isDeleted && !mail.isDraf)
         break
     }
 
@@ -95,10 +99,11 @@ function addMail(mailData) {
     sentAt: Date.now(),
     to: mailData.to,
     img: mailData.url,
-    noteType:mailData.noteType,
-    from: {mail:loggedinUser.email,
-      userName:loggedinUser.fullname,
-      imgSrc:'//ssl.gstatic.com/ui/v1/icons/mail/profile_mask2.png'
+    noteType: mailData.noteType,
+    from: {
+      mail: loggedinUser.email,
+      userName: loggedinUser.fullname,
+      imgSrc: '//ssl.gstatic.com/ui/v1/icons/mail/profile_mask2.png'
     },
   }
   mails = [newMail, ...mails]
@@ -124,15 +129,14 @@ function deleteMailById(mailId) {
   let mails = _loadFromStorage()
 
   let mailToDelete = getMailById(mailId)
-  if(!mailToDelete.isDeleted){
+  if (!mailToDelete.isDeleted) {
     mailToDelete.isDeleted = true
     mails = mails.map((mail) =>
       mail.id === mailToDelete.id ? mailToDelete : mail
     )
-  }else{
+  } else {
     mails = mails.filter((mail) => mail.id !== mailToDelete.id)
   }
-  console.log(mails)
   _saveToStorage(mails)
   return Promise.resolve()
 }
@@ -148,9 +152,10 @@ function _createMails() {
       isDeleted: false,
       sentAt: Date.now() - 60 * 60 * 3,
       to: 'momo@momo.com',
-      from: {mail:loggedinUser.email,
-        userName:loggedinUser.fullname,
-        imgSrc:'../../../assets/img/mail/noimage.jpg'
+      from: {
+        mail: loggedinUser.email,
+        userName: loggedinUser.fullname,
+        imgSrc: '../../../assets/img/mail/noimage.jpg'
       },
     },
     {
@@ -179,9 +184,10 @@ function _createMails() {
       isDeleted: false,
       sentAt: Date.now(),
       to: 'momo@momo.com',
-      from: {mail:loggedinUser.email,
-        userName:loggedinUser.fullname,
-        imgSrc:'../../../assets/img/mail/noimage.jpg'
+      from: {
+        mail: loggedinUser.email,
+        userName: loggedinUser.fullname,
+        imgSrc: '../../../assets/img/mail/noimage.jpg'
       },
     },
     {
@@ -194,10 +200,11 @@ function _createMails() {
       isDeleted: false,
       sentAt: Date.now() - 1000 * 60 * 20,
       to: 'user@appsus.com',
-      from: 
-      {mail:'mAharoni@appsus.com',
-        userName:'Michael Aharoni',
-        imgSrc:'../../../assets/img/mail/noimage.jpg'
+      from:
+      {
+        mail: 'mAharoni@appsus.com',
+        userName: 'Michael Aharoni',
+        imgSrc: '../../../assets/img/mail/noimage.jpg'
       },
     },
     {
@@ -210,9 +217,10 @@ function _createMails() {
       isDeleted: false,
       sentAt: Date.now(),
       to: 'momo@momo.com',
-      from: {mail:loggedinUser.email,
-        userName:loggedinUser.fullname,
-        imgSrc:'../../../assets/img/mail/noimage.jpg'
+      from: {
+        mail: loggedinUser.email,
+        userName: loggedinUser.fullname,
+        imgSrc: '../../../assets/img/mail/noimage.jpg'
       },
     },
     {
@@ -225,9 +233,10 @@ function _createMails() {
       isDeleted: false,
       sentAt: Date.now(),
       to: 'momo@momo.com',
-      from: {mail:loggedinUser.email,
-        userName:loggedinUser.fullname,
-        imgSrc:'../../../assets/img/mail/noimage.jpg'
+      from: {
+        mail: loggedinUser.email,
+        userName: loggedinUser.fullname,
+        imgSrc: '../../../assets/img/mail/noimage.jpg'
       },
     },
     {
@@ -240,201 +249,213 @@ function _createMails() {
       isDeleted: false,
       sentAt: Date.now() - 1000 * 60 * 8,
       to: 'user@appsus.com',
-      from: 
-      {mail:'KimKardeshian@appsus.com',
-        userName:'KimKardeshian',
-        imgSrc:'../../../assets/img/mail/kimk.jpg'
-      },
-    },
-    {
-      id: utilService.makeId(),
-      subject: 'Miss you!',
-      body: 'Would love to catch up sometimes',
-      isStar: false,
-      isRead: false,
-      isDraft: false,
-      isDeleted: false,
-      sentAt: Date.now(),
-      to: 'momo@momo.com',
-      from: {mail:loggedinUser.email,
-              userName:loggedinUser.fullname,
-              imgSrc:'../../../assets/img/mail/noimage.jpg'
-            },
-    },
-    {
-      id: utilService.makeId(),
-      subject: 'Miss you!',
-      body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, consequatur libero aliquid minima sapiente delectus modi amet odio nam sequi deserunt voluptate ipsam harum impedit ullam eveniet quos magni aliquam?',
-      isStar: false,
-      isRead: false,
-      isDraft: false,
-      isDeleted: true,
-      sentAt: Date.now(),
-      to: 'user@appsus.com',
-      from: {
-        mail: 'randomPerson@nomail.notcom',
-        userName: 'Rand Randomiyahu',
-        imgSrc: '../../../assets/img/mail/noimage.jpg'
-
-      },
-    },
-    {
-      id: utilService.makeId(),
-      subject: 'Miss you!',
-      body: 'Would love to catch up sometimes',
-      isStar: false,
-      isRead: false,
-      isDraft: false,
-      isDeleted: true,
-      sentAt: Date.now(),
-      to: 'momo@momo.com',
-      from: {mail:loggedinUser.email,
-        userName:loggedinUser.fullname,
-        imgSrc:'../../../assets/img/mail/noimage.jpg'
-      },
-    },
-    {
-      id: utilService.makeId(),
-      subject: 'Miss you!',
-      body: 'Would love to catch up sometimes',
-      isStar: false,
-      isRead: false,
-      isDraft: false,
-      isDeleted: false,
-      sentAt: Date.now(),
-      to: 'momo@momo.com',
-      from: {mail:loggedinUser.email,
-        userName:loggedinUser.fullname,
-        imgSrc:'../../../assets/img/mail/noimage.jpg'
-      },
-    },
-    {
-      id: utilService.makeId(),
-      subject: 'Miss you!',
-      body: 'Would love to catch up sometimes',
-      isStar: false,
-      isRead: false,
-      isDraft: false,
-      isDeleted: false,
-      sentAt: Date.now(),
-      to: 'momo@momo.com',
-      from: {mail:loggedinUser.email,
-        userName:loggedinUser.fullname,
-        imgSrc:'../../../assets/img/mail/noimage.jpg'
-      },
-    },
-    {
-      id: utilService.makeId(),
-      subject: 'Miss you!',
-      body: 'Would love to catch up sometimes',
-      isStar: false,
-      isRead: false,
-      isDraft: false,
-      isDeleted: false,
-      sentAt: Date.now(),
-      to: 'momo@momo.com',
-      from: {mail:loggedinUser.email,
-        userName:loggedinUser.fullname,
-        imgSrc:'../../../assets/img/mail/noimage.jpg'
-      },
-     
-    },
-    {
-      id: utilService.makeId(),
-      subject: 'Miss you!',
-      body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, consequatur libero aliquid minima sapiente delectus modi amet odio nam sequi deserunt voluptate ipsam harum impedit ullam eveniet quos magni aliquam?',
-      isStar: false,
-      isRead: false,
-      isDraft: false,
-      isDeleted: true,
-      sentAt: Date.now(),
-      to: 'user@appsus.com',
-      from: {
-        mail: 'randomPerson@nomail.notcom',
-        userName: 'Rand Randomiyahu',
-        imgSrc: '../../../assets/img/mail/noimage.jpg'
-
-      }},
+      from:
       {
-        id: utilService.makeId(),
-        subject: 'Miss you!',
-        body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, consequatur libero aliquid minima sapiente delectus modi amet odio nam sequi deserunt voluptate ipsam harum impedit ullam eveniet quos magni aliquam?',
-        isStar: false,
-        isRead: false,
-        isDraft: false,
-        isDeleted: true,
-        sentAt: Date.now(),
-        to: 'user@appsus.com',
-        from: {
-          mail: 'randomPerson@nomail.notcom',
-          userName: 'Rand Randomiyahu',
-          imgSrc: '../../../assets/img/mail/noimage.jpg'
-  
-        }},
-        {
-          id: utilService.makeId(),
-          subject: 'Miss you!',
-          body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, consequatur libero aliquid minima sapiente delectus modi amet odio nam sequi deserunt voluptate ipsam harum impedit ullam eveniet quos magni aliquam?',
-          isStar: true,
-          isRead: false,
-          isDraft: false,
-          isDeleted: false,
-          sentAt: Date.now(),
-          to: 'user@appsus.com',
-          from: {
-            mail: 'randomPerson@nomail.notcom',
-            userName: 'Rand Randomiyahu',
-            imgSrc: '../../../assets/img/mail/noimage.jpg'
-    
-          }},
-          {
-            id: utilService.makeId(),
-            subject: 'Miss you!',
-            body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, consequatur libero aliquid minima sapiente delectus modi amet odio nam sequi deserunt voluptate ipsam harum impedit ullam eveniet quos magni aliquam?',
-            isStar: true,
-            isRead: false,
-            isDraft: false,
-            isDeleted: false,
-            sentAt: Date.now(),
-            to: 'user@appsus.com',
-            from: {
-              mail: 'randomPerson@nomail.notcom',
-              userName: 'Rand Randomiyahu',
-              imgSrc: '../../../assets/img/mail/noimage.jpg'
-      
-            }},
-            {
-              id: utilService.makeId(),
-              subject: 'Miss you!',
-              body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, consequatur libero aliquid minima sapiente delectus modi amet odio nam sequi deserunt voluptate ipsam harum impedit ullam eveniet quos magni aliquam?',
-              isStar: true,
-              isRead: false,
-              isDraft: false,
-              isDeleted: false,
-              sentAt: Date.now(),
-              to: 'user@appsus.com',
-              from: {
-                mail: 'randomPerson@nomail.notcom',
-                userName: 'Rand Randomiyahu',
-                imgSrc: '../../../assets/img/mail/noimage.jpg'
-        
-              }},
-              {
-                id: utilService.makeId(),
-                subject: 'Miss you!',
-                body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, consequatur libero aliquid minima sapiente delectus modi amet odio nam sequi deserunt voluptate ipsam harum impedit ullam eveniet quos magni aliquam?',
-                isStar: true,
-                isRead: false,
-                isDraft: false,
-                isDeleted: false,
-                sentAt: Date.now(),
-                to: 'user@appsus.com',
-                from: {
-                  mail: 'randomPerson@nomail.notcom',
-                  userName: 'Rand Randomiyahu',
-                  imgSrc: '../../../assets/img/mail/noimage.jpg'
-          
-                }},
+        mail: 'KimKardeshian@appsus.com',
+        userName: 'KimKardeshian',
+        imgSrc: '../../../assets/img/mail/kimk.jpg'
+      },
+    },
+    {
+      id: utilService.makeId(),
+      subject: 'Miss you!',
+      body: 'Would love to catch up sometimes',
+      isStar: false,
+      isRead: false,
+      isDraft: false,
+      isDeleted: false,
+      sentAt: Date.now(),
+      to: 'momo@momo.com',
+      from: {
+        mail: loggedinUser.email,
+        userName: loggedinUser.fullname,
+        imgSrc: '../../../assets/img/mail/noimage.jpg'
+      },
+    },
+    {
+      id: utilService.makeId(),
+      subject: 'Miss you!',
+      body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, consequatur libero aliquid minima sapiente delectus modi amet odio nam sequi deserunt voluptate ipsam harum impedit ullam eveniet quos magni aliquam?',
+      isStar: false,
+      isRead: false,
+      isDraft: false,
+      isDeleted: true,
+      sentAt: Date.now(),
+      to: 'user@appsus.com',
+      from: {
+        mail: 'randomPerson@nomail.notcom',
+        userName: 'Rand Randomiyahu',
+        imgSrc: '../../../assets/img/mail/noimage.jpg'
+
+      },
+    },
+    {
+      id: utilService.makeId(),
+      subject: 'Miss you!',
+      body: 'Would love to catch up sometimes',
+      isStar: false,
+      isRead: false,
+      isDraft: false,
+      isDeleted: true,
+      sentAt: Date.now(),
+      to: 'momo@momo.com',
+      from: {
+        mail: loggedinUser.email,
+        userName: loggedinUser.fullname,
+        imgSrc: '../../../assets/img/mail/noimage.jpg'
+      },
+    },
+    {
+      id: utilService.makeId(),
+      subject: 'Miss you!',
+      body: 'Would love to catch up sometimes',
+      isStar: false,
+      isRead: false,
+      isDraft: false,
+      isDeleted: false,
+      sentAt: Date.now(),
+      to: 'momo@momo.com',
+      from: {
+        mail: loggedinUser.email,
+        userName: loggedinUser.fullname,
+        imgSrc: '../../../assets/img/mail/noimage.jpg'
+      },
+    },
+    {
+      id: utilService.makeId(),
+      subject: 'Miss you!',
+      body: 'Would love to catch up sometimes',
+      isStar: false,
+      isRead: false,
+      isDraft: false,
+      isDeleted: false,
+      sentAt: Date.now(),
+      to: 'momo@momo.com',
+      from: {
+        mail: loggedinUser.email,
+        userName: loggedinUser.fullname,
+        imgSrc: '../../../assets/img/mail/noimage.jpg'
+      },
+    },
+    {
+      id: utilService.makeId(),
+      subject: 'Miss you!',
+      body: 'Would love to catch up sometimes',
+      isStar: false,
+      isRead: false,
+      isDraft: false,
+      isDeleted: false,
+      sentAt: Date.now(),
+      to: 'momo@momo.com',
+      from: {
+        mail: loggedinUser.email,
+        userName: loggedinUser.fullname,
+        imgSrc: '../../../assets/img/mail/noimage.jpg'
+      },
+
+    },
+    {
+      id: utilService.makeId(),
+      subject: 'Miss you!',
+      body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, consequatur libero aliquid minima sapiente delectus modi amet odio nam sequi deserunt voluptate ipsam harum impedit ullam eveniet quos magni aliquam?',
+      isStar: false,
+      isRead: false,
+      isDraft: false,
+      isDeleted: true,
+      sentAt: Date.now(),
+      to: 'user@appsus.com',
+      from: {
+        mail: 'randomPerson@nomail.notcom',
+        userName: 'Rand Randomiyahu',
+        imgSrc: '../../../assets/img/mail/noimage.jpg'
+
+      }
+    },
+    {
+      id: utilService.makeId(),
+      subject: 'Miss you!',
+      body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, consequatur libero aliquid minima sapiente delectus modi amet odio nam sequi deserunt voluptate ipsam harum impedit ullam eveniet quos magni aliquam?',
+      isStar: false,
+      isRead: false,
+      isDraft: false,
+      isDeleted: true,
+      sentAt: Date.now(),
+      to: 'user@appsus.com',
+      from: {
+        mail: 'randomPerson@nomail.notcom',
+        userName: 'Rand Randomiyahu',
+        imgSrc: '../../../assets/img/mail/noimage.jpg'
+
+      }
+    },
+    {
+      id: utilService.makeId(),
+      subject: 'Miss you!',
+      body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, consequatur libero aliquid minima sapiente delectus modi amet odio nam sequi deserunt voluptate ipsam harum impedit ullam eveniet quos magni aliquam?',
+      isStar: true,
+      isRead: false,
+      isDraft: false,
+      isDeleted: false,
+      sentAt: Date.now(),
+      to: 'user@appsus.com',
+      from: {
+        mail: 'randomPerson@nomail.notcom',
+        userName: 'Rand Randomiyahu',
+        imgSrc: '../../../assets/img/mail/noimage.jpg'
+
+      }
+    },
+    {
+      id: utilService.makeId(),
+      subject: 'Miss you!',
+      body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, consequatur libero aliquid minima sapiente delectus modi amet odio nam sequi deserunt voluptate ipsam harum impedit ullam eveniet quos magni aliquam?',
+      isStar: true,
+      isRead: false,
+      isDraft: false,
+      isDeleted: false,
+      sentAt: Date.now(),
+      to: 'user@appsus.com',
+      from: {
+        mail: 'randomPerson@nomail.notcom',
+        userName: 'Rand Randomiyahu',
+        imgSrc: '../../../assets/img/mail/noimage.jpg'
+
+      }
+    },
+    {
+      id: utilService.makeId(),
+      subject: 'Miss you!',
+      body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, consequatur libero aliquid minima sapiente delectus modi amet odio nam sequi deserunt voluptate ipsam harum impedit ullam eveniet quos magni aliquam?',
+      isStar: true,
+      isRead: false,
+      isDraft: false,
+      isDeleted: false,
+      sentAt: Date.now(),
+      to: 'user@appsus.com',
+      from: {
+        mail: 'randomPerson@nomail.notcom',
+        userName: 'Rand Randomiyahu',
+        imgSrc: '../../../assets/img/mail/noimage.jpg'
+
+      }
+    },
+    {
+      id: utilService.makeId(),
+      subject: 'Miss you!',
+      body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, consequatur libero aliquid minima sapiente delectus modi amet odio nam sequi deserunt voluptate ipsam harum impedit ullam eveniet quos magni aliquam?',
+      isStar: true,
+      isRead: false,
+      isDraft: false,
+      isDeleted: false,
+      sentAt: Date.now(),
+      to: 'user@appsus.com',
+      from: {
+        mail: 'randomPerson@nomail.notcom',
+        userName: 'Rand Randomiyahu',
+        imgSrc: '../../../assets/img/mail/noimage.jpg'
+
+      }
+    },
   ]
 }
 function _loadFromStorage() {
@@ -444,9 +465,44 @@ function _loadFromStorage() {
 function _saveToStorage(mails) {
   storageService.saveToStorage(MAIL_STORAGE_KEY, mails)
 }
-function getMailsCount(){
+function getMailsCount() {
   const mails = _loadFromStorage()
-  let inboxUnread = mails.filter((mail) => mail.to === loggedinUser.email&&!mail.isDraft&&!mail.isDeleted)
-  console.log(inboxUnread)
+  let inboxUnread = mails.filter((mail) => mail.to === loggedinUser.email && !mail.isDraft && !mail.isDeleted)
   return Promise.resolve(inboxUnread.length)
 }
+// function deleteDraft(mailDraft) {
+
+// }
+// function addDraft(mailDraft) {
+//   console.log(mailDraft.draftId)
+  
+//   console.log(isUpdate)
+ 
+//   const newMail = {
+//     id: mailDraft.draftId,
+//     subject: mailDraft.subject,
+//     body: mailDraft.txt,
+//     isStar: false,
+//     isRead: false,
+//     isDraft: true,
+//     isDeleted: false,
+//     draftedAt: Date.now(),
+//     to: mailDraft.to,
+//     img: mailDraft.url || '',
+//     noteType: mailDraft.noteType || '',
+//     from: {
+//       mail: loggedinUser.email,
+//       userName: loggedinUser.fullname,
+//       imgSrc: '//ssl.gstatic.com/ui/v1/icons/mail/profile_mask2.png'
+//     },
+//   }
+//   let mails = _loadFromStorage()
+
+//   let isUpdate = mails.findIndex((mail) => {
+//     mail.id === mailDraft.draftId 
+//   })
+//   mails = mails.map((mail) =>
+//   mail.id === newMail.id ? newMail : mail
+// )
+//   _saveToStorage(mails)
+// }
