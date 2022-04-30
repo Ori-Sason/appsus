@@ -1,4 +1,4 @@
-.search-filter{
+.search-filter {
     grid-area: search;
     display: flex;
     justify-content: center;
@@ -7,71 +7,86 @@
     justify-self: center;
     max-width: 17.35em;
     position: relative;
-    
-    
+
+
 }
 
 .mail-input-search {
-    background-color: var( --primary-clr-200);
+    background-color: var(--primary-clr-200);
     border: none;
     height: 40px;
     width: 31.25em;
     border-radius: 0.4rem;
     padding-inline-start: 1rem;
 }
-.mail-select-filterby{
+
+.mail-select-filterby {
     width: 20px;
     border-radius: 0.1rem;
-    
+
     border: 1px solid rgba(128, 128, 128, 0.335);
 }
-.filter-opts-container{
+
+.filter-opts-container {
     position: absolute;
-    right:0.8em;
+    right: 0.8em;
     top: 0.7em;
     width: 1.4em;
- height: 1.4em;
- display: flex;
- align-items: center;
- justify-content: center;
- border-radius: 50%;
- cursor: pointer;
- 
+    height: 1.4em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+
 }
-.filter-opts-container.fa.fa-angle-down:before{
+
+.filter-opts-container.fa.fa-angle-down:before {
     content: '\f107 ';
 }
-.filter-opts-container.fa.fa-angle-left:before{
+
+.filter-opts-container.fa.fa-angle-left:before {
     content: '\f104 ';
 }
-.search-filter-opts{
+
+.search-filter-opts {
     cursor: pointer;
     position: absolute;
     box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
     background-color: white;
     right: -0.72em;
-    top:1.8em;
+    top: 1.8em;
     z-index: 30;
-    width: 413px;
+    width: 275px;
     border-radius: 0.3em;
 }
-.filter-opts-container:hover{
+
+.filter-opts-container:hover {
     background-color: rgba(0, 0, 0, 0.096);
 }
-.search-filter-opts>*{
+
+.search-filter-opts>* {
     font-family: Roboto;
     text-align: center;
     cursor: pointer;
-    
+
 }
-.search-filter-opts>*:hover{
+
+.search-filter-opts>*:hover {
     background-color: rgba(0, 0, 0, 0.04);
-    
+
 }
 
 @media (min-width:540px) {
-    .search-filter{
+    .search-filter {
         max-width: 31.25em;
-        
+
+    }
+
+    .search-filter-opts {
+        cursor: pointer;
+        position: absolute;
+        right: -0.72em;
+        width: 413px;
     }
 }
