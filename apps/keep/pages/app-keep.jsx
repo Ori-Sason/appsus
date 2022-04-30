@@ -57,6 +57,7 @@ export class KeepApp extends React.Component {
 
         if (mailId) {
             this.createNoteFromEmail(mailId)
+            this.props.history.push(`/keep`)
         }
 
         let { notes } = this.state
