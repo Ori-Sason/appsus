@@ -52,7 +52,7 @@
     right: -0.72em;
     top:1.8em;
     z-index: 30;
-    width: 413px;
+    width: 275px;
     border-radius: 0.3em;
 }
 .filter-opts-container:hover{
@@ -73,5 +73,11 @@
     .search-filter{
         max-width: 31.25em;
         
+    }
+    .search-filter-opts{
+        cursor: pointer;
+        position: absolute;
+        right: -0.72em;
+        width: 413px;
     }
 }

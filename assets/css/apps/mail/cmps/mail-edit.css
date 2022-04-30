@@ -2,14 +2,31 @@
     grid-area: mail;
     display: flex;
     flex-direction: column;
-    max-width:900px;
+    max-width: 280px;
     max-height: 70vh;
     outline: none;
     box-shadow: 0 1px 1px 0 rgb(60 64 67 / 30%), 0 1px 4px 1px rgb(60 64 67 / 15%);
     border-radius: 10px 10px 3px 3px ;
     position: relative;
+    margin: auto;
     /* transition:0.1s; */
     
+}
+@media (min-width:500px) {
+    .edit-mail{
+        grid-area: mail;
+        display: flex;
+        flex-direction: column;
+        max-width:900px;
+        max-height: 70vh;
+        outline: none;
+        box-shadow: 0 1px 1px 0 rgb(60 64 67 / 30%), 0 1px 4px 1px rgb(60 64 67 / 15%);
+        border-radius: 10px 10px 3px 3px ;
+        position: relative;
+        margin: 0;
+
+        
+}
 }
 .edit-mail.expend {
     left: 50%;
