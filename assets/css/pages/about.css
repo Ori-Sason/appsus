@@ -101,6 +101,10 @@
     border-radius: 50%;
 }
 
+.about .fa:hover {
+    opacity: 0.9;
+}
+
 .about .fa.fa-facebook:before {
     content: '\f39e';
 }

@@ -26,7 +26,7 @@ export function App() {
           </Switch>
         </section>
         <footer className='app-footer'>
-          <p>☕ Coffeerights 2022 Alex Yakovlev {'&'} Ori Sason, nothing reserved</p>
+          <p>☕ Coffeerights 2022 Alex Yakovlev {'&'} Ori Sason, nothing reserved.</p>
         </footer>
       </section>
       <UserMsg />

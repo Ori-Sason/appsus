@@ -15,7 +15,7 @@ export function About() {
             </header>
             <main>
               <p>Hi, I am 25 y.o. Just finished 7 year in the Israeli air force, I have been at the air force in a variety of roles.</p>
-              <p>Currently studying to become a fullstack developer at Coding academy.</p>
+              <p>Currently studying to become a full stack developer at Coding academy.</p>
             </main>
             <div className="links">
               <a className="fa fa-facebook" href="https://www.facebook.com/AlexKibab"></a>
@@ -31,7 +31,7 @@ export function About() {
             </header>
             <main>
               <p>Started as a CPA in an audit department in PwC Israel and continued to a full-time job as a developer of automated tools for the different departments in the firm.</p>
-              <p>Currently studying fullstack development at Coding Academy.</p>
+              <p>Currently studying full stack development at Coding Academy.</p>
             </main>
             <div className="links">
               <a className="fa fa-facebook" href="https://www.facebook.com/ori.sason/"></a>
