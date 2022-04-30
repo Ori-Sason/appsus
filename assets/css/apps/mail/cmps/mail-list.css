@@ -10,6 +10,7 @@
    letter-spacing: .2px;
 }
 
+
 .mail-list::-webkit-scrollbar {
     width: 6px;
 }
@@ -27,7 +28,7 @@
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
 }
 
-.fa-angle-down{
+.mail-list .fa-angle-down{
     position: relative;
     display: inline-block;
     width: 20px;
@@ -42,7 +43,7 @@
 content: '\f107 ';
 }
 
-.fa-angle-down:hover,.sorting-opts>*:hover{
+.mail-list .fa-angle-down:hover,.mail-list .sorting-opts>*:hover{
 background-color: var( --primary-clr-200);
 }
 .sorting-opts{
@@ -69,13 +70,3 @@ background-color: var( --primary-clr-200);
 
 
 
-
-
-/* .sorting-opts .sort-by-title{
-    
-   
-} */
-/* <div onClick={this.toggleSortBtn} className="mail-list-header">
-      X
-      {isSort&&<div className="sort-by-title">x</div>}
-      {isSort&&<div className="sort-by-date">y</div>} */

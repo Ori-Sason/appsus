@@ -3,16 +3,32 @@ display: flex;
 align-items: center;
 position: relative;
 justify-content: center;
+width: 100px;
+margin-inline-start: -3px;
+
+
 }
 .meter-precent{
     font-size: .8rem;
     position: absolute;
-    margin: auto;
+    top:1.35em ;
+    right: 4.5em;
+    opacity: 1!important;
+    
+}
+@media (min-width:750px) {
+    .meter-precent{
+        top:.4em ;
+        right: 5em;
+        opacity: 1!important;
+        
+    }
+    
 }
 
 meter {
     width: 100px;
-    height: 1.8rem;
+    height: 2.5rem;
     /* -webkit-appearance: none; */
     border: 1px solid rgba(81, 81, 81, 0.852);
     border-radius: 5px;

@@ -1,19 +1,21 @@
-.mail-view{
-grid-area: mail;
-font-weight: 400;
-flex-grow: 4;
-padding:  0 3rem;
-display: flex;
-flex-direction: column;
-gap: 20px;
-border: 1px solid var(--primary-clr-200);
-height: 60vh;
-overflow-y:auto;
+.mail-view {
+    grid-area: mail;
+    font-weight: 400;
+    flex-grow: 4;
+    padding: 0 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: 1px solid var(--primary-clr-200);
+    height: 60vh;
+    overflow-y: auto;
 }
-.mail-view .star.yellow{
+
+.mail-view .star.yellow {
     color: rgba(244, 201, 75, 1);
 }
-.mail-view .star{
+
+.mail-view .star {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -22,74 +24,96 @@ overflow-y:auto;
     height: 1.5em;
     margin-inline-start: 10px;
 }
-.mail-view .mail-user-added-img-view{
+
+.mail-view .mail-user-added-img-view {
     /* width: 400px;
-     */
-     max-width: 400px;
-     max-height: 200px;
+    */
+    max-width: 400px;
+    max-height: 200px;
 }
-.mail-view .mail-subject{
+
+.mail-view .mail-subject {
     margin-block-start: 3rem;
     font-size: 1.5rem;
 }
-.mail-txt{
-        overflow: hidden;
-        max-width: 50rem;
+
+.mail-txt {
+    overflow: hidden;
+    max-width: 50rem;
 
 }
-.mail-people{
+
+.mail-people {
     flex-grow: 1;
+    
 }
-.person-img{
-    width: 40px;
-    height: 40px;
+
+.person-img {
+    width: 32px;
+    height: 32px;
     object-fit: cover;
     object-position: center;
     border-radius: 50%;
 }
-.mail-info{
+
+.mail-info {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap:10px
+    gap: 10px;
+    flex-direction: column;
+    
 }
-.mail-time{
+
+.mail-time {
     font-weight: 300;
     opacity: 0.6;
     font-size: .875rem;
 }
-.mail-from{
+
+.mail-from {
     /* font-weight: 700; */
+    font-size: 0.575rem;
+}
+strong{
     font-size: 0.875rem;
 }
-.mail-to{
+.mail-to {
     font-size: 0.875rem;
     opacity: 0.6;
+    padding-inline-start: 1.9px;
 }
-.mail-from-span{
+
+.mail-from-span {
     margin-inline-start: 5px;
     font-size: 0.875rem;
     opacity: 0.8;
 }
-.time-star{
+
+.time-star {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.4em;
 }
-.mail-txt.todo{
+
+.mail-txt.todo {
     white-space: pre-wrap;
 }
-.fa-sticky-note:before{
-    content:'\f249'
+
+.fa-sticky-note:before {
+    content: '\f249'
 }
-.fa-sticky-note:hover{
-        opacity: 1;
-        background-color: rgba(16, 13, 13, 0.093);
+
+.fa-sticky-note:hover {
+    opacity: 1;
+    background-color: rgba(16, 13, 13, 0.093);
 }
-.mail-view .fa-sticky-note{
+
+.mail-view .fa-sticky-note {
     text-decoration: none;
-    color: black;  display: flex;
+    color: black;
+    display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
@@ -101,13 +125,42 @@ overflow-y:auto;
 
 }
 
+@media (min-width:540px) {
+    
+}
+
+@media (min-width:800px) {
+    .mail-view {
+        font-weight: 400;
+        flex-grow: 4;
+        padding: 0 3rem;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        border: 1px solid var(--primary-clr-200);
+        height: 60vh;
+        overflow-y: auto;
+    }
+    .mail-info {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: row;
+        gap: 10px
+    }
+    .mail-from {
+        /* font-weight: 700; */
+        font-size: 0.875rem;
+    }
+}
+
 
 /*   <div className="mail-view">
-      <div className="mail-subject">{mail.subject}</div>
-      <div className="mail-info">
-        <a className={`star ${mail.isStar ? 'yellow' : ''}`}>{mail.isStar?fullStar:emptyStar}</a>
-        <h1 className="mail-from">From: {mail.from === `user@appsus.com`?'Me':mail.from}</h1>
-        <h3 className="mail-to">To: {mail.to === `user@appsus.com`?'Me':mail.to}</h3>
-        <p className="mail-txt">{mail.body}</p>
-      </div>
-    </div> */
+<div className="mail-subject">{mail.subject}</div>
+<div className="mail-info">
+<a className={`star ${mail.isStar ? 'yellow' : ''}`}>{mail.isStar?fullStar:emptyStar}</a>
+<h1 className="mail-from">From: {mail.from === `user@appsus.com`?'Me':mail.from}</h1>
+<h3 className="mail-to">To: {mail.to === `user@appsus.com`?'Me':mail.to}</h3>
+<p className="mail-txt">{mail.body}</p>
+</div>
+</div> */
