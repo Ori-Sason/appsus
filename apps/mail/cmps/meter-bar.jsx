@@ -12,6 +12,7 @@ export class MeterBar extends React.Component{
     componentDidMount() {
         this.stopMeterEvent=  eventBusService.on('change-meter',(unreadCount)=>{
             mailService.getMailsCount().then((inCount)=>{
+                if(inCount===0)inCount=1
                 this.setState({countValue:100-parseInt((unreadCount/inCount)*100)})
             })
 

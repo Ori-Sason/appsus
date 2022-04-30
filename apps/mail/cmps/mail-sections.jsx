@@ -19,9 +19,11 @@ export class MailSections extends React.Component {
     }))
   }
   loadUnreadMails=()=>{
-    let unreadCount = mailService.getUnreadEmails()
-    eventBusService.emit('change-meter',unreadCount)
-    this.setState({unread:unreadCount},()=>{
+    let unreadCount = mailService.getUnreadEmails().then((unreadCount2)=>{
+      eventBusService.emit('change-meter',unreadCount2)
+      this.setState({unread:unreadCount2},()=>{
+      })
+
     })
   }
   changeCtg=(ctg)=>{

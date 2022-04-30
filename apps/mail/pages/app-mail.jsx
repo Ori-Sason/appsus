@@ -19,13 +19,13 @@ export class MailApp extends React.Component {
       <section className="mail-app main-layout">
         <SearchFilter />
         <Compose compose={this.addMail} />
-        <MailSections />
         <Router>
           <Switch>
             <Route path={`/mail/edit/:mailId?`} component={MaleEdit} />
             <Route path={`/mail/view/:mailId?`} component={MaiLView} />
             <Route path={`/mail/`} component={MailList} />
           </Switch>
+        <MailSections />
 
         </Router>
 

@@ -4,6 +4,7 @@ import { utilService } from '../../../services/util.service.js'
 
 const MAIL_STORAGE_KEY = 'mailsDB'
 const loggedinUser = { email: 'user@appsus.com', fullname: 'Mahatma Appsus' }
+let firstMail
 
 export const mailService = {
   query,
@@ -76,13 +77,22 @@ function query(filterBy) {
         mail.subject.toLowerCase().includes(filterBy.txt.toLowerCase())
     )
   }
+  firstMail = mails
   return Promise.resolve(mails)
 }
 function getUnreadEmails() {
   let mails = _loadFromStorage()
-  if (!mails) return
-  let x = mails.filter(mail => mail.isRead === false && mail.to === 'user@appsus.com' && !mail.isDeleted && !mail.isDraft)
-  return x.length
+  if (!mails) {
+    return new Promise(resolve=>{
+      query(null).then((mailsFromQuery)=>{
+        let sortedQuery = mailsFromQuery.filter(mail => mail.isRead === false && mail.to === 'user@appsus.com' && !mail.isDeleted && !mail.isDraft)
+        return resolve(sortedQuery.length)
+      })
+    })
+  
+  }
+  let sortedMails = mails.filter(mail => mail.isRead === false && mail.to === 'user@appsus.com' && !mail.isDeleted && !mail.isDraft)
+  return Promise.resolve(sortedMails.length)
 
 }
 function addMail(mailData) {
@@ -149,7 +159,7 @@ function _createMails() {
       isRead: false,
       isDraft: false,
       isDeleted: false,
-      sentAt: Date.now() - 60 * 60 * 3,
+      sentAt: Date.now()*Math.random() - 60 * 60 * 3,
       to: 'momo@momo.com',
       from: {
         mail: loggedinUser.email,
@@ -165,7 +175,7 @@ function _createMails() {
       isRead: false,
       isDraft: false,
       isDeleted: false,
-      sentAt: Date.now(),
+      sentAt: Date.now()*Math.random(),
       to: 'user@appsus.com',
       from: {
         mail: 'OriSason@appsus.com',
@@ -181,7 +191,7 @@ function _createMails() {
       isRead: false,
       isDraft: false,
       isDeleted: false,
-      sentAt: Date.now(),
+      sentAt: Date.now()*Math.random(),
       to: 'momo@momo.com',
       from: {
         mail: loggedinUser.email,
@@ -192,12 +202,12 @@ function _createMails() {
     {
       id: utilService.makeId(),
       subject: 'Miss you!',
-      body: 'Would love to catch up sometimes sssssssyyysssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss',
+      body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eget lorem fermentum tellus mattis elementum laoreet at sem. Donec ornare sem in ex dapibus mattis. Pellentesque in vestibulum felis. Curabitur posuere risus sit amet elementum gravida. Mauris ut ipsum sit amet erat blandit consequat malesuada et ligula. Nulla facilisi. Morbi tincidunt dignissim lacus, nec placerat massa fermentum in. Curabitur posuere posuere sagittis. Morbi accumsan massa erat, nec finibus magna dignissim ut. Fusce iaculis lorem accumsan, viverra nulla non, rutrum neque. Proin in tortor et nisi accumsan mollis. Sed laoreet in ligula id lacinia. Cras iaculis nisi nec iaculis iaculis. Vestibulum vulputate ullamcorper velit in venenatis.',
       isStar: false,
       isRead: false,
       isDraft: false,
       isDeleted: false,
-      sentAt: Date.now() - 1000 * 60 * 20,
+      sentAt: Date.now()*Math.random() - 1000 * 60 * 20,
       to: 'user@appsus.com',
       from:
       {
@@ -209,12 +219,12 @@ function _createMails() {
     {
       id: utilService.makeId(),
       subject: 'Are you ready? ',
-      body: 'Would love to catch up sasdaswavxcbgjnometimes',
+      body: 'Nunc turpis tellus, tempor ac orci gravida, iaculis lacinia elit. In bibendum nisi a lacus ultrices, et facilisis leo malesuada. Donec at lorem sit amet lacus lobortis eleifend. Suspendisse ullamcorper purus orci. In quis imperdiet magna. Duis fermentum malesuada velit, in fermentum metus mollis eu. Pellentesque risus sapien, pretium quis enim eget, imperdiet sollicitudin dui. Proin pharetra, risus id volutpat vulputate, risus massa maximus neque, ut pulvinar nisl magna eu sem. Praesent non est sit amet nibh dignissim gravida sit amet id metus. Vestibulum luctus, sapien id vulputate sollicitudin, neque magna suscipit elit, luctus euismod nibh lectus non felis. Etiam mollis eu tellus vel ullamcorper. In eu nulla quis quam ullamcorper hendrerit.',
       isStar: false,
       isRead: false,
       isDraft: false,
       isDeleted: false,
-      sentAt: Date.now(),
+      sentAt: Date.now()*Math.random(),
       to: 'momo@momo.com',
       from: {
         mail: loggedinUser.email,
@@ -225,12 +235,12 @@ function _createMails() {
     {
       id: utilService.makeId(),
       subject: 'Miss you!',
-      body: 'Would love to catch asdewfergsup sometimes',
+      body: 'Nunc turpis tellus, tempor ac orci gravida, iaculis lacinia elit. In bibendum nisi a lacus ultrices, et facilisis leo malesuada. Donec at lorem sit amet lacus lobortis eleifend. Suspendisse ullamcorper purus orci. In quis imperdiet magna. Duis fermentum malesuada velit, in fermentum metus mollis eu. Pellentesque risus sapien, pretium quis enim eget, imperdiet sollicitudin dui. Proin pharetra, risus id volutpat vulputate, risus massa maximus neque, ut pulvinar nisl magna eu sem. Praesent non est sit amet nibh dignissim gravida sit amet id metus. Vestibulum luctus, sapien id vulputate sollicitudin, neque magna suscipit elit, luctus euismod nibh lectus non felis. Etiam mollis eu tellus vel ullamcorper. In eu nulla quis quam ullamcorper hendrerit.',
       isStar: false,
       isRead: false,
       isDraft: false,
       isDeleted: false,
-      sentAt: Date.now(),
+      sentAt: Date.now()*Math.random(),
       to: 'momo@momo.com',
       from: {
         mail: loggedinUser.email,
@@ -246,7 +256,7 @@ function _createMails() {
       isRead: false,
       isDraft: false,
       isDeleted: false,
-      sentAt: Date.now() - 1000 * 60 * 8,
+      sentAt: Date.now()*Math.random() - 1000 * 60 * 8,
       to: 'user@appsus.com',
       from:
       {
@@ -263,7 +273,7 @@ function _createMails() {
       isRead: false,
       isDraft: false,
       isDeleted: false,
-      sentAt: Date.now(),
+      sentAt: Date.now()*Math.random(),
       to: 'momo@momo.com',
       from: {
         mail: loggedinUser.email,
@@ -279,7 +289,7 @@ function _createMails() {
       isRead: false,
       isDraft: false,
       isDeleted: true,
-      sentAt: Date.now(),
+      sentAt: Date.now()*Math.random(),
       to: 'user@appsus.com',
       from: {
         mail: 'randomPerson@nomail.notcom',
@@ -296,7 +306,7 @@ function _createMails() {
       isRead: false,
       isDraft: false,
       isDeleted: true,
-      sentAt: Date.now(),
+      sentAt: Date.now()*Math.random(),
       to: 'momo@momo.com',
       from: {
         mail: loggedinUser.email,
@@ -312,7 +322,7 @@ function _createMails() {
       isRead: false,
       isDraft: false,
       isDeleted: false,
-      sentAt: Date.now(),
+      sentAt: Date.now()*Math.random(),
       to: 'momo@momo.com',
       from: {
         mail: loggedinUser.email,
@@ -328,7 +338,7 @@ function _createMails() {
       isRead: false,
       isDraft: false,
       isDeleted: false,
-      sentAt: Date.now(),
+      sentAt: Date.now()*Math.random(),
       to: 'momo@momo.com',
       from: {
         mail: loggedinUser.email,
@@ -344,7 +354,7 @@ function _createMails() {
       isRead: false,
       isDraft: false,
       isDeleted: false,
-      sentAt: Date.now(),
+      sentAt: Date.now()*Math.random(),
       to: 'momo@momo.com',
       from: {
         mail: loggedinUser.email,
@@ -361,7 +371,7 @@ function _createMails() {
       isRead: false,
       isDraft: false,
       isDeleted: true,
-      sentAt: Date.now(),
+      sentAt: Date.now()*Math.random(),
       to: 'user@appsus.com',
       from: {
         mail: 'randomPerson@nomail.notcom',
@@ -378,7 +388,7 @@ function _createMails() {
       isRead: false,
       isDraft: false,
       isDeleted: true,
-      sentAt: Date.now(),
+      sentAt: Date.now()*Math.random(),
       to: 'user@appsus.com',
       from: {
         mail: 'randomPerson@nomail.notcom',
@@ -395,7 +405,7 @@ function _createMails() {
       isRead: false,
       isDraft: false,
       isDeleted: false,
-      sentAt: Date.now(),
+      sentAt: Date.now()*Math.random(),
       to: 'user@appsus.com',
       from: {
         mail: 'randomPerson@nomail.notcom',
@@ -412,7 +422,7 @@ function _createMails() {
       isRead: false,
       isDraft: false,
       isDeleted: false,
-      sentAt: Date.now(),
+      sentAt: Date.now()*Math.random(),
       to: 'user@appsus.com',
       from: {
         mail: 'randomPerson@nomail.notcom',
@@ -429,7 +439,7 @@ function _createMails() {
       isRead: false,
       isDraft: false,
       isDeleted: false,
-      sentAt: Date.now(),
+      sentAt: Date.now()*Math.random(),
       to: 'user@appsus.com',
       from: {
         mail: 'randomPerson@nomail.notcom',
@@ -446,7 +456,7 @@ function _createMails() {
       isRead: false,
       isDraft: false,
       isDeleted: false,
-      sentAt: Date.now(),
+      sentAt: Date.now()*Math.random(),
       to: 'user@appsus.com',
       from: {
         mail: 'randomPerson@nomail.notcom',
@@ -466,6 +476,16 @@ function _saveToStorage(mails) {
 }
 function getMailsCount() {
   const mails = _loadFromStorage()
+  if(!mails){
+    return new Promise(resolve=>{
+      query(null).then((mailsFromQuery)=>{
+        let inboxUnreadNew = mailsFromQuery.filter((mail) => mail.to === loggedinUser.email && !mail.isDraft && !mail.isDeleted)
+       console.log(inboxUnreadNew.length)
+        return resolve(inboxUnreadNew.length)
+      })
+    })
+  }
+  console.log(mails)
   let inboxUnread = mails.filter((mail) => mail.to === loggedinUser.email && !mail.isDraft && !mail.isDeleted)
   return Promise.resolve(inboxUnread.length)
 }
@@ -483,7 +503,7 @@ function getMailsCount() {
 //     isRead: false,
 //     isDraft: true,
 //     isDeleted: false,
-//     draftedAt: Date.now(),
+//     draftedAt: Date.now()*Math.random(),
 //     to: mailDraft.to,
 //     img: mailDraft.url || '',
 //     noteType: mailDraft.noteType || '',
