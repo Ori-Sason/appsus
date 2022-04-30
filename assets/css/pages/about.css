@@ -1,3 +1,115 @@
 .about {
-  
+    min-height: 100%;
+    display: flex;
+    background-position: center;
+    background-size: cover;
+    background-image: url(../../../assets/img/city.jpg);
+    color: var(--primary-clr-100);
+}
+
+.about .logo-container {
+    flex-basis: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.about>main {
+    flex-basis: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5em;
+    /* text-align: justify; */
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.about>main h1 {
+    font-size: 3.5rem;
+    margin-bottom: 0.7em;
+    text-transform: uppercase;
+    font-family: lobster;
+}
+
+.about .members {
+    display: flex;
+    max-width: 700px;
+    gap: 4em;
+}
+
+.about .members>* {
+    flex-basis: 50%;
+}
+
+.about .members article{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.about .members article header {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    margin-bottom: 1em;
+}
+
+.about .members article header h2 {
+    font-size: 1.8em;
+}
+
+.about .members article header img {
+    width: 120px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 50%;
+}
+
+.about .members article main{
+    flex-grow: 1;
+}
+
+.about .members article main p{
+    margin-bottom: 1em;
+}
+
+.about .members article .links {
+    display: flex;
+    gap: 1em;
+}
+
+.about .members article a {
+    text-decoration: none;
+}
+
+.about .fa {
+    font-family: AwesomeBrands;
+
+    font: normal normal normal 14px/1;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    color: black;
+    background-color: white;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.about .fa.fa-facebook:before {
+    content: '\f39e';
+}
+
+.about .fa.fa-linkedin:before {
+    content: '\f0e1';
+}
+
+.about .fa.fa-instagram:before {
+    content: '\f16d';
+    font-weight: 600;
 }

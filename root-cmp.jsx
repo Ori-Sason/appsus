@@ -25,7 +25,7 @@ export function App() {
             <Route path="/" component={Home} />
           </Switch>
         </section>
-        <footer className='main-footer main-layout'>
+        <footer className='app-footer'>
           <p>☕ Coffeerights 2022 Alex Yakovlev {'&'} Ori Sason, nothing reserved</p>
         </footer>
       </section>

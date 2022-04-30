@@ -2,9 +2,15 @@
   font-family: Roboto;
   src: url(../../fonts/Roboto/Roboto-Regular.ttf);
 }
+
 @font-face {
   font-family: Awesome;
   src: url(../../fonts/awesome/fa-solid-900.ttf);
+}
+
+@font-face {
+  font-family: AwesomeBrands;
+  src: url(../../fonts/awesome/fa-brands-400.ttf);
 }
 
 @font-face {
