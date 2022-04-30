@@ -70,13 +70,3 @@ background-color: var( --primary-clr-200);
 
 
 
-
-
-/* .sorting-opts .sort-by-title{
-    
-   
-} */
-/* <div onClick={this.toggleSortBtn} className="mail-list-header">
-      X
-      {isSort&&<div className="sort-by-title">x</div>}
-      {isSort&&<div className="sort-by-date">y</div>} */
