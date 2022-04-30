@@ -2,6 +2,7 @@
     grid-area: add-note;
     align-self: center;
     justify-self: center;
+    padding-inline-end: 0.5em;
 
     display: flex;
     align-items: center;

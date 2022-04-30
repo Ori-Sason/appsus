@@ -27,8 +27,8 @@ export class KeepApp extends React.Component {
             this.setState({
                 colorPicker: {
                     isColorPickerOpen: !this.state.colorPicker.isColorPickerOpen,
-                    x: ev.clientX,
-                    y: ev.clientY,
+                    x: ev.clientX + window.pageXOffset,
+                    y: ev.clientY + window.pageYOffset,
                     noteId
                 }
             })
