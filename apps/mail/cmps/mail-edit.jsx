@@ -96,9 +96,9 @@ export class MaleEdit extends React.Component {
                 <div className={`mail-new-msg-header `}>
                     <h1 className="mail-new">New Message</h1>
                     <div className="headr-links">
-                        {isExpand && <Link onClick={this.toggleMailModal} className="fa fa-compress"></Link>}
-                        {!isExpand && <Link onClick={this.toggleMailModal} className="fa fa-expand"></Link>}
-                        <Link to='/mail/inbox' className="fa fa-times"></Link>
+                        {isExpand && <Link onClick={this.toggleMailModal} title='compress' className="fa fa-compress"></Link>}
+                        {!isExpand && <Link onClick={this.toggleMailModal} title='expand' className="fa fa-expand"></Link>}
+                        <Link to='/mail/inbox' title='close' className="fa fa-times"></Link>
 
                     </div>
                 </div>
@@ -108,12 +108,11 @@ export class MaleEdit extends React.Component {
                 {noteType !== 'note-vid' && <img className='mail-user-added-img' src={url} />}
                 {noteType === 'note-vid' && <iframe height='800' className='mail-user-added-img' src={url} />}
                 <div className="add-btns">
-                    <button className="add-new-mail-btn">Send</button>
+                    <button  title='send' className="add-new-mail-btn">Send</button>
                     <div className='invisible-btn-mail'>
                         <div className="mail-add-img"></div>
-                        <input type="file" onChange={this.onSelectImg} className='im-inputfkfk' accept="image/png, image/gif, image/jpeg" />
+                        <input type="file" onChange={this.onSelectImg}  accept="image/png, image/gif, image/jpeg" />
                     </div>
-                    <a href="" className="mail-add-emoji">😎</a>
                 </div>
             </form>
             {isExpand && <div onClick={() => {

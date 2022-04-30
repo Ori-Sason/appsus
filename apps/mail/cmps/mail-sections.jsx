@@ -36,6 +36,7 @@ export class MailSections extends React.Component {
     return (
       <div className="mail-typs-nav">
         <NavLink 
+        title='inbox'
           className={`inbox-nav`}
           to="/mail/inbox"
           onClick={() => {
@@ -49,6 +50,7 @@ export class MailSections extends React.Component {
 
         <NavLink
           to="/mail/starred"
+          title='starred mails'
           onClick={() => {
             this.changeCtg('starred')
           }}
@@ -58,6 +60,7 @@ export class MailSections extends React.Component {
         </NavLink>
 
         <NavLink
+        title='sent mails'
           to="/mail/sent"
           onClick={() => {
             this.changeCtg('sent')
@@ -68,6 +71,7 @@ export class MailSections extends React.Component {
         </NavLink>
 
         <NavLink
+        title='draft mails'
           to="/mail/draft"
           onClick={() => {
             this.changeCtg('draft')
@@ -77,6 +81,7 @@ export class MailSections extends React.Component {
           <div className="draft">Drafts</div>
         </NavLink>
         <NavLink
+        title='deleted mails'
           to="/mail/deleted"
           onClick={() => {
             this.changeCtg('deleted')
@@ -86,6 +91,7 @@ export class MailSections extends React.Component {
           <div className="deleted">Trash</div>
         </NavLink>
         <NavLink
+        title='all mails'
           to="/mail/all"
           onClick={() => {
             this.changeCtg('all')

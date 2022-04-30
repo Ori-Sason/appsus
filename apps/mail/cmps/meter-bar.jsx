@@ -24,7 +24,7 @@ export class MeterBar extends React.Component{
     render(){
 
         const{countValue} =this.state
-        return <div className="meter-bar">
+        return <div title='mails read'className="meter-bar">
 
         <meter value={countValue} low='33' optimum='0' high='70' min='0' max='100' className="meter-bar">
 
