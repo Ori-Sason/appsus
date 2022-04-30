@@ -14,8 +14,11 @@
     background-color: rgb(32 33 36);
     box-shadow: 0 0 5px black;
     color: white;
+    opacity: 0;
 }
-
+.user-msg.success{
+opacity:1
+}
 .user-msg.danger {
     background-color: #be3333;
 }

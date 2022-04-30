@@ -18,17 +18,15 @@ export class UserMsg extends React.Component {
         
     }
 
-    componentDidUpdate() {
-        this.removeEvent()
-        
-    }
+    
 
     onCloseMsg = () => {
-        this.setState({ txt: null })
+        this.setState({ txt: null  })
         this.clearTimeout()
     }
     componentWillUnmount() {
         this.clearTimeout()
+        this.removeEvent()
     }
     clearTimeout() {
         clearTimeout(this.timeoutId)
