@@ -14,7 +14,6 @@ export class TodoNote extends React.Component {
     onInputChange = (ev) => {
         const { name, value } = ev.target
         this.setState((prevState) => ({ note: notesService.copyAndUpdateNote(prevState.note, name, value) }))
-        console.log('first')
     }
 
     onTodoChange = (newTodo, isNewTodo) => {
@@ -32,7 +31,7 @@ export class TodoNote extends React.Component {
         this.setState({ note: newNote }, () => {
             if (newTodo) null
         })
-        this.onFormSubmit()
+        // this.onFormSubmit()
     }
 
     onFormSubmit = (ev) => {
