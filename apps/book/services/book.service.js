@@ -118,7 +118,7 @@ function addGoogleBook(bookId) {
     thumbnail: imageLinks && imageLinks.thumbnail || '../../../assets/img/book/default-book.jpg',
     language: language,
     listPrice: {
-      amount: 999, //**FIX PRICE
+      amount: 999,
       currencyCode: 'USD',
       isOnSale: false,
     }
