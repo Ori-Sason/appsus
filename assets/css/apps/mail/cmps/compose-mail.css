@@ -1,4 +1,4 @@
-.compose-mail{
+.compose-mail {
     grid-area: compose;
     display: flex;
     flex-direction: row;
@@ -8,19 +8,16 @@
     color: inherit;
     box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
     text-transform: none;
-    width: 9rem;
-    margin-inline-start: 0.93rem;
+    width: 3rem;
+    margin-inline-start:1.83rem;
     border-radius: 100rem;
-    margin-bottom: 0,6rem;
+    margin-bottom: 0.6rem;
     font-size: .875rem;
     letter-spacing: .25px;
     font-weight: 600;
-    transition: box-shadow .08s linear,min-width .15s cubic-bezier(0.4, 0, 0.2, 1);
-    
-
+    transition: box-shadow .08s linear, min-width .15s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
-.mail-compose-sign{
+.mail-compose-sign {
     background-image: url(https://www.gstatic.com/images/icons/material/colored_icons/1x/create_32dp.png);
     background-position: center;
     background-repeat: no-repeat;
@@ -28,17 +25,46 @@
     display: block;
     height: 48px;
     width: 52px;
- 
-}
-.mail-compose-txt{
-display: block;
-opacity: 0.6;
-
-
 
 }
-.compose-mail:hover{
-box-shadow: 0 1px 3px 0 rgb(60 64 67 / 30%), 0 4px 8px 3px rgb(60 64 67 / 15%);
-background-color: #fafafb;
+.mail-compose-txt {
+    display: block;
+    opacity: 0;
+    width: 0;
+
+}
+
+.compose-mail:hover {
+    box-shadow: 0 1px 3px 0 rgb(60 64 67 / 30%), 0 4px 8px 3px rgb(60 64 67 / 15%);
+    background-color: #fafafb;
+
+}
+
+@media (min-width:750px) {
+    .compose-mail {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        text-decoration: none;
+        color: inherit;
+        box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
+        text-transform: none;
+        width: 9rem;
+        margin-inline-start: 0.93rem;
+        border-radius: 100rem;
+        margin-bottom: 0, 6rem;
+        font-size: .875rem;
+        letter-spacing: .25px;
+        font-weight: 600;
+        transition: box-shadow .08s linear, min-width .15s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .mail-compose-txt {
+        display: block;
+        opacity: 0.6;
+
+    }
+
 
 }
