@@ -39,7 +39,6 @@ function query(filterBy) {
           break;
       }
     }
-    console.log(filterBy)
 
     switch (filterBy.ctg) {
       case 'all':

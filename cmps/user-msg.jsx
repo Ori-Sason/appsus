@@ -11,7 +11,6 @@ export class UserMsg extends React.Component {
 
     componentDidMount() {
         this.removeEvent = eventBusService.on('user-msg', (msg) => {
-            console.log(msg)
             this.setState({ ...msg })
             if (this.timeoutId) this.clearTimeout()
             this.timeoutId = setTimeout(this.onCloseMsg, 3000)
@@ -19,14 +18,7 @@ export class UserMsg extends React.Component {
 
     }
 
-<<<<<<< HEAD
     
-=======
-    componentDidUpdate() {
-        this.removeEvent()
-
-    }
->>>>>>> 9b6ab9e9cdf68b7b3cb5610ee031666f74fe248e
 
     onCloseMsg = () => {
         this.setState({ txt: null  })
