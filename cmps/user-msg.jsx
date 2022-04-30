@@ -11,16 +11,17 @@ export class UserMsg extends React.Component {
 
     componentDidMount() {
         this.removeEvent = eventBusService.on('user-msg', (msg) => {
+            console.log(msg)
             this.setState({ ...msg })
             if (this.timeoutId) this.clearTimeout()
             this.timeoutId = setTimeout(this.onCloseMsg, 3000)
         })
-        
+
     }
 
     componentDidUpdate() {
         this.removeEvent()
-        
+
     }
 
     onCloseMsg = () => {
