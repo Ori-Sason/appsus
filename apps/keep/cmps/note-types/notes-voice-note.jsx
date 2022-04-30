@@ -13,7 +13,7 @@ export class VoiceNote extends React.Component {
     componentDidMount() {
         mic.continuous = true
         mic.interimResults = true
-        mic.lang = 'he-IL'
+        mic.lang = 'en-US'
         this.setState({ note: this.props.note })
     }
 
