@@ -474,9 +474,7 @@ function getMailsCount() {
 
 // }
 // function addDraft(mailDraft) {
-//   console.log(mailDraft.draftId)
   
-//   console.log(isUpdate)
  
 //   const newMail = {
 //     id: mailDraft.draftId,
