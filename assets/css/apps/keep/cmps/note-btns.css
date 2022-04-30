@@ -63,6 +63,11 @@
     background-image: url(../../../../img/keep/mail.png);
 }
 
+.note-btn.img-mic {
+    background-size: 23px;
+    background-image: url(../../../../img/keep/mic.png);
+}
+
 .note-btn.img-pin-black {
     background-image: url(../../../../img/keep/pin-black.svg);
 }

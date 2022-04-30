@@ -3,6 +3,7 @@ import { TxtNote } from './note-types/notes-text-note.jsx'
 import { ImgNote } from './note-types/notes-img-note.jsx'
 import { VidNote } from './note-types/notes-vid-note.jsx'
 import { TodoNote } from './note-types/notes-todos-note.jsx'
+import { VoiceNote } from './note-types/notes-voice-note.jsx'
 
 export class DynamicNote extends React.Component {
 
@@ -50,7 +51,6 @@ export class DynamicNote extends React.Component {
 
     onToMail = (ev, noteId) => {
         ev.stopPropagation();
-        console.log('sent')
 
         const urlSrcPrm = new URLSearchParams({ noteId })
         const searchStr = urlSrcPrm.toString()
@@ -64,6 +64,7 @@ export class DynamicNote extends React.Component {
         if (type === 'note-img') return <ImgNote {...this.props} onDelete={this.onDelete} onDuplicate={this.onDuplicate} onArchive={this.onArchive} onReminder={this.onReminder} onToMail={this.onToMail} />
         if (type === 'note-vid') return <VidNote {...this.props} onDelete={this.onDelete} onDuplicate={this.onDuplicate} onArchive={this.onArchive} onReminder={this.onReminder} onToMail={this.onToMail} />
         if (type === 'note-todos') return <TodoNote {...this.props} onDelete={this.onDelete} onDuplicate={this.onDuplicate} onArchive={this.onArchive} onReminder={this.onReminder} onToMail={this.onToMail} />
+        if (type === 'note-voice') return <VoiceNote {...this.props} onDelete={this.onDelete} onDuplicate={this.onDuplicate} onArchive={this.onArchive} onReminder={this.onReminder} onToMail={this.onToMail} />
     }
 
 
