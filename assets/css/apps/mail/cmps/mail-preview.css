@@ -59,7 +59,12 @@
     background-color: transparent;
 }
 
-
+.mail-from.read{
+    font-weight: 200;
+}
+strong.read{
+    font-weight: 200;
+}
 .mail-prev-btns button {
     border: none;
     background-color: none;

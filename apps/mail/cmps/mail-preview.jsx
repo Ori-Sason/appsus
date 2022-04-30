@@ -48,7 +48,9 @@ class _MailPreview extends React.Component {
   deleteMail = (ev, mailId) => {
     ev.stopPropagation()
     this.setState({ mail: null }, () => {
-      mailService.deleteMailById(mailId).then(() => this.props.loadMails()).then(eventBusService.emit('unread', 'unreadclickd'))
+      mailService.deleteMailById(mailId).then(() => this.props.loadMails()).then(()=>{
+        eventBusService.emit('user-msg', { txt: 'Message was deleted successfully', type: 'success' })
+        eventBusService.emit('unread', 'unreadclickd')})
     })
   }
   onUpdateMale = () => {
@@ -79,19 +81,21 @@ class _MailPreview extends React.Component {
         >
           {mail.isStar ? this.fullStar : this.emptyStar}
         </a>
-        <h1 className='mail-from'>{mail.from.userName}</h1>
-        <p className="mail-subject txt-content"><strong>{mail.subject}</strong> - {mail.body}</p>
+        <h1 className={`mail-from ${mail.isRead ? 'read' : 'unread'}`}>{mail.from.userName}</h1>
+        <p className="mail-subject txt-content"><strong className={mail.isRead ? 'read' : 'unread'}>{mail.subject}</strong> - {mail.body}</p>
         {!isHover && <div className="preview-time">{mail.draftedAt?drafterdAt:sentAt}</div>}
         {isHover && (
           <div className="mail-prev-btns">
-            <button className="fa fa-archive"></button>
+            <button title='archive' className="fa fa-archive"></button>
             <button
+            title='delete'
               onClick={(ev) => {
                 this.deleteMail(ev, mail.id)
               }}
               className="fa fa-trash"
             ></button>
             <button
+            title='mark as read'
               onClick={(ev) => this.toggleRead(ev, false)}
               className={`fa fa-envelope-${mail.isRead ? 'open' : 'close'}`}
             ></button>
