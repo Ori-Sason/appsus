@@ -5,6 +5,7 @@
     background-size: cover;
     background-image: url(../../../assets/img/pages/about/city.jpg);
     color: var(--primary-clr-100);
+    flex-direction: column;
 }
 
 .about .logo-container {
@@ -30,12 +31,14 @@
     margin-bottom: 0.7em;
     text-transform: uppercase;
     font-family: lobster;
+    text-align: center;
 }
 
 .about .members {
     display: flex;
     max-width: 700px;
     gap: 4em;
+    flex-direction: column;
 }
 
 .about .members>* {
@@ -53,6 +56,7 @@
     align-items: center;
     gap: 1em;
     margin-bottom: 1em;
+    
 }
 
 .about .members article header h2 {
@@ -116,4 +120,31 @@
 .about .fa.fa-instagram:before {
     content: '\f16d';
     font-weight: 600;
+}
+@media (min-width:650px) {
+    .about .members {
+        display: flex;
+        flex-direction: row;
+        max-width: 700px;
+        gap: 4em;
+    }
+}
+
+@media (min-width:900px) {
+    .about {
+        min-height: 100%;
+        display: flex;
+        flex-direction: row;
+        background-position: center;
+        background-size: cover;
+        background-image: url(../../../assets/img/pages/about/city.jpg);
+        color: var(--primary-clr-100);
+    }
+    .about>main h1 {
+        font-size: 3.5rem;
+        margin-bottom: 0.7em;
+        text-transform: uppercase;
+        font-family: lobster;
+        text-align: left;
+    }
 }
