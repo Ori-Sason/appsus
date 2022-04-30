@@ -109,10 +109,10 @@ export class MaleEdit extends React.Component {
                 {noteType === 'note-vid' && <iframe height='800' className='mail-user-added-img' src={url} />}
                 <div className="add-btns">
                     <button  title='send' className="add-new-mail-btn">Send</button>
-                    <div className='invisible-btn-mail'>
-                        <div className="mail-add-img"></div>
-                        <input type="file" onChange={this.onSelectImg}  accept="image/png, image/gif, image/jpeg" />
-                    </div>
+                        <div className="mail-add-img">
+                        <input type="file" className='invis-input-file' onChange={this.onSelectImg}  accept="image/png, image/gif, image/jpeg" />
+
+                        </div>
                 </div>
             </form>
             {isExpand && <div onClick={() => {

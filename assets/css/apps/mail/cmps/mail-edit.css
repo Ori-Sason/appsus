@@ -56,39 +56,27 @@
     border: none;
 
 }
-.mail-user-added-img{
-    max-width: 300px;
-    max-height: 300px;
-    align-self: flex-end;
-    position: absolute;
-    bottom: 10px;
-    right: 10px 
-    
-}
-.invisible-btn-mail{
-position: relative;
-cursor: pointer;
-width: 20px;
-height: 20px;
-}
-.invisible-btn-mail input{
-position: absolute;
-height: 100%;
-left: 0;
-top: 0;
-width: 100%;
-cursor: pointer ;
-opacity: 0;
+
+
+.invis-input-file{
+    width: 40px;
+    height: 40px;
+    opacity: 0;
+    cursor: pointer !important;
 }
 .mail-add-img{
  background-image: url(https://www.gstatic.com/images/icons/material/system/1x/insert_photo_black_20dp.png);
  background-position: center;
  background-repeat: no-repeat;
  background-size: 20px;
- height: 20px;
- width: 20px;
+ height: 40px;
+ width: 40px;
+ border-radius: 50%;
  border: none;
  opacity:0.7;
+ cursor: pointer 
+}
+input[type="file"]::-webkit-file-upload-button{
  cursor: pointer;
 }
 .edit-mail input[type='email'],.edit-mail input[type='text']{
@@ -122,6 +110,7 @@ opacity: 0.9;
     gap: 10px;
     align-items: center;
     margin-bottom: 8px;
+
     
 }
 .add-btns>*{
@@ -131,7 +120,7 @@ opacity: 0.9;
 
 .mail-add-img:hover{
 opacity: 1;
-cursor: pointer;
+background-color: rgba(128, 128, 128, 0.168);
 }
 .mail-new-msg-header{
     opacity: 0.9;
