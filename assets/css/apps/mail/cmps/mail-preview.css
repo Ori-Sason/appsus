@@ -1,6 +1,6 @@
-.mail-preview{
+.mail-preview {
     font-size: .875rem;
-    border-bottom: 1.8px solid var( --primary-clr-200);
+    border-bottom: 1.8px solid var(--primary-clr-200);
     padding: 10px 1rem;
     display: flex;
     align-items: flex-start;
@@ -10,128 +10,134 @@
     flex-direction: column;
     flex-grow: 1;
     /* max-width: 350px; */
-    max-height:400px;
+    max-height: 400px;
     font-size: .75rem;
 }
-
-
-
-
-
-
-
-
-
-
-.mail-preview.read{
-    background-color: var( --primary-clr-300)
+.mail-preview.read {
+    background-color: var(--primary-clr-300)
 }
-.mail-txt-content{
+
+.mail-txt-content {
     white-space: nowrap;
     text-overflow: ellipsis;
     /* overflow: hidden; */
     /* width: 30rem; */
     /* flex-basis: 16rem; */
-    
+
 }
-.mail-preview .mail-from{
+
+.mail-preview .mail-from {
     min-width: 7rem;
     font-size: 0.8rem;
     white-space: nowrap;
     text-overflow: ellipsis;
-        overflow: hidden;
+    overflow: hidden;
 
 }
-.mail-preview .mail-subject{
+
+.mail-preview .mail-subject {
     white-space: nowrap;
     text-overflow: ellipsis;
-        overflow: hidden;
-        flex-grow: 1;
-       width: 100%;
+    overflow: hidden;
+    flex-grow: 1;
+    width: 100%;
 
 }
-.mail-prev-btns{
+
+.mail-prev-btns {
     display: flex;
     justify-content: flex-end;
     border: none;
-    width:120px
-}
-.preview-time{
-     white-space: nowrap;
-     background-color: var(--primary-clr-100);
-     margin-inline-end: 7px;
-     height: 30px;
-     background-color: transparent;
+    width: 120px
 }
 
-
-.mail-prev-btns button{
-   border: none;
-   background-color: none;
-   font-size: 0.87rem;
-   border-radius: 50%;
-   width: 30px;
-   height: 30px;
-   background-color: transparent;
+.preview-time {
+    white-space: nowrap;
+    background-color: var(--primary-clr-100);
+    margin-inline-end: 7px;
+    height: 30px;
+    background-color: transparent;
 }
-.mail-prev-btns button:hover{
-   cursor: pointer;
-   background-color: rgba(128, 128, 128, 0.247);
-   margin: 0;
-   padding: 0;
- }
 
 
-.mail-preview:hover{
+.mail-prev-btns button {
+    border: none;
+    background-color: none;
+    font-size: 0.87rem;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+}
+
+.mail-prev-btns button:hover {
+    cursor: pointer;
+    background-color: rgba(128, 128, 128, 0.247);
+    margin: 0;
+    padding: 0;
+}
+
+
+.mail-preview:hover {
     box-shadow: inset 1px 0 0 #dadce0, inset -1px 0 0 #dadce0, 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
     cursor: pointer;
 }
-.mail-preview .star{
+
+.mail-preview .star {
     font-size: 1.3rem;
     margin-inline-end: 1rem;
-    
+
 }
-.mail-preview .star.yellow{
+
+.mail-preview .star.yellow {
     color: rgba(244, 201, 75, 1);
 }
 
-.fa{
+.fa {
     font-family: Awesome;
 }
-.mail-preview .fa{
+
+.mail-preview .fa {
     opacity: 0.7;
 }
-.mail-preview .fa:hover{
+
+.mail-preview .fa:hover {
     opacity: 1;
 }
-.mail-preview .fa-sticky-note{
+
+.mail-preview .fa-sticky-note {
     text-decoration: none;
     color: inherit;
     font-size: 1rem;
 }
-.fa-envelope-close::before{
+
+.fa-envelope-close::before {
     content: "\f0e0";
 }
-.fa-envelope-open::before{
+
+.fa-envelope-open::before {
     content: "\f2b6";
 }
- .fa-trash:before{
-   content: '\f1f8';
+
+.fa-trash:before {
+    content: '\f1f8';
 }
-.fa-archive:before{
+
+.fa-archive:before {
     content: '\f187';
 }
-.fa-magnifying-glass::before{
-    content:'\f002';
+
+.fa-magnifying-glass::before {
+    content: '\f002';
 
 }
-@media (min-width:500px) {
-    
-}
+
+@media (min-width:500px) {}
+
 @media (min-width:750px) {
-    .mail-preview{
+    .mail-preview {
         font-size: .875rem;
-        border-bottom: 1.8px solid var( --primary-clr-200);
+        border-bottom: 1.8px solid var(--primary-clr-200);
         padding: 10px 1rem;
         display: flex;
         align-items: center;
@@ -140,10 +146,11 @@
         max-height: 40px;
         flex-direction: row;
     }
-    .preview-time{
+
+    .preview-time {
         white-space: nowrap;
         background-color: var(--primary-clr-100);
         margin-inline-end: 7px;
         background-color: transparent;
-   }
+    }
 }
