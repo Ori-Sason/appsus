@@ -1,7 +1,10 @@
 .app-header {
   background-color: var(--brown-clr-200);
   box-shadow: 0 3px var(--brown-clr-800);
-  margin: 5px 0 16px;
+  margin:11px 8px 11px
+ 
+  
+
 }
 
 .app-header header {
