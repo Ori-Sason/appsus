@@ -33,7 +33,7 @@ export class EditNote extends React.Component {
 
     render() {
         const { note } = this.state
-        if (!note) return <React.Fragment />
+        if (!note) return <React.Fragment ></React.Fragment>
 
         return <section className="edit-note">
             <div className="backlog" onClick={(ev) => {ev.stopPropagation; this.onClose()}}></div>

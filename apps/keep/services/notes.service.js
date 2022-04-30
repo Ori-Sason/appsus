@@ -138,7 +138,7 @@ function addNoteFromMail(mailId) {
     if (!mail) return Promise.resolve(null)
 
     let { noteType, img } = mail
-    
+
     if (noteType === 'note-todos') noteType = 'note-txt'
     else if (!noteType) {
         if (img) noteType = 'note-img'
@@ -157,54 +157,317 @@ function addNoteFromMail(mailId) {
 function _createNotes() {
     return [
         {
-            id: 0,
-            type: "note-txt",
-            reminder: true,
-            isPinned: true,
-            isArchived: false,
-            isDeleted: false,
-            info: { title: '', txt: "Fullstack Me Baby!" },
-            style: { backgroundColor: 'none' }
+            "id": 1,
+            "type": "note-img",
+            "reminder": true,
+            "isPinned": true,
+            "isArchived": false,
+            "isDeleted": false,
+            "info": {
+                "url": "https://images.unsplash.com/photo-1517842645767-c639042777db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bm90ZXN8ZW58MHx8MHx8&w=1000&q=80",
+                "title": "We can take some notes!"
+            },
+            "style": {
+                "backgroundColor": "#fdcfe8"
+            }
         },
         {
-            id: 1,
-            type: "note-img",
-            reminder: true,
-            isPinned: true,
-            isArchived: false,
-            isDeleted: false,
-            info: {
-                url: "https://images.unsplash.com/photo-1517842645767-c639042777db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bm90ZXN8ZW58MHx8MHx8&w=1000&q=80",
-                title: "notes"
+            "id": 6,
+            "type": "note-todos",
+            "reminder": false,
+            "isPinned": false,
+            "isArchived": false,
+            "isDeleted": false,
+            "info": {
+                "title": "Buying list",
+                "txt": "",
+                "url": null,
+                "todos": [
+                    {
+                        "id": 0,
+                        "txt": "17 beers",
+                        "isChecked": false
+                    },
+                    {
+                        "id": 1,
+                        "txt": "17 muffins",
+                        "isChecked": false
+                    },
+                    {
+                        "id": 2,
+                        "txt": "17 tomatoes / tomatos",
+                        "isChecked": false
+                    },
+                    {
+                        "id": 3,
+                        "txt": "17 breads",
+                        "isChecked": false
+                    },
+                    {
+                        "id": 4,
+                        "txt": "17 coffee beans",
+                        "isChecked": false
+                    },
+                    {
+                        "id": 5,
+                        "txt": "17 toys",
+                        "isChecked": false
+                    },
+                    {
+                        "id": 6,
+                        "txt": "17 shoes",
+                        "isChecked": false
+                    },
+                    {
+                        "id": 7,
+                        "txt": "17 mics",
+                        "isChecked": false
+                    },
+                    {
+                        "id": 8,
+                        "txt": "17 tickets",
+                        "isChecked": false
+                    },
+                    {
+                        "id": 9,
+                        "txt": "17 pans",
+                        "isChecked": false
+                    }
+                ]
             },
-            style: { backgroundColor: 'none' }
+            "style": {
+                "backgroundColor": "none"
+            }
         },
         {
-            id: 2,
-            type: "note-todos",
-            reminder: true,
-            isPinned: true,
-            isArchived: false,
-            isDeleted: false,
-            info: {
-                title: "Get my stuff together",
-                todos: [{ id: 0, txt: "Driving liscence", isChecked: true }, { id: 1, txt: "Coding power", isChecked: false }]
+            "id": 24,
+            "type": "note-txt",
+            "reminder": true,
+            "isPinned": false,
+            "isArchived": false,
+            "isDeleted": false,
+            "info": {
+                "title": "Get back to JavaScript",
+                "txt": "JavaScript often abbreviated JS, is a programming language that is one of the core technologies of the World Wide Web, alongside HTML and CSS. Over 97% of websites use JavaScript on the client side for web page behavior, often incorporating third-party libraries. All major web browsers have a dedicated JavaScript engine to execute the code on users' devices.",
+                "url": ""
             },
-            style: { backgroundColor: 'none' }
+            "style": {
+                "backgroundColor": "#ccff90"
+            }
         },
         {
-            id: 3,
-            type: "note-vid",
-            reminder: true,
-            isPinned: true,
-            isArchived: false,
-            isDeleted: false,
-            info: {
-                title: "Get my stuff together",
-                url: "https://www.youtube.com/embed/tgbNymZ7vqY",
+            "id": 25,
+            "type": "note-todos",
+            "reminder": false,
+            "isPinned": true,
+            "isArchived": false,
+            "isDeleted": false,
+            "info": {
+                "title": "Missions for today",
+                "txt": "",
+                "url": null,
+                "todos": [
+                    {
+                        "id": 0,
+                        "txt": "Call your aunt",
+                        "isChecked": false
+                    },
+                    {
+                        "id": 1,
+                        "txt": "Count until 17",
+                        "isChecked": false
+                    },
+                    {
+                        "id": 2,
+                        "txt": "Look at the mirror - this is natural",
+                        "isChecked": false
+                    },
+                    {
+                        "id": 3,
+                        "txt": "Promise (!) that tomorrow I'll start running",
+                        "isChecked": false
+                    },
+                    {
+                        "id": 4,
+                        "txt": "Get some beers",
+                        "isChecked": false
+                    },
+                    {
+                        "id": 5,
+                        "txt": "Finish this",
+                        "isChecked": false
+                    }
+                ]
             },
-            style: { backgroundColor: 'none' }
+            "style": {
+                "backgroundColor": "#d7aefb"
+            }
         },
+        {
+            "id": 26,
+            "type": "note-vid",
+            "reminder": false,
+            "isPinned": true,
+            "isArchived": false,
+            "isDeleted": false,
+            "info": {
+                "title": "Stay tuned",
+                "txt": "https://www.youtube.com/watch?v=TNhaISOUy6Q",
+                "url": "https://www.youtube.com/embed/TNhaISOUy6Q",
+                "todos": []
+            },
+            "style": {
+                "backgroundColor": "#cbf0f8"
+            }
+        },
+        {
+            "id": 27,
+            "type": "note-txt",
+            "reminder": true,
+            "isPinned": false,
+            "isArchived": false,
+            "isDeleted": false,
+            "info": {
+                "title": "Call Alex!",
+                "txt": "",
+                "url": null,
+                "todos": []
+            },
+            "style": {
+                "backgroundColor": "#f28b82"
+            }
+        },
+        {
+            "id": 28,
+            "type": "note-txt",
+            "reminder": false,
+            "isPinned": false,
+            "isArchived": false,
+            "isDeleted": false,
+            "info": {
+                "title": "Call Alex once more!",
+                "txt": "",
+                "url": null,
+                "todos": []
+            },
+            "style": {
+                "backgroundColor": "none"
+            }
+        },
+        {
+            "id": 30,
+            "type": "note-txt",
+            "reminder": false,
+            "isPinned": false,
+            "isArchived": false,
+            "isDeleted": false,
+            "info": {
+                "title": "Add labels to Appsus notes",
+                "txt": "Use the custom color picker",
+                "url": null,
+                "todos": []
+            },
+            "style": {
+                "backgroundColor": "#fff475"
+            }
+        },
+        {
+            "id": 32,
+            "type": "note-txt",
+            "reminder": false,
+            "isPinned": false,
+            "isArchived": false,
+            "isDeleted": true,
+            "info": {
+                "title": "I have been deleted 🤔",
+                "txt": "",
+                "url": null,
+                "todos": []
+            },
+            "style": {
+                "backgroundColor": "#cbf0f8"
+            }
+        },
+        {
+            "id": 33,
+            "type": "note-txt",
+            "reminder": false,
+            "isPinned": false,
+            "isArchived": true,
+            "isDeleted": false,
+            "info": {
+                "title": "Learn jQuery?!",
+                "txt": "",
+                "url": null,
+                "todos": []
+            },
+            "style": {
+                "backgroundColor": "#d7aefb"
+            }
+        },
+        {
+            "id": 35,
+            "type": "note-todos",
+            "reminder": false,
+            "isPinned": false,
+            "isArchived": true,
+            "isDeleted": false,
+            "info": {
+                "title": "Appsus notes",
+                "txt": "",
+                "url": null,
+                "todos": [
+                    {
+                        "id": 0,
+                        "txt": "CRUD",
+                        "isChecked": true
+                    },
+                    {
+                        "id": 1,
+                        "txt": "note types: text, image, video, todos",
+                        "isChecked": true
+                    },
+                    {
+                        "id": 2,
+                        "txt": "Background color",
+                        "isChecked": true
+                    },
+                    {
+                        "id": 3,
+                        "txt": "Filter by type (URL pages)",
+                        "isChecked": true
+                    },
+                    {
+                        "id": 4,
+                        "txt": "Pinning a note",
+                        "isChecked": true
+                    },
+                    {
+                        "id": 5,
+                        "txt": "Sending a note to Appsus email",
+                        "isChecked": true
+                    },
+                    {
+                        "id": 6,
+                        "txt": "Drag and drop",
+                        "isChecked": false
+                    },
+                    {
+                        "id": 7,
+                        "txt": "More types: audio, canvas, map",
+                        "isChecked": false
+                    },
+                    {
+                        "id": 8,
+                        "txt": "Recording a note",
+                        "isChecked": true
+                    }
+                ]
+            },
+            "style": {
+                "backgroundColor": "#d7aefb"
+            }
+        }
     ]
 }
 

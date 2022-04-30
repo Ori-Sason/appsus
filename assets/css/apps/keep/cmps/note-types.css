@@ -30,6 +30,7 @@
 
 .note-types.text-note p{
     width: 100%;
+    word-wrap: break-word;
 }
 
 .note-types input[type="text"],

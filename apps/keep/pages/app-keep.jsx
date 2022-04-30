@@ -20,10 +20,10 @@ export class KeepApp extends React.Component {
             noteId: null
         }
     }
-    
+
     evOpenColorPicker
     evPickColor
-    
+
     componentDidMount() {
         this.evOpenColorPicker = eventBusService.on('notes-toggle-color', ({ ev, noteId }) => {
             this.setState({
@@ -53,13 +53,16 @@ export class KeepApp extends React.Component {
         this.setState({ notes: null })
     }
 
+    isLoadingFromEmail = false
+
     getMainBody = () => {
 
         const urlSrcPrm = new URLSearchParams(this.props.location.search)
         const mailId = urlSrcPrm.get('mailId')
 
-        if (mailId) {
+        if (mailId && !this.isLoadingFromEmail) {
             this.createNoteFromEmail(mailId)
+            this.isLoadingFromEmail = true
         }
 
         let { notes } = this.state
@@ -88,6 +91,7 @@ export class KeepApp extends React.Component {
 
     createNoteFromEmail = (mailId) => {
         notesService.addNoteFromMail(mailId).then(noteId => {
+            this.isLoadingFromEmail = false
             this.props.history.push(`/keep`)
             this.loadNotes()
         })
@@ -107,6 +111,8 @@ export class KeepApp extends React.Component {
     }
 
     render() {
+        if (this.isLoadingFromEmail || !this.state.notes) return <p>Loading...</p>
+        
         const { colorPicker } = this.state
 
         return <section className="app-keep main-layout">
