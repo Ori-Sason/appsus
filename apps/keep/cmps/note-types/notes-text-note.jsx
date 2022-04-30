@@ -37,11 +37,15 @@ export class TxtNote extends React.Component {
             <form onSubmit={this.onFormSubmit}>
                 <div className="backlog-container">
                     <div className={isPreview ? 'backlog' : ''}></div>
-                    <input className={`no-focus-visible ${isPreview && !title ? 'hide' : ''}`} type="text" name="title" placeholder="Title" value={title} onChange={this.onInputChange} />
-                    <input className={`no-focus-visible ${isPreview && !txt ? 'hide' : ''}`} type="text" name="txt" placeholder="Take a note..." value={txt} onChange={this.onInputChange} />
+                    {!isPreview && <input className="no-focus-visible" type="text" name="title" placeholder="Title" value={title} onChange={this.onInputChange} />}
+                    {!isPreview && <input className="no-focus-visible" type="text" name="txt" placeholder="Take a note..." value={txt} onChange={this.onInputChange} />}
+                    
+                    {isPreview && <p className="title">{title}</p>}
+                    {isPreview && <p className="txt">{txt}</p>}
+                    
                     {/* <textarea className={isPreview && !txt ? 'hide' : ''} name="txt" placeholder="Take a note..." value={txt} onChange={this.onInputChange} /> */}
                 </div>
-                <NoteBtns {...this.props} noteId={note.id}/>
+                <NoteBtns {...this.props} noteId={note.id} />
             </form>
         </section>
     }

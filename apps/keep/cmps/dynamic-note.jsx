@@ -74,7 +74,7 @@ export class DynamicNote extends React.Component {
 
         return <section className="dynamic-note" style={{ backgroundColor: style.backgroundColor}}>
             {!this.props.isCreate &&
-                <button type="button" className={`note-btn img-pin-${isPinned ? 'black' : 'empty'} clean-btn`}
+                <button title={isPinned? 'Unpin': 'Pin'} type="button" className={`note-btn img-pin-${isPinned ? 'black' : 'empty'} clean-btn`}
                     onClick={(ev) => this.onPinned(ev, noteId)}>
                 </button>
             }

@@ -28,7 +28,12 @@
     width: 100%;
 }
 
+.note-types.text-note p{
+    width: 100%;
+}
+
 .note-types input[type="text"],
+.note-types.text-note p,
 .note-types textarea {
     font-family: inherit;
     font-size: 1em;
@@ -43,7 +48,8 @@
     resize: none;
 } */
 
-.note-types input[name="title"] {
+.note-types input[name="title"],
+.note-types.text-note .title {
     font-size: 1.1em;
 }
 
