@@ -27,7 +27,9 @@ export class UserMsg extends React.Component {
         this.setState({ txt: null })
         this.clearTimeout()
     }
-
+    componentWillUnmount() {
+        this.clearTimeout()
+    }
     clearTimeout() {
         clearTimeout(this.timeoutId)
     }
