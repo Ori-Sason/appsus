@@ -18,25 +18,79 @@
 .app-header header .logo {
   height: 80px;
   margin-inline-start: 3.2px;
+  object-fit: cover;
 }
 
-.app-header header nav>* {
-  display: inline-block;
-  font-size: 1.5rem;
-  padding: 1em;
-  border-inline-end: 2px solid var(--brown-clr-800);
-}
 
-.app-header header nav>*:first-of-type {
-  border-inline-start: 2px solid var(--brown-clr-800);
-}
 
-.app-header header nav>*.active {
-  background-color: var(--brown-clr-500);
-  color: var(--brown-clr-100);
+.header-nav-links-btn{
+  background-image: url(../../img/hamburger.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-inline-end: 10px;
+  width: 22.8px;
+  height: 22.8px;
+  position: relative;
 }
+.header-nav-links-btn:hover{
+  background-color: rgba(128, 128, 128, 0.188);
+}
+.header-menu-links{
+  display: grid;
+  position: absolute;
+  right:0;
+  top: 2em;
+  z-index: 20;
+  justify-content: center;
+  width: 15em;
+  grid-template:  80px 80px/80px 80px 80px;
+  background-color: white;
+  box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
+  border-radius: .75em;
+  padding-bottom: 1em;
+}
+.header-menu-links>*{
+  
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-position: center;
+  position: relative;
+  
+}
+.header-menu-links>*:hover{
+  background-color: var(--primary-clr-200);
+  border-radius: .75em;
+}
+.nav-keep{
+  background-image:  url(../../img/keep.png);
 
-.app-header header nav>*:hover:not(.active) {
-  font-weight: bold;
-  box-shadow: 0 3px rgb(183, 89, 7);
 }
+.nav-book{
+  background-image:  url(../../img/book.png);
+  
+}
+.nav-about{
+  background-image:  url(../../img/team.png);
+  ;
+}
+.nav-home{
+ background-image:  url(../../img/home.png);
+ 
+}
+.nav-mail{
+  background-image:  url(../../img/gmail.png);
+}
+.header-menu-links>* span{
+  position: absolute;
+  bottom: 0;
+}
+/* 
+ {isMenu&&<div className="header-menu-links">
+          <NavLink className='nav-home' to="/" exact><span className="nav-home-span">Home</span></NavLink>
+          <NavLink className='nav-book' to="/book"><span className="nav-book-span">Books</span></NavLink>
+          <NavLink className='nav-keep' to="/keep"><span className="nav-keep-span">Keep</span></NavLink>
+          <NavLink className='nav-mail'to="/mail"><span className="nav-mail-span">Mail</span></NavLink>
+          <NavLink className='nav-about'to="/about"><span className="nav-about-span">About</span></NavLink>
+*/
