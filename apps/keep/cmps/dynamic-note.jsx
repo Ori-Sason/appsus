@@ -5,6 +5,8 @@ import { VidNote } from './note-types/notes-vid-note.jsx'
 import { TodoNote } from './note-types/notes-todos-note.jsx'
 import { VoiceNote } from './note-types/notes-voice-note.jsx'
 
+import { eventBusService } from '../../../services/event.bus.service.js'
+
 export class DynamicNote extends React.Component {
 
     state = {
@@ -25,21 +27,25 @@ export class DynamicNote extends React.Component {
     onReminder = (ev, noteId) => {
         ev.stopPropagation();
         /** LATER CHANGE TO DATETIME PICKER */
+        eventBusService.emit('user-msg', { txt: 'Reminder was on/off successfully', type: 'success' })
         notesService.reminder(noteId).then(this.updateAndClose)
     }
 
     onArchive = (ev, noteId) => {
         ev.stopPropagation();
+        eventBusService.emit('user-msg', { txt: 'Note was archived successfully', type: 'success' })
         notesService.archiveNote(noteId).then(this.updateAndClose)
     }
 
     onDelete = (ev, noteId) => {
         ev.stopPropagation();
+        eventBusService.emit('user-msg', { txt: 'Note was deleted successfully', type: 'success' })
         notesService.deleteNote(noteId).then(this.updateAndClose)
     }
 
     onDuplicate = (ev, noteId) => {
         ev.stopPropagation();
+        eventBusService.emit('user-msg', { txt: 'Note was duplicated successfully', type: 'success' })
         notesService.duplicateNote(noteId).then(this.updateAndClose)
 
     }
@@ -73,9 +79,9 @@ export class DynamicNote extends React.Component {
 
         const { id: noteId, isPinned, style } = this.state.note
 
-        return <section className="dynamic-note" style={{ backgroundColor: style.backgroundColor}}>
+        return <section className="dynamic-note" style={{ backgroundColor: style.backgroundColor }}>
             {!this.props.isCreate &&
-                <button title={isPinned? 'Unpin': 'Pin'} type="button" className={`note-btn img-pin-${isPinned ? 'black' : 'empty'} clean-btn`}
+                <button title={isPinned ? 'Unpin' : 'Pin'} type="button" className={`note-btn img-pin-${isPinned ? 'black' : 'empty'} clean-btn`}
                     onClick={(ev) => this.onPinned(ev, noteId)}>
                 </button>
             }
