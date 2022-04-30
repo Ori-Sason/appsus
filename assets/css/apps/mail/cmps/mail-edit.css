@@ -180,25 +180,3 @@ cursor: pointer;
 .fa-compress:before{
     content:'\f066'
 }
-/* 
-  return <form onSubmit={this.addNewMail} className="edit-mail">
-
-        <input    onChange={this.onChangeValue} placeHolder='To:?' name='to' type="email" value={to} className="mail-edit-to" />
-        <input    onChange={this.onChangeValue} placeHolder='Subject' name='subject' type="text" value={subject} className="mail-edit-subject" />
-        <textarea onChange={this.onChangeValue} placeHolder='Write here...' name="txt" id="" cols="100" rows="30"></textarea>
-        {/* <textarea onChange={this.onChangeValue} placeHolder='Write here...' name='txt' type="text" value={txt} className="mail-edit-txt" /> */
-        /* <button className="add-new-mail-btn">Send</button>
-        </form> */
-
-
-/*  <div className="add-btns">
-        <button className="add-new-mail-btn">Send</button>
-        <a href="" className="mail-add-img"></a>
-        <a href="" className="mail-add-note">note</a>
-        <a href="" className="mail-add-emoji">😎</a> */
-        /* 
-        <div className="mail-new-msg-header">
-                <h1 className="mail-new">New Message</h1>
-                <Link className="fa-solid fa fa-expand"></Link>
-                <Link className="mail-close">x</Link>
-            </div> */

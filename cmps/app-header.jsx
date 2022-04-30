@@ -1,18 +1,36 @@
 const { Link, NavLink } = ReactRouterDOM
 
-export function AppHeader() {
-  return (
-    <section className="app-header">
+export class AppHeader extends React.Component {
+
+  state={
+    isMenu:false
+  }
+
+  toggleMenu=()=>{
+  const {isMenu} =this.state
+  this.setState({isMenu:!isMenu})
+  }
+
+  render(){
+    const {isMenu} =this.state
+
+    return (
+      <section className="app-header">
       <header className="main-layout">
         <img className='logo' src="../assets/img/logo.png" alt="" />
-        <nav>
-          <NavLink to="/" exact>Home</NavLink>
-          <NavLink to="/book">Books</NavLink>
-          <NavLink to="/keep">Keep</NavLink>
-          <NavLink to="/mail">Mail</NavLink>
-          <NavLink to="/about">About</NavLink>
+        <nav onClick={this.toggleMenu} className={`header-nav-links-btn`}>
+          {isMenu&&<div className="header-menu-links">
+          <NavLink className='nav-home' to="/" exact><span className="nav-home-span">Home</span></NavLink>
+          <NavLink className='nav-book' to="/book"><span className="nav-book-span">Books</span></NavLink>
+          <NavLink className='nav-keep' to="/keep"><span className="nav-keep-span">Keep</span></NavLink>
+          <NavLink className='nav-mail'to="/mail"><span className="nav-mail-span">Mail</span></NavLink>
+          <NavLink className='nav-about'to="/about"><span className="nav-about-span">About</span></NavLink>
+          </div>}
+        
         </nav>
       </header>
     </section>
   )
 }
+}
+
