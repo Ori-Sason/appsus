@@ -1,13 +1,19 @@
 .user-msg {
-    padding: 2em 2em 1.2em;
+    padding:  1em 1.5em 1em 1em;
     position: fixed;
-    top: 25%;
-    right: 20px;
-    color: var(--brown-clr-100);
+    bottom: 1.5em;
+    left: 1.5em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap:10px;
+    font-size: .875rem;
+    letter-spacing: .2px;
     border: 1px solid var(--brown-clr-100);
     border-radius: 6px;
-    background-color: var(--brown-clr-700);
+    background-color: rgb(32 33 36);
     box-shadow: 0 0 5px black;
+    color: white;
 }
 
 .user-msg.danger {
@@ -15,7 +21,18 @@
 }
 
 .user-msg .clean-btn {
-    position: absolute;
-    top: 10%;
-    left: 10px;
+  
+    width: 1.6em;
+    height: 1.6em;
+    border-radius: 50%;
+    font-weight: 100 !;
+    font-size: 1.4rem;
+    color:rgb(103, 100, 100)
+}
+.user-msg .clean-btn:hover{
+    color:rgb(103, 100, 100)
+}
+
+.fa-times::before{
+    content: '\f00d';
 }

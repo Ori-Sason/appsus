@@ -15,10 +15,12 @@ export class UserMsg extends React.Component {
             if (this.timeoutId) this.clearTimeout()
             this.timeoutId = setTimeout(this.onCloseMsg, 3000)
         })
+        
     }
 
     componentDidUpdate() {
         this.removeEvent()
+        
     }
 
     onCloseMsg = () => {
@@ -34,7 +36,7 @@ export class UserMsg extends React.Component {
         const { txt, type } = this.state
         if (!txt) return <React.Fragment></React.Fragment>
         return <section className={`user-msg ${type}`}>
-            <button className='clean-btn' onClick={this.onCloseMsg}>X</button>
+            <button className='clean-btn fa fa-times' onClick={this.onCloseMsg}></button>
             <p>{txt}</p>
         </section>
     }

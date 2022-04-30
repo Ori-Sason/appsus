@@ -163,7 +163,7 @@ cursor: pointer;
     opacity: 1;
     background-color: rgba(255, 255, 255, 0.116);
 }
-.fa-expand, .fa-compress{
+.fa-expand, .fa-compress {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -180,3 +180,4 @@ cursor: pointer;
 .fa-compress:before{
     content:'\f066'
 }
+

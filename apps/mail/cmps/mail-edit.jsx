@@ -97,7 +97,6 @@ export class MaleEdit extends React.Component {
                         <div className="mail-add-img"></div>
                         <input type="file" onChange={this.onSelectImg} className='im-inputfkfk' accept="image/png, image/gif, image/jpeg" />
                     </div>
-                    <a href="" className="mail-add-note">note</a>
                     <a href="" className="mail-add-emoji">😎</a>
                 </div>
             </form>
