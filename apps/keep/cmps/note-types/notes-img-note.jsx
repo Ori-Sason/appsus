@@ -38,7 +38,7 @@ export class ImgNote extends React.Component {
                 <div className='backlog-container'>
                     <div className={isPreview ? 'backlog' : ''}></div>
                     <img src={url} />
-                    <input className={`no-focus-visible ${isPreview && !title ? 'hide' : ''}`} type="text" name="title" placeholder="Title" value={title} onChange={this.onInputChange} />
+                    <input className="no-focus-visible" type="text" name="title" placeholder="Title" value={title} onChange={this.onInputChange} autoComplete="off"/>
                 </div>
                 <NoteBtns {...this.props} noteId={note.id} />
             </form>

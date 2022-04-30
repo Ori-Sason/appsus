@@ -8,13 +8,20 @@ export class AddNote extends React.Component {
         isOpen: false,
         type: null,
         url: null,
-        todos: []
+        todos: [],
+        isYoutube: false
     }
 
     /** FIX - IN onToggle AND onSelectImg MABY I DONT NEED TO USE prevState */
 
     onToggleOpen = (type) => {
-        this.setState((prevState) => ({ ...prevState, isOpen: !prevState.isOpen, type, src: null }))
+        this.setState((prevState) => ({
+            ...prevState,
+            isOpen: !prevState.isOpen,
+            type: type === 'note-vid' ? 'note-txt' : type,
+            src: null,
+            isYoutube: type === 'note-vid'
+        }))
     }
 
     onSelectTodo = () => {
@@ -41,20 +48,25 @@ export class AddNote extends React.Component {
         loadImageFromInput(ev, renderImg)
     }
 
-    onYoutube = () => {
-        const url = prompt('Please enter youtube video URL')
+
+    onYoutubeSubmit = (info) => {
+        const url = info.txt
         if (!url || !url.includes('youtube.com/watch?v=')) return
         const params = url.split('?')[1]
         const searchParams = new URLSearchParams(params)
         const vidId = searchParams.get('v')
         if (!vidId) return
 
-        if (url) this.setState((prevState) => ({ ...prevState, type: 'note-vid', isOpen: true, url: `https://www.youtube.com/embed/${vidId}` }))
+        console.log(vidId)
 
+        info.url = `https://www.youtube.com/embed/${vidId}`
+
+        notesService.createNote('note-vid', info)
+            .then(this.props.onClose).then(this.props.onUpdate)
     }
 
     render() {
-        const { isOpen, type, url } = this.state
+        const { isOpen, type, url, isYoutube } = this.state
 
         return <section className='add-note'>
             {!isOpen &&
@@ -65,12 +77,18 @@ export class AddNote extends React.Component {
                         <button className="note-btn img-img-btn clean-btn"></button>
                         <input type="file" onChange={this.onSelectImg} accept="image/png, image/gif, image/jpeg" />
                     </div>
-                    <button title="Youtube" className="note-btn img-youtube clean-btn" onClick={this.onYoutube}></button>
+                    <button title="Youtube" className="note-btn img-youtube clean-btn" onClick={() => this.onToggleOpen('note-vid')}></button>
                 </React.Fragment>
             }
 
             {isOpen && <React.Fragment>
-                <DynamicNote note={{ type: type, info: { title: '', txt: '', url, todos: [] }, style: { backgroundColor: 'unset' } }} onClose={() => this.onToggleOpen(null)} isCreate={true} onUpdate={this.props.onUpdate} />
+                <DynamicNote note={{
+                    type: type, info: { title: '', txt: '', url, todos: [] },
+                    style: { backgroundColor: 'none' }
+                }}
+                    onClose={() => this.onToggleOpen(null)} isCreate={true}
+                    isYoutube={isYoutube}
+                    onUpdate={isYoutube ? this.onYoutubeSubmit : this.props.onUpdate} />
             </React.Fragment>}
         </section>
     }
