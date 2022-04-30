@@ -181,3 +181,14 @@ cursor: pointer;
     content:'\f066'
 }
 
+.edit-mail input:-webkit-autofill{
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+.edit-mail input:-webkit-autofill:hover{
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+
+}
+.edit-mail input:-webkit-autofill:focus{
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+
+}

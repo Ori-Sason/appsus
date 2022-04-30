@@ -1,5 +1,6 @@
 import { mailService } from '../services/mail.service.js'
 import { notesService } from '../../keep/services/notes.service.js'
+import { eventBusService } from '../../../services/event.bus.service.js'
 const { Link } = ReactRouterDOM
 export class MaleEdit extends React.Component {
 
@@ -43,9 +44,10 @@ export class MaleEdit extends React.Component {
         ev.preventDefault()
         const { txt, to } = this.state
         if (txt && to) {
+            eventBusService.emit('user-msg',{ txt: 'Message was added successfully', type: 'success' } )
             console.log(this.state)
             mailService.addMail(this.state)
-            this.props.history.push('/mail')
+            this.props.history.push('/mail/inbox')
         } else {
         }
     }

@@ -17,7 +17,9 @@ export class AppHeader extends React.Component {
     return (
       <section className="app-header">
       <header className="main-layout">
+        <Link to="/">
         <img className='logo' src="../assets/img/logo.png" alt="" />
+        </Link>
         <nav onClick={this.toggleMenu} className={`header-nav-links-btn ${isMenu?'active':''}`}>
           {isMenu&&<div className="header-menu-links">
           <NavLink className='nav-home' to="/" exact><span className="nav-home-span">Home</span></NavLink>

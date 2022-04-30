@@ -92,6 +92,9 @@ class _MailPreview extends React.Component {
               onClick={(ev) => this.toggleRead(ev, false)}
               className={`fa fa-envelope-${mail.isRead ? 'open' : 'close'}`}
             ></button>
+            <button>
+            <Link title='send as note' to={`/keep/list/?mailId=${mail.id}`} className="fa fa-sticky-note"></Link>
+            </button>
           </div>
         )}
       </div>
