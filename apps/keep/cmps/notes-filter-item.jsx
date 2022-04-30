@@ -6,7 +6,7 @@ export function NotesFilterItem({ name }) {
         return encodeURI(str.toLowerCase())
     }
 
-    return <section className="notes-filter-item">
+    return <section className="notes-filter-item" title={name}>
         <NavLink to={`/keep/${convertStrToURI(name)}`} exact={name === 'Notes'}>
             <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24">
                 <path d={svgPath[name.toLowerCase()]} />
