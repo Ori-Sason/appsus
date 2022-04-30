@@ -83,3 +83,5 @@
 .note-btn.img-youtube {
     background-image: url(../../../../img/keep/youtube.svg);
 }
+
+/* There is Media Query in Edit notes (since it is related only to that state) */

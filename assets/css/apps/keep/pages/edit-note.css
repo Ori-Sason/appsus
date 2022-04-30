@@ -9,7 +9,7 @@
 
 .edit-note .dynamic-note {
     position: fixed;
-    width: 50%;
+    width: 90%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -18,9 +18,19 @@
     overflow: hidden;
 }
 
-/* MOBILE ONLY */
-@media screen and (max-width: 920px) {
+@media screen and (min-width: 920px) {
     .edit-note .dynamic-note {
-        width: 90%;
+        width: 50%;
+    }
+}
+
+/* MOBILE ONLY */
+
+@media screen and (max-width: 500px) {
+    .edit-note .dynamic-note .note-btns {
+        display: flex;
+        max-width: 100%;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 }
