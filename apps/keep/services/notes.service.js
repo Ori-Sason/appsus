@@ -1,4 +1,5 @@
 import { storageService } from '../../../services/storage.service.js'
+import { mailService } from '../../mail/services/mail.service.js'
 
 const NOTES_STORAGE_KEY = 'notesDB'
 
@@ -14,6 +15,7 @@ export const notesService = {
     reminder,
     archiveNote,
     changeBgColor,
+    addNoteFromMail,
 }
 
 const note = {
@@ -51,8 +53,12 @@ function createNote(type, info) {
         const note = {
             id: notes === null || notes.length === 0 ? 0 : notes[notes.length - 1].id + 1, //** FIX - NOT NEED NULL */
             type,
+            reminder: false,
             isPinned: false,
+            isArchived: false,
+            isDeleted: false,
             info,
+            style: { backgroundColor: 'none' }
         }
         notes.push(note)
         _saveToStorage(notes)
@@ -137,6 +143,28 @@ function changeBgColor(noteId, color) {
         _saveToStorage(notes)
         return notes
     })
+}
+
+function addNoteFromMail(mailId) {
+    if (!mailId) return Promise.resolve(null)
+    const mail = mailService.getMailById(mailId)
+    if (!mail) return Promise.resolve(null)
+
+    let { noteType, img } = mail
+    
+    if (noteType === 'note-todos') noteType = 'note-txt'
+    else if (!noteType) {
+        if (img) noteType = 'note-img'
+        else noteType = 'note-txt'
+    }
+
+    const info = {
+        title: mail.subject,
+        txt: mail.body,
+        url: img ? img : ''
+    }
+
+    return createNote(noteType, info).then(note => note.id)
 }
 
 function _createNotes() {

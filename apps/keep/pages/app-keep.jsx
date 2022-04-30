@@ -51,6 +51,14 @@ export class KeepApp extends React.Component {
     }
 
     getMainBody = () => {
+
+        const urlSrcPrm = new URLSearchParams(this.props.location.search)
+        const mailId = urlSrcPrm.get('mailId')
+
+        if (mailId) {
+            this.createNoteFromEmail(mailId)
+        }
+
         let { notes } = this.state
         if (!notes) return <p>Loading...</p>
 
@@ -75,6 +83,13 @@ export class KeepApp extends React.Component {
         return body.map((el, idx) => <React.Fragment key={idx}>{el}</React.Fragment>)
     }
 
+    createNoteFromEmail = (mailId) => {
+        notesService.addNoteFromMail(mailId).then(noteId => {
+            this.props.history.push(`/keep`)
+            this.loadNotes()
+        })
+    }
+
     notesToDisplay = (notes, ctg) => {
 
         if (ctg === 'bin') return notes.filter(note => note.isDeleted)
@@ -87,7 +102,7 @@ export class KeepApp extends React.Component {
         const { colorPicker } = this.state
 
         return <section className="app-keep main-layout">
-            <NotesFilter />
+            < NotesFilter />
             <AddNote onUpdate={this.loadNotes} />
             <main className='note-main-body'>
                 {this.getMainBody()}
@@ -104,6 +119,6 @@ export class KeepApp extends React.Component {
                     <Route path='/keep/list/:noteId?' component={({ match, history }) => <EditNote match={match} history={history} onUpdate={this.loadNotes} onReset={this.resetNotes} />} />
                 </Switch>
             </section>
-        </section>
+        </section >
     }
 }
