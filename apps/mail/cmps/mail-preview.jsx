@@ -27,7 +27,6 @@ class _MailPreview extends React.Component {
       () => {
         this.onUpdateMale()
         if (this.props.location.pathname === '/mail/starred') {
-          console.log('hry')
           this.props.loadMails()
         }
       }
@@ -60,6 +59,10 @@ class _MailPreview extends React.Component {
     const { mail, isHover } = this.state
     if (!mail) return <React.Fragment></React.Fragment>
     const sentAt = utilService.formatAMPM(mail.sentAt)
+    let drafterdAt;
+    if(mail.draftedAt){
+       drafterdAt =  utilService.formatAMPM(mail.draftedAt)
+    }
     return (
 
       <div
@@ -78,7 +81,7 @@ class _MailPreview extends React.Component {
         </a>
         <h1 className='mail-from'>{mail.from.userName}</h1>
         <p className="mail-subject txt-content"><strong>{mail.subject}</strong> - {mail.body}</p>
-        {!isHover && <div className="preview-time">{sentAt}</div>}
+        {!isHover && <div className="preview-time">{mail.draftedAt?drafterdAt:sentAt}</div>}
         {isHover && (
           <div className="mail-prev-btns">
             <button className="fa fa-archive"></button>

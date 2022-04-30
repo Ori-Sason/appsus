@@ -1,7 +1,10 @@
 .app-header {
   background-color: var(--brown-clr-200);
   box-shadow: 0 3px var(--brown-clr-800);
-  margin: 5px 0 16px;
+  margin:11px 8px 11px
+ 
+  
+
 }
 
 .app-header header {
@@ -24,7 +27,7 @@
 
 
 .header-nav-links-btn{
-  background-image: url(../../img/hamburger.png);
+  background-image: url(../../img/hamburger-nav/hamburger.png);
   background-repeat: no-repeat;
   background-position: center;
   margin-inline-end: 20px;
@@ -69,23 +72,23 @@
   border-radius: .75em;
 }
 .nav-keep{
-  background-image:  url(../../img/keep.png);
+  background-image:  url(../../img/hamburger-nav/keep.png);
 
 }
 .nav-book{
-  background-image:  url(../../img/book.png);
+  background-image:  url(../../img/hamburger-nav/book.png);
   
 }
 .nav-about{
-  background-image:  url(../../img/team.png);
+  background-image:  url(../../img/hamburger-nav/team.png);
   ;
 }
 .nav-home{
- background-image:  url(../../img/home.png);
+ background-image:  url(../../img/hamburger-nav/home.png);
  
 }
 .nav-mail{
-  background-image:  url(../../img/gmail.png);
+  background-image:  url(../../img/hamburger-nav/gmail.png);
 }
 .header-menu-links>* span{
   position: absolute;
