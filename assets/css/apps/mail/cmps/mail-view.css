@@ -40,6 +40,9 @@
 .mail-view .mail-user-added-img-view {
     /* width: 400px;
     */
+    position: absolute;
+    right: 1em;
+    bottom: 1em;
     max-width: 400px;
     max-height: 200px;
 }

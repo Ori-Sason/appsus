@@ -48,7 +48,7 @@ class _MailPreview extends React.Component {
   deleteMail = (ev, mailId) => {
     ev.stopPropagation()
     this.setState({ mail: null }, () => {
-      mailService.deleteMailById(mailId).then(() => this.props.loadMails()).then(()=>{
+      mailService.deleteMail(mailId).then(() => this.props.loadMails()).then(()=>{
         eventBusService.emit('user-msg', { txt: 'Message was deleted successfully', type: 'success' })
         eventBusService.emit('unread', 'unreadclickd')})
     })
