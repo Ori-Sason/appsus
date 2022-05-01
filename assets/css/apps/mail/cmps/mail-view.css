@@ -14,7 +14,12 @@
 .mail-view .star.yellow {
     color: rgba(244, 201, 75, 1);
 }
-
+.mail-view pre{
+    font-size: 0.875rem;
+    /* opacity: 0.6; */
+    font-family: Roboto;
+    padding-inline-start: 1.9px;
+}
 .mail-view .star {
     display: flex;
     align-items: center;
@@ -25,6 +30,13 @@
     margin-inline-start: 10px;
 }
 
+.edit-mail .mail-user-added-img {
+    position: absolute;
+    max-width: 300px;
+    bottom: 1em;
+    right: 1em;
+    max-height: 300px;
+}
 .mail-view .mail-user-added-img-view {
     /* width: 400px;
     */

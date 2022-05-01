@@ -2,12 +2,9 @@
     grid-area: search;
     display: flex;
     justify-content: center;
-    align-items: center;
-    margin: auto;
-    justify-self: center;
-    max-width: 17.35em;
+    max-width: 26.35em;
     position: relative;
-
+    margin-block-start: 1.2em;
 
 }
 
@@ -15,7 +12,7 @@
     background-color: var(--primary-clr-200);
     border: none;
     height: 40px;
-    width: 31.25em;
+    width: 100%;
     border-radius: 0.4rem;
     padding-inline-start: 1rem;
 }
@@ -79,14 +76,14 @@
 
 @media (min-width:540px) {
     .search-filter {
-        max-width: 31.25em;
+        max-width: 30.25em;
 
     }
 
-    .search-filter-opts {
+    /* .search-filter-opts {
         cursor: pointer;
         position: absolute;
         right: -0.72em;
         width: 413px;
-    }
+    } */
 }

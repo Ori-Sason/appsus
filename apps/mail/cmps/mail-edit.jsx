@@ -3,7 +3,7 @@ import { notesService } from '../../keep/services/notes.service.js'
 import { eventBusService } from '../../../services/event.bus.service.js'
 import { utilService } from '../../../services/util.service.js'
 const { Link } = ReactRouterDOM
-export class MaleEdit extends React.Component {
+export class MailEdit extends React.Component {
 
     state = {
         txt: '',
@@ -58,7 +58,7 @@ export class MaleEdit extends React.Component {
         ev.preventDefault()
         const { txt, to } = this.state
         if (txt && to) {
-            eventBusService.emit('user-msg', { txt: 'Message was added successfully', type: 'success' })
+            eventBusService.emit('user-msg', { txt: 'Message was sent successfully', type: 'success' })
             mailService.addMail(this.state)
             this.props.history.push('/mail/inbox')
         } else {
@@ -104,7 +104,9 @@ export class MaleEdit extends React.Component {
                 </div>
                 <input onChange={this.onChangeValue} placeholder='To:' autoComplete='none' title='Recipient' name='to' type="email" value={to} className="mail-edit-to" />
                 <input onChange={this.onChangeValue} placeholder='Subject:' autoComplete='none' title='Subject' name='subject' type="text" value={subject} className="mail-edit-subject" />
-                <textarea onChange={this.onChangeValue} placeholder='Write here...' autoComplete='none' value={txt} name="txt" id="" cols="50" rows="30"></textarea>
+                <textarea onChange={this.onChangeValue} placeholder='Write here...' autoComplete='none' value={txt} name="txt" id="" cols="50" rows="30">
+
+                </textarea>
                 {noteType !== 'note-vid' && <img className='mail-user-added-img' src={url} />}
                 {noteType === 'note-vid' && <iframe height='800' className='mail-user-added-img' src={url} />}
                 <div className="add-btns">

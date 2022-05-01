@@ -13,6 +13,9 @@
     max-height: 400px;
     font-size: .75rem;
 }
+.mail-list .mail-preview:nth-child(2) {
+    border-top: 1.8px solid var(--primary-clr-200);
+}
 .mail-preview.read {
     background-color: var(--primary-clr-300)
 }
@@ -54,9 +57,10 @@
 .preview-time {
     white-space: nowrap;
     background-color: var(--primary-clr-100);
-    margin-inline-end: 7px;
     height: 30px;
     background-color: transparent;
+    display: flex;
+    align-items: center;
 }
 
 .mail-from.read{

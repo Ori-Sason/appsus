@@ -8,3 +8,7 @@
 .no-focus-visible:focus-visible {
   outline: none;
 }
+
+.debug *{
+  outline:1px red solid ;
+}

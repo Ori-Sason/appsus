@@ -22,7 +22,7 @@ export function MaiLView(props) {
         <a className={`star ${mail.isStar ? 'yellow' : ''}`}>{mail.isStar?fullStar:emptyStar}</a>
         </div>
       </div>
-        <p  className={`mail-txt ${mail.noteType==='note-todos'?'todo':''}`}>{mail.body}</p>
+        <pre  className={`mail-txt ${mail.noteType==='note-todos'?'todo':''}`}>{mail.body}</pre>
         {mail.noteType!=='note-vid'&&<img className='mail-user-added-img-view' src={mail.img}/>}
         {mail.noteType==='note-vid'&&<iframe height='800' className='mail-user-added-img-view' src={mail.img}/>}
     </div>

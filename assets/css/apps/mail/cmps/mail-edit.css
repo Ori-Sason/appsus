@@ -110,6 +110,8 @@ input[type="file"]::-webkit-file-upload-button {
     letter-spacing: .25px;
     height: 36px;
     color: white;
+    margin-block-start:2px;
+
     cursor: pointer;
     margin-inline-start: 15px;
     opacity: 1;
@@ -152,7 +154,6 @@ input[type="file"]::-webkit-file-upload-button {
 }
 
 .mail-new {
-
     letter-spacing: .2px;
     font-weight: 500;
     color: white;

@@ -14,8 +14,6 @@ export const mailService = {
   addMail,
   getUnreadEmails,
   getMailsCount,
-  // addDraft,
-  // deleteDraft
 }
 
 
@@ -480,12 +478,10 @@ function getMailsCount() {
     return new Promise(resolve=>{
       query(null).then((mailsFromQuery)=>{
         let inboxUnreadNew = mailsFromQuery.filter((mail) => mail.to === loggedinUser.email && !mail.isDraft && !mail.isDeleted)
-       console.log(inboxUnreadNew.length)
         return resolve(inboxUnreadNew.length)
       })
     })
   }
-  console.log(mails)
   let inboxUnread = mails.filter((mail) => mail.to === loggedinUser.email && !mail.isDraft && !mail.isDeleted)
   return Promise.resolve(inboxUnread.length)
 }

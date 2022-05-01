@@ -6,7 +6,7 @@
     background-color: rgb(254, 255, 254);
    flex-grow: 4;
    overflow-y: auto;
-   max-height: 60vh;
+   height: 430px;
    letter-spacing: .2px;
 }
 
