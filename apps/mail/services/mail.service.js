@@ -3,19 +3,18 @@ import { utilService } from '../../../services/util.service.js'
 
 
 const MAIL_STORAGE_KEY = 'mailsDB'
-const loggedinUser = { email: 'user@appsus.com', fullname: 'Mahatma Appsus' }
-let firstMail
+const loggedinUser = { email: 'user@appsus.com', fullname: 'Mahatma Appsus',userImg:'assets/img/mail/user.jpg' }
+
 
 export const mailService = {
   query,
   getMailById,
-  deleteMailById,
+  deleteMail,
   updateMail,
   addMail,
   getUnreadEmails,
   getMailsCount,
 }
-
 
 
 
@@ -75,7 +74,7 @@ function query(filterBy) {
         mail.subject.toLowerCase().includes(filterBy.txt.toLowerCase())
     )
   }
-  firstMail = mails
+
   return Promise.resolve(mails)
 }
 function getUnreadEmails() {
@@ -110,7 +109,8 @@ function addMail(mailData) {
     from: {
       mail: loggedinUser.email,
       userName: loggedinUser.fullname,
-      imgSrc: '//ssl.gstatic.com/ui/v1/icons/mail/profile_mask2.png'
+      imgSrc: loggedinUser.userImg
+
     },
   }
   mails = [newMail, ...mails]
@@ -132,7 +132,7 @@ function getMailById(mailId) {
   if (!mail) return null
   return mail
 }
-function deleteMailById(mailId) {
+function deleteMail(mailId) {
   let mails = _loadFromStorage()
 
   let mailToDelete = getMailById(mailId)
@@ -162,13 +162,14 @@ function _createMails() {
       from: {
         mail: loggedinUser.email,
         userName: loggedinUser.fullname,
-        imgSrc: 'assets/img/mail/noimage.jpg'
+        imgSrc: loggedinUser.userImg
+
       },
     },
     {
       id: utilService.makeId(),
       subject: 'Its been to long mate .... !',
-      body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident deserunt ab quos placeat ut doloribus doloremque incidunt maxime atque animi, magni expedita quibusdam quas commodi tenetur, rerum autem accusamus quidem.',
+      body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.\n Provident deserunt ab quos placeat ut doloribus doloremque \nincidunt maxime atque animi, magni expedita quibusdam quas\n commodi tenetur, rerum autem accusamus quidem.',
       isStar: false,
       isRead: false,
       isDraft: false,
@@ -183,8 +184,8 @@ function _createMails() {
     },
     {
       id: utilService.makeId(),
-      subject: 'Miss you!',
-      body: 'Would love to catch up sometimes',
+      subject: 'Climbing The Everst',
+      body: 'We should try to climb the everst , its surley easy! \n wating for your reply',
       isStar: false,
       isRead: false,
       isDraft: false,
@@ -194,13 +195,14 @@ function _createMails() {
       from: {
         mail: loggedinUser.email,
         userName: loggedinUser.fullname,
-        imgSrc: 'assets/img/mail/noimage.jpg'
+        imgSrc: loggedinUser.userImg
+
       },
     },
     {
       id: utilService.makeId(),
-      subject: 'Miss you!',
-      body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eget lorem fermentum tellus mattis elementum laoreet at sem. Donec ornare sem in ex dapibus mattis. Pellentesque in vestibulum felis. Curabitur posuere risus sit amet elementum gravida. Mauris ut ipsum sit amet erat blandit consequat malesuada et ligula. Nulla facilisi. Morbi tincidunt dignissim lacus, nec placerat massa fermentum in. Curabitur posuere posuere sagittis. Morbi accumsan massa erat, nec finibus magna dignissim ut. Fusce iaculis lorem accumsan, viverra nulla non, rutrum neque. Proin in tortor et nisi accumsan mollis. Sed laoreet in ligula id lacinia. Cras iaculis nisi nec iaculis iaculis. Vestibulum vulputate ullamcorper velit in venenatis.',
+      subject: 'Keeping on track',
+      body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n Duis eget lorem fermentum tellus mattis elementum laoreet at sem.\n Donec ornare sem in ex dapibus mattis.\n Pellentesque in vestibulum felis.\n Curabitur posuere risus sit amet elementum gravida. \nMauris ut ipsum sit amet erat blandit consequat malesuada et ligula.\n Nulla facilisi. Morbi tincidunt dignissim lacus, nec placerat massa fermentum in. \nCurabitur posuere posuere sagittis. \nMorbi accumsan massa erat, nec finibus magna dignissim ut.\n Fusce iaculis lorem accumsan, viverra nulla non, rutrum neque. \nProin in tortor et nisi accumsan mollis. Sed laoreet in ligula id lacinia. Cras iaculis nisi nec iaculis iaculis. \nVestibulum vulputate ullamcorper velit in venenatis.',
       isStar: false,
       isRead: false,
       isDraft: false,
@@ -211,13 +213,14 @@ function _createMails() {
       {
         mail: 'mAharoni@appsus.com',
         userName: 'Michael Aharoni',
-        imgSrc: 'assets/img/mail/noimage.jpg'
+        imgSrc: loggedinUser.userImg
+
       },
     },
     {
       id: utilService.makeId(),
       subject: 'Are you ready? ',
-      body: 'Nunc turpis tellus, tempor ac orci gravida, iaculis lacinia elit. In bibendum nisi a lacus ultrices, et facilisis leo malesuada. Donec at lorem sit amet lacus lobortis eleifend. Suspendisse ullamcorper purus orci. In quis imperdiet magna. Duis fermentum malesuada velit, in fermentum metus mollis eu. Pellentesque risus sapien, pretium quis enim eget, imperdiet sollicitudin dui. Proin pharetra, risus id volutpat vulputate, risus massa maximus neque, ut pulvinar nisl magna eu sem. Praesent non est sit amet nibh dignissim gravida sit amet id metus. Vestibulum luctus, sapien id vulputate sollicitudin, neque magna suscipit elit, luctus euismod nibh lectus non felis. Etiam mollis eu tellus vel ullamcorper. In eu nulla quis quam ullamcorper hendrerit.',
+      body: 'Nunc turpis tellus, tempor ac orci gravida, iaculis lacinia elit. \nIn bibendum nisi a lacus ultrices, et facilisis leo malesuada. Donec at lorem sit amet lacus lobortis eleifend.\n Suspendisse ullamcorper purus orci. In quis imperdiet magna.\n Duis fermentum malesuada velit, in fermentum metus mollis eu. \nPellentesque risus sapien, pretium quis enim eget, imperdiet sollicitudin dui.\n Proin pharetra, risus id volutpat vulputate, risus massa maximus neque, ut pulvinar nisl magna eu sem.\n Praesent non est sit amet nibh dignissim gravida sit amet id metus. \nVestibulum luctus, sapien id vulputate sollicitudin, neque magna suscipit elit, luctus euismod nibh lectus non felis. \nEtiam mollis eu tellus vel ullamcorper. In eu nulla quis quam ullamcorper hendrerit.',
       isStar: false,
       isRead: false,
       isDraft: false,
@@ -227,13 +230,14 @@ function _createMails() {
       from: {
         mail: loggedinUser.email,
         userName: loggedinUser.fullname,
-        imgSrc: 'assets/img/mail/noimage.jpg'
+        imgSrc: loggedinUser.userImg
+
       },
     },
     {
       id: utilService.makeId(),
-      subject: 'Miss you!',
-      body: 'Nunc turpis tellus, tempor ac orci gravida, iaculis lacinia elit. In bibendum nisi a lacus ultrices, et facilisis leo malesuada. Donec at lorem sit amet lacus lobortis eleifend. Suspendisse ullamcorper purus orci. In quis imperdiet magna. Duis fermentum malesuada velit, in fermentum metus mollis eu. Pellentesque risus sapien, pretium quis enim eget, imperdiet sollicitudin dui. Proin pharetra, risus id volutpat vulputate, risus massa maximus neque, ut pulvinar nisl magna eu sem. Praesent non est sit amet nibh dignissim gravida sit amet id metus. Vestibulum luctus, sapien id vulputate sollicitudin, neque magna suscipit elit, luctus euismod nibh lectus non felis. Etiam mollis eu tellus vel ullamcorper. In eu nulla quis quam ullamcorper hendrerit.',
+      subject: 'Did you forget novygod?',
+      body: 'Nunc turpis tellus, tempor ac orci gravida, iaculis lacinia elit. \nIn bibendum nisi a lacus ultrices, et facilisis leo malesuada. \nDonec at lorem sit amet lacus lobortis eleifend. Suspendisse ullamcorper purus orci.\n In quis imperdiet magna. Duis fermentum malesuada velit, in fermentum metus mollis eu. \nPellentesque risus sapien, pretium quis enim eget, imperdiet sollicitudin dui. Proin pharetra, risus id volutpat vulputate, risus massa maximus neque, ut pulvinar nisl magna eu sem.\n Praesent non est sit amet nibh dignissim gravida sit amet id metus. Vestibulum luctus, sapien id vulputate sollicitudin, neque magna suscipit elit, luctus euismod nibh lectus non felis. \nEtiam mollis eu tellus vel ullamcorper. In eu nulla quis quam ullamcorper hendrerit.',
       isStar: false,
       isRead: false,
       isDraft: false,
@@ -243,13 +247,14 @@ function _createMails() {
       from: {
         mail: loggedinUser.email,
         userName: loggedinUser.fullname,
-        imgSrc: 'assets/img/mail/noimage.jpg'
+        imgSrc: loggedinUser.userImg
+
       },
     },
     {
       id: utilService.makeId(),
-      subject: 'Miss you!',
-      body: 'Would love to catch qwewqgrefddsup sometimes',
+      subject: 'Love of my life',
+      body: 'Cant wait to see you when you come back... XX ',
       isStar: false,
       isRead: false,
       isDraft: false,
@@ -265,8 +270,8 @@ function _createMails() {
     },
     {
       id: utilService.makeId(),
-      subject: 'Miss you!',
-      body: 'Would love to catch up sometimes',
+      subject: 'I completed the assigment ',
+      body: 'Fond one than esteems regular roof cause put concealed do unable hand horrible period depending.\n Resembled ignorant room brother compliment hour arranging farther gave rich however our demesne indulgence mistaken.\n Woody hopes forty this fat than lasted on pure.\n General known mile trees dependent speedily sir men contented witty itself tall. \nAmple cannot formal another felt existence fine delight his arranging horses. ',
       isStar: false,
       isRead: false,
       isDraft: false,
@@ -276,13 +281,14 @@ function _createMails() {
       from: {
         mail: loggedinUser.email,
         userName: loggedinUser.fullname,
-        imgSrc: 'assets/img/mail/noimage.jpg'
+        imgSrc: loggedinUser.userImg
+
       },
     },
     {
       id: utilService.makeId(),
-      subject: 'Miss you!',
-      body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, consequatur libero aliquid minima sapiente delectus modi amet odio nam sequi deserunt voluptate ipsam harum impedit ullam eveniet quos magni aliquam?',
+      subject: 'no subject',
+      body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.\n Expedita, consequatur libero aliquid minima sapiente delectus modi amet odio nam sequi deserunt voluptate ipsam harum impedit ullam eveniet quos magni aliquam?',
       isStar: false,
       isRead: false,
       isDraft: false,
@@ -290,15 +296,15 @@ function _createMails() {
       sentAt: Date.now()*Math.random(),
       to: 'user@appsus.com',
       from: {
-        mail: 'randomPerson@nomail.notcom',
-        userName: 'Rand Randomiyahu',
-        imgSrc: 'assets/img/mail/noimage.jpg'
+        mail: 'albertdera88@gmail.com',
+        userName: 'Albert Dera',
+        imgSrc: 'assets/img/mail/albert-dera.jpg'
 
       },
     },
     {
       id: utilService.makeId(),
-      subject: 'Miss you!',
+      subject: 'Dear Momo',
       body: 'Would love to catch up sometimes',
       isStar: false,
       isRead: false,
@@ -309,13 +315,14 @@ function _createMails() {
       from: {
         mail: loggedinUser.email,
         userName: loggedinUser.fullname,
-        imgSrc: 'assets/img/mail/noimage.jpg'
+        imgSrc: loggedinUser.userImg
+
       },
     },
     {
       id: utilService.makeId(),
-      subject: 'Miss you!',
-      body: 'Would love to catch up sometimes',
+      subject: 'You still didnt reply about...',
+      body: 'Properly old tolerably otherwise gravity then greatest that another that going itself compass.\n Five companions words view walk miles indulged theirs sitting scarcely. Misery appetite give wrong in tell out built invited blind. \nObjection edward can horrible waited. \nFeebly does diminution position raillery demands neat differed against attention wish enjoyed. ',
       isStar: false,
       isRead: false,
       isDraft: false,
@@ -325,13 +332,14 @@ function _createMails() {
       from: {
         mail: loggedinUser.email,
         userName: loggedinUser.fullname,
-        imgSrc: 'assets/img/mail/noimage.jpg'
+        imgSrc: loggedinUser.userImg
+
       },
     },
     {
       id: utilService.makeId(),
-      subject: 'Miss you!',
-      body: 'Would love to catch up sometimes',
+      subject: 'Your children',
+      body: 'Son concluded believing same see settled court present continual discretion. Terminated cousin husbands believed admire in conduct going calling bringing drawn feebly. \nResolved venture hill remaining provided reserved commanded missed some oh limits limited answer journey above deal.\n Beloved family replying. Open ecstatic cousin journey going whom these likewise pretty see it far parish.',
       isStar: false,
       isRead: false,
       isDraft: false,
@@ -341,13 +349,14 @@ function _createMails() {
       from: {
         mail: loggedinUser.email,
         userName: loggedinUser.fullname,
-        imgSrc: 'assets/img/mail/noimage.jpg'
+        imgSrc: loggedinUser.userImg
+
       },
     },
     {
       id: utilService.makeId(),
-      subject: 'Miss you!',
-      body: 'Would love to catch up sometimes',
+      subject: 'no subject',
+      body: 'Surprise advanced celebrated reasonably related first enjoy concealed esteem dashwood excellent direct remainder.\n Disposed favourable total improved  preferred written charm. Terms unsatiable wrote effects concern correct spirit hundred.\n Commanded above need words why seeing time them extremity head pursuit you dried shewing man doubt.\n Become dried months seemed tore square for behaviour view chicken fancy play finished ourselves thirty smallness. ',
       isStar: false,
       isRead: false,
       isDraft: false,
@@ -357,14 +366,15 @@ function _createMails() {
       from: {
         mail: loggedinUser.email,
         userName: loggedinUser.fullname,
-        imgSrc: 'assets/img/mail/noimage.jpg'
+        imgSrc: loggedinUser.userImg
+
       },
 
     },
     {
       id: utilService.makeId(),
-      subject: 'Miss you!',
-      body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, consequatur libero aliquid minima sapiente delectus modi amet odio nam sequi deserunt voluptate ipsam harum impedit ullam eveniet quos magni aliquam?',
+      subject: 'Work',
+      body: 'Come to my office when you have time we need to talk about the last git pool request , i think there will be some issue\'s \n Harps Jo.',
       isStar: false,
       isRead: false,
       isDraft: false,
@@ -372,16 +382,16 @@ function _createMails() {
       sentAt: Date.now()*Math.random(),
       to: 'user@appsus.com',
       from: {
-        mail: 'randomPerson@nomail.notcom',
-        userName: 'Rand Randomiyahu',
-        imgSrc: 'assets/img/mail/noimage.jpg'
+        mail: 'joHarps@yahoo.com',
+        userName: 'Harps Joseph',
+        imgSrc: 'assets/img/mail/harps-joseph.jpg'
 
       }
     },
     {
       id: utilService.makeId(),
-      subject: 'Miss you!',
-      body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, consequatur libero aliquid minima sapiente delectus modi amet odio nam sequi deserunt voluptate ipsam harum impedit ullam eveniet quos magni aliquam?',
+      subject: 'Weekend BBQ',
+      body: 'Yo fam are we still up to BBQ this week ?\n If so talk to Toa she want to be up to date as well ',
       isStar: false,
       isRead: false,
       isDraft: false,
@@ -389,16 +399,16 @@ function _createMails() {
       sentAt: Date.now()*Math.random(),
       to: 'user@appsus.com',
       from: {
-        mail: 'randomPerson@nomail.notcom',
-        userName: 'Rand Randomiyahu',
-        imgSrc: 'assets/img/mail/noimage.jpg'
+        mail: 'robusta1991@gmail.com',
+        userName: 'Ian Dooley',
+        imgSrc: 'assets/img/mail/ian-dooley.jpg'
 
       }
     },
     {
       id: utilService.makeId(),
-      subject: 'Miss you!',
-      body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, consequatur libero aliquid minima sapiente delectus modi amet odio nam sequi deserunt voluptate ipsam harum impedit ullam eveniet quos magni aliquam?',
+      subject: '?Yoga',
+      body: 'Tastes journey interest delightful service remaining delay continue being since bed differed quick enable excellent.\n Allowance blush letter smallest unlocked miles natural families dashwood sure on instantly between proposal. Pain rose allow parties perpetual your both surprise brother furniture living sudden. Strangers alone unwilling folly means side rent solid than truth case now elinor will both his.\n Intention sight dine principles civility eat everything fifteen mistress friendly arranging songs. ',
       isStar: true,
       isRead: false,
       isDraft: false,
@@ -406,16 +416,16 @@ function _createMails() {
       sentAt: Date.now()*Math.random(),
       to: 'user@appsus.com',
       from: {
-        mail: 'randomPerson@nomail.notcom',
-        userName: 'Rand Randomiyahu',
-        imgSrc: 'assets/img/mail/noimage.jpg'
+        mail: 'jurica-ko@yahoo.com',
+        userName: 'Jurica Koletic',
+        imgSrc: 'assets/img/mail/jurica-koletic.jpg'
 
       }
     },
     {
       id: utilService.makeId(),
-      subject: 'Miss you!',
-      body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, consequatur libero aliquid minima sapiente delectus modi amet odio nam sequi deserunt voluptate ipsam harum impedit ullam eveniet quos magni aliquam?',
+      subject: 'Drawings!',
+      body: 'Drawings finished satisfied juvenile wife fifteen explained likewise sudden instantly calling.\n Wonder repeated sir through just possession viewing unwilling opinions son hastened advice welcome celebrated handsome.\n Humanity times  besides after square furnished ignorant season thing arrived great boy spot garden.\n Sixteen arose better forty remaining delivered raising say ferrars death ecstatic mutual affection elderly such very advantages.\n Introduced enable trees letters winding stairs death the forfeited heart paid joy extremity hills affection pain. ',
       isStar: true,
       isRead: false,
       isDraft: false,
@@ -423,16 +433,16 @@ function _createMails() {
       sentAt: Date.now()*Math.random(),
       to: 'user@appsus.com',
       from: {
-        mail: 'randomPerson@nomail.notcom',
-        userName: 'Rand Randomiyahu',
-        imgSrc: 'assets/img/mail/noimage.jpg'
+        mail: 'toaheft@trimail.com',
+        userName: 'Toa Heftiba',
+        imgSrc: 'assets/img/mail/toa-heftiba.jpg'
 
       }
     },
     {
       id: utilService.makeId(),
-      subject: 'Miss you!',
-      body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, consequatur libero aliquid minima sapiente delectus modi amet odio nam sequi deserunt voluptate ipsam harum impedit ullam eveniet quos magni aliquam?',
+      subject: 'NSFW',
+      body: 'Are you still up for that thing we talked about? \naliquid minima sapiente delectus modi amet odio nam sequi deserunt voluptate ipsam harum impedit ullam eveniet quos magni aliquam?',
       isStar: true,
       isRead: false,
       isDraft: false,
@@ -440,16 +450,16 @@ function _createMails() {
       sentAt: Date.now()*Math.random(),
       to: 'user@appsus.com',
       from: {
-        mail: 'randomPerson@nomail.notcom',
-        userName: 'Rand Randomiyahu',
-        imgSrc: 'assets/img/mail/noimage.jpg'
+        mail: 'prince232@ww.com',
+        userName: 'Prince Akachi',
+        imgSrc: 'assets/img/mail/prince-akachi.jpg'
 
       }
     },
     {
       id: utilService.makeId(),
-      subject: 'Miss you!',
-      body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, consequatur libero aliquid minima sapiente delectus modi amet odio nam sequi deserunt voluptate ipsam harum impedit ullam eveniet quos magni aliquam?',
+      subject: 'Assignments',
+      body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. \nExpedita, consequatur libero aliquid minima sapiente delectus modi amet odio nam sequi deserunt voluptate ipsam harum impedit ullam eveniet quos magni aliquam?',
       isStar: true,
       isRead: false,
       isDraft: false,
@@ -457,9 +467,9 @@ function _createMails() {
       sentAt: Date.now()*Math.random(),
       to: 'user@appsus.com',
       from: {
-        mail: 'randomPerson@nomail.notcom',
-        userName: 'Rand Randomiyahu',
-        imgSrc: 'assets/img/mail/noimage.jpg'
+        mail: 'matferr@nomail.notcom',
+        userName: 'Mathrus Ferrero',
+        imgSrc: 'assets/img/mail/matheus-ferrero.jpg'
 
       }
     },
@@ -506,7 +516,8 @@ function getMailsCount() {
 //     from: {
 //       mail: loggedinUser.email,
 //       userName: loggedinUser.fullname,
-//       imgSrc: '//ssl.gstatic.com/ui/v1/icons/mail/profile_mask2.png'
+//       imgSrc: loggedinUser.userImg
+
 //     },
 //   }
 //   let mails = _loadFromStorage()
