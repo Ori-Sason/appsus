@@ -142,7 +142,7 @@ function addNoteFromMail(mailId) {
     const info = {
         title: mail.subject,
         txt: mail.body,
-        url: img ? img : ''
+        url: img || ''
     }
 
     return createNote(noteType, info).then(note => note.id)
