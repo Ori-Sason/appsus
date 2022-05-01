@@ -19,7 +19,7 @@ export class DynamicNote extends React.Component {
 
     onPinned = (ev, noteId) => {
         ev.stopPropagation();
-        notesService.pinNote(noteId)
+        notesService.toggleNoteProperty(noteId, 'isPinned')
             .then(note => { this.setState({ note }) })
             .then(this.updateAndClose)
     }
@@ -27,14 +27,17 @@ export class DynamicNote extends React.Component {
     onReminder = (ev, noteId) => {
         ev.stopPropagation();
         /** LATER CHANGE TO DATETIME PICKER */
-        eventBusService.emit('user-msg', { txt: 'Reminder was on/off successfully', type: 'success' })
-        notesService.reminder(noteId).then(this.updateAndClose)
+        notesService.reminder(noteId).then(note => {
+            const onOff = note.reminder === 0? 'off' : 'on'
+            eventBusService.emit('user-msg', { txt: `Reminder is ${onOff}`, type: 'success' })            
+            this.updateAndClose()
+        })
     }
 
     onArchive = (ev, noteId) => {
         ev.stopPropagation();
         eventBusService.emit('user-msg', { txt: 'Note was archived successfully', type: 'success' })
-        notesService.archiveNote(noteId).then(this.updateAndClose)
+        notesService.toggleNoteProperty(noteId, 'isArchived').then(this.updateAndClose)
     }
 
     onDelete = (ev, noteId) => {

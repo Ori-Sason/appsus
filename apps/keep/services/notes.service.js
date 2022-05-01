@@ -1,4 +1,5 @@
 import { storageService } from '../../../services/storage.service.js'
+import { utilService } from '../../../services/util.service.js'
 import { mailService } from '../../mail/services/mail.service.js'
 
 const NOTES_STORAGE_KEY = 'notesDB'
@@ -11,9 +12,8 @@ export const notesService = {
     deleteNote,
     copyAndUpdateNote,
     duplicateNote,
-    pinNote,
     reminder,
-    archiveNote,
+    toggleNoteProperty,
     changeBgColor,
     addNoteFromMail,
 }
@@ -30,7 +30,7 @@ function query() {
 
 function getNoteById(noteId) {
     return query().then(notes => {
-        const note = notes.find(note => note.id === +noteId)
+        const note = notes.find(note => note.id === noteId)
         return note
     })
 }
@@ -38,7 +38,7 @@ function getNoteById(noteId) {
 function createNote(type, info) {
     return query().then(notes => {
         const note = {
-            id: notes === null || notes.length === 0 ? 0 : notes[notes.length - 1].id + 1, //** FIX - NOT NEED NULL */
+            id: utilService.makeId(),
             type,
             reminder: false,
             isPinned: false,
@@ -77,31 +77,25 @@ function deleteNote(noteId) {
     })
 }
 
-function pinNote(noteId) {
+function reminder(noteId) {
     return query().then(notes => {
         const note = notes.find(note => note.id === noteId)
-        note.isPinned = !note.isPinned
+        /** FIX TO DATETIME PICKER */
+        let { reminder } = note
+        console.log(reminder)
+        reminder = reminder ? 0 : Date.now()
+        note.reminder = reminder
         _saveToStorage(notes)
         return note
     })
 }
 
-function reminder(noteId) {
+function toggleNoteProperty(noteId, property) {
     return query().then(notes => {
         const note = notes.find(note => note.id === noteId)
-        /** FIX TO DATETIME PICKER */
-        note.reminder = !note.reminder
+        note[property] = !note[property]
         _saveToStorage(notes)
-        return notes
-    })
-}
-
-function archiveNote(noteId) {
-    return query().then(notes => {
-        const note = notes.find(note => note.id === noteId)
-        note.isArchived = !note.isArchived
-        _saveToStorage(notes)
-        return notes
+        return note
     })
 }
 
@@ -116,8 +110,8 @@ function duplicateNote(noteId) {
     return query().then(notes => {
         const note = notes.find(note => note.id === noteId)
         const duplicate = JSON.parse(JSON.stringify(note))
-        duplicate.id = notes === null || notes.length === 0 ? 0 : notes[notes.length - 1].id + 1, //** FIX - NOT NEED NULL */
-            notes.push(duplicate)
+        duplicate.id = utilService.makeId()
+        notes.push(duplicate)
         _saveToStorage(notes)
         return notes
     })
@@ -157,9 +151,9 @@ function addNoteFromMail(mailId) {
 function _createNotes() {
     return [
         {
-            "id": 1,
+            "id": 'YI5PVj',
             "type": "note-img",
-            "reminder": true,
+            "reminder": Date.now(),
             "isPinned": true,
             "isArchived": false,
             "isDeleted": false,
@@ -172,9 +166,9 @@ function _createNotes() {
             }
         },
         {
-            "id": 6,
+            "id": 'LZYc74',
             "type": "note-todos",
-            "reminder": false,
+            "reminder": 0,
             "isPinned": false,
             "isArchived": false,
             "isDeleted": false,
@@ -240,9 +234,9 @@ function _createNotes() {
             }
         },
         {
-            "id": 24,
+            "id": 'rLz8Sh',
             "type": "note-txt",
-            "reminder": true,
+            "reminder": Date.now(),
             "isPinned": false,
             "isArchived": false,
             "isDeleted": false,
@@ -256,9 +250,9 @@ function _createNotes() {
             }
         },
         {
-            "id": 25,
+            "id": 'dhfCnx',
             "type": "note-todos",
-            "reminder": false,
+            "reminder": 0,
             "isPinned": true,
             "isArchived": false,
             "isDeleted": false,
@@ -304,9 +298,9 @@ function _createNotes() {
             }
         },
         {
-            "id": 26,
+            "id": 'HZ1BKF',
             "type": "note-vid",
-            "reminder": false,
+            "reminder": 0,
             "isPinned": true,
             "isArchived": false,
             "isDeleted": false,
@@ -321,9 +315,9 @@ function _createNotes() {
             }
         },
         {
-            "id": 27,
+            "id": 'hNHyIk',
             "type": "note-txt",
-            "reminder": true,
+            "reminder": Date.now(),
             "isPinned": false,
             "isArchived": false,
             "isDeleted": false,
@@ -338,9 +332,9 @@ function _createNotes() {
             }
         },
         {
-            "id": 28,
+            "id": 'QYxRpp',
             "type": "note-txt",
-            "reminder": false,
+            "reminder": 0,
             "isPinned": false,
             "isArchived": false,
             "isDeleted": false,
@@ -355,9 +349,9 @@ function _createNotes() {
             }
         },
         {
-            "id": 30,
+            "id": '4Hrbc4',
             "type": "note-txt",
-            "reminder": false,
+            "reminder": 0,
             "isPinned": false,
             "isArchived": false,
             "isDeleted": false,
@@ -372,9 +366,9 @@ function _createNotes() {
             }
         },
         {
-            "id": 32,
+            "id": 'Ge8ahK',
             "type": "note-txt",
-            "reminder": false,
+            "reminder": 0,
             "isPinned": false,
             "isArchived": false,
             "isDeleted": true,
@@ -389,9 +383,9 @@ function _createNotes() {
             }
         },
         {
-            "id": 33,
+            "id": 'TsiDyv',
             "type": "note-txt",
-            "reminder": false,
+            "reminder": 0,
             "isPinned": false,
             "isArchived": true,
             "isDeleted": false,
@@ -406,9 +400,9 @@ function _createNotes() {
             }
         },
         {
-            "id": 35,
+            "id": 'gbEI8z',
             "type": "note-todos",
-            "reminder": false,
+            "reminder": 0,
             "isPinned": false,
             "isArchived": true,
             "isDeleted": false,
